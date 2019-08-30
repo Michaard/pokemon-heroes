@@ -1,0 +1,5 @@
+<aura:component description="TestNorification">
+    <lightning:notificationsLibrary aura:id="notifLib"/>
+
+    <lightning:button type="button" variant="brand" label="Test" onclick="{! c.notify}"/>
+</aura:component>

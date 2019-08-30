@@ -1,0 +1,5 @@
+<design:component label="Final Team Lists">
+    <sfdc:objects>
+        <sfdc:object>Nuzlocke__c</sfdc:object>
+    </sfdc:objects>
+</design:component>

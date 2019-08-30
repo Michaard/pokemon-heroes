@@ -1,0 +1,74 @@
+<aura:component description="PMHR_PokemonDataPicture" implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name="record" type="Pokemon__c" access="private"/>
+    <aura:attribute name="pictureUrl" type="Url" access="private"/>
+    <aura:attribute name="standardType" type="String" access="private"/>
+    <aura:attribute name="alolanPictireUrl" type="Url" access="private"/>
+    <aura:attribute name="alolanType" type="String" access="private"/>
+    <aura:attribute name="hasAlolanForm" type="String" access="private"/>
+
+    <aura:handler name="init" value="{! this}" action="{! c.init}"/>
+
+    <force:recordData aura:id="recordLoader"
+                      mode="EDIT"
+                      recordId="{! v.recordId}"
+                      targetFields="{! v.record}"
+                      fields="Name, Has_Alolan_Variant__c, Picture_Url__c, Alolan_Picture_Url__c, Type__c, Alolan_Type__c"/>
+
+    <lightning:card>
+        <aura:set attribute="title">
+            <h3 class="slds-section__title test-id__section-header-container section-title-custom">{! format($Label.c.PMHR_Section_Title_Pokemon_Picture, v.record.Name)}</h3>
+        </aura:set>
+        <aura:set attribute="actions">
+            <lightning:button class="section-header-button" type="button" variant="neutral" label="{! $Label.c.Button_Edit}" onclick="{! c.toggleModal}"/>
+        </aura:set>
+        <div class="slds-p-horizontal--small slds-text-align--center">
+            <div class="picture-container">
+                <img class="pokemon-picture" src="{! v.record.Picture_Url__c}"/>
+            </div>
+            <div style="padding-top: 1rem;">
+                <lightning:badge label="{! v.record.Type__c}"/>
+            </div>
+            <aura:if isTrue="{! v.record.Has_Alolan_Variant__c}">
+                <hr/>
+                <div class="picture-container">
+                    <img class="pokemon-picture" src="{! v.record.Alolan_Picture_Url__c}"/>
+                </div>
+                <div style="padding-top: 1rem;">
+                    <lightning:badge label="{! v.record.Alolan_Type__c}"/>
+                </div>
+            </aura:if>
+        </div>
+    </lightning:card>
+
+    <div>
+        <section aura:id="editModal" role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" alternativeText="{! $Label.c.Button_Close}" variant="bare-inverse" class="slds-modal__close" onclick="{! c.toggleModal}"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{! format($Label.c.PMHR_Modal_Title_Edit_Picture, v.record.Name)}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <div>
+                        <lightning:input type="url" label="{! $Label.c.PMHR_Field_Picture_Url}" value="{! v.pictureUrl}" required="true"/>
+                        <lightning:input type="text" label="{! $Label.c.PMHR_Field_Alolan_Type}" value="{! v.standardType}" required="true"/>
+                    </div>
+                    <div class="test-id__field-label-container slds-form-element__label">
+                        <span class="test-id__field-label">{! $Label.c.PMHR_Field_Has_Alolan_Form}</span>
+                    </div>
+                    <lightning:input type="checkbox" label="{! $Label.c.PMHR_Field_Has_Alolan_Form}" checked="{! v.hasAlolanForm}" value="{! v.hasAlolanForm}" variant="label-hidden"/>
+                    <aura:if isTrue="{! v.hasAlolanForm}">
+                        <div>
+                            <lightning:input type="url" label="{! $Label.c.PMHR_Field_Alolan_Picture_Url}" value="{! v.alolanPictireUrl}" required="true"/>
+                            <lightning:input type="text" label="{! $Label.c.PMHR_Field_Alolan_Type}" value="{! v.alolanType}" required="true"/>
+                        </div>
+                    </aura:if>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral" label="{! $Label.c.Button_Cancel}" onclick="{! c.toggleModal}"/>
+                    <lightning:button variant="brand" label="{! $Label.c.Button_Save}" onclick="{! c.saveRecord}"/>
+                </footer>
+            </div>
+        </section>
+        <div aura:id="editModalBackdrop" class="slds-backdrop"/>
+    </div>
+</aura:component>

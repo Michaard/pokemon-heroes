@@ -1,0 +1,587 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>Nuzlocke_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>Nuzlocke_Info</compactLayoutAssignment>
+    <compactLayouts>
+        <fullName>Nuzlocke_Info</fullName>
+        <fields>Name</fields>
+        <fields>Game_Version__c</fields>
+        <fields>Hero__c</fields>
+        <fields>Start_Date__c</fields>
+        <fields>End_Date__c</fields>
+        <fields>Pokemons_Caught__c</fields>
+        <fields>Pokemons_Deceased__c</fields>
+        <label>Nuzlocke Info</label>
+    </compactLayouts>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>false</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <fields>
+        <fullName>Allowed_Catching_Methods_Per_Area__c</fullName>
+        <externalId>false</externalId>
+        <label>Allowed Catching Methods / Area</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Breeding (1)</fullName>
+                    <default>false</default>
+                    <label>Breeding (1)</label>
+                </value>
+                <value>
+                    <fullName>Breeding (Any)</fullName>
+                    <default>false</default>
+                    <label>Breeding (Any)</label>
+                </value>
+                <value>
+                    <fullName>Breeding (One/Parent)</fullName>
+                    <default>false</default>
+                    <label>Breeding (One/Parent)</label>
+                </value>
+                <value>
+                    <fullName>Breeding (One/Type)</fullName>
+                    <default>false</default>
+                    <label>Breeding (One/Type)</label>
+                </value>
+                <value>
+                    <fullName>Event</fullName>
+                    <default>false</default>
+                    <label>Event</label>
+                </value>
+                <value>
+                    <fullName>Fossil (1)</fullName>
+                    <default>false</default>
+                    <label>Fossil (1)</label>
+                </value>
+                <value>
+                    <fullName>Fossil (Any)</fullName>
+                    <default>false</default>
+                    <label>Fossil (Any)</label>
+                </value>
+                <value>
+                    <fullName>Game Corner (1)</fullName>
+                    <default>false</default>
+                    <label>Game Corner (1)</label>
+                </value>
+                <value>
+                    <fullName>Game Corner (2)</fullName>
+                    <default>false</default>
+                    <label>Game Corner (2)</label>
+                </value>
+                <value>
+                    <fullName>Game Corner (3)</fullName>
+                    <default>false</default>
+                    <label>Game Corner (3)</label>
+                </value>
+                <value>
+                    <fullName>Game Corner (4)</fullName>
+                    <default>false</default>
+                    <label>Game Corner (4)</label>
+                </value>
+                <value>
+                    <fullName>Game Corner (Any)</fullName>
+                    <default>false</default>
+                    <label>Game Corner (Any)</label>
+                </value>
+                <value>
+                    <fullName>Headbutt</fullName>
+                    <default>false</default>
+                    <label>Headbutt</label>
+                </value>
+                <value>
+                    <fullName>Land</fullName>
+                    <default>false</default>
+                    <label>Land</label>
+                </value>
+                <value>
+                    <fullName>Land/Water</fullName>
+                    <default>false</default>
+                    <label>Land/Water</label>
+                </value>
+                <value>
+                    <fullName>Trade</fullName>
+                    <default>false</default>
+                    <label>Trade</label>
+                </value>
+                <value>
+                    <fullName>Water</fullName>
+                    <default>false</default>
+                    <label>Water</label>
+                </value>
+                <value>
+                    <fullName>Water/Headbutt</fullName>
+                    <default>false</default>
+                    <label>Water/Headbutt</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>End_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>End Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>End_Status__c</fullName>
+        <externalId>false</externalId>
+        <label>End Status</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Success</fullName>
+                    <default>false</default>
+                    <label>Success</label>
+                </value>
+                <value>
+                    <fullName>Failed</fullName>
+                    <default>false</default>
+                    <label>Failed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Game_Version__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Hero__r.Game_Version__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Game Version</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hero__c</fullName>
+        <deleteConstraint>Restrict</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Hero</label>
+        <referenceTo>Hero__c</referenceTo>
+        <relationshipLabel>Nuzlockes</relationshipLabel>
+        <relationshipName>Nuzlockes</relationshipName>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Is_Finished__c</fullName>
+        <description>Indicate if Nuzlocke is finished</description>
+        <externalId>false</externalId>
+        <formula>AND(
+ NOT(ISBLANK(End_Date__c)),
+ NOT(ISBLANK(TEXT(End_Status__c)))
+)</formula>
+        <label>Is Finished</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Legendaries_Rule__c</fullName>
+        <externalId>false</externalId>
+        <label>Legendaries Rule</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Catch - no use</fullName>
+                    <default>false</default>
+                    <label>Catch - no use</label>
+                </value>
+                <value>
+                    <fullName>Catch - use</fullName>
+                    <default>false</default>
+                    <label>Catch - use</label>
+                </value>
+                <value>
+                    <fullName>Kill</fullName>
+                    <default>false</default>
+                    <label>Kill</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Multiple_Elite_Four_Fights__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Indicates if Nuzlocke run involves more than one Elite Four fights, thus assembling more than one final team</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Check, if Nuzlocke run involves more than one Elite Four fights, thus assembling more than one final team</inlineHelpText>
+        <label>Multiple Elite Four Fights</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Pokemons_Caught__c</fullName>
+        <description>Number of caught Pokemons</description>
+        <externalId>false</externalId>
+        <label>Pokemons Caught</label>
+        <summaryForeignKey>Pokemon__c.Nuzlocke__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Pokemons_Deceased__c</fullName>
+        <description>Number of Pokemons lost in battle</description>
+        <externalId>false</externalId>
+        <label>Pokemons Deceased</label>
+        <summaryFilterItems>
+            <field>Pokemon__c.Death__c</field>
+            <operation>equals</operation>
+            <value>True</value>
+        </summaryFilterItems>
+        <summaryForeignKey>Pokemon__c.Nuzlocke__c</summaryForeignKey>
+        <summaryOperation>count</summaryOperation>
+        <trackTrending>false</trackTrending>
+        <type>Summary</type>
+    </fields>
+    <fields>
+        <fullName>Rival_Name__c</fullName>
+        <externalId>false</externalId>
+        <formula>Hero__r.Rival_Name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Rival Name</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Safari_Zone_Rule__c</fullName>
+        <externalId>false</externalId>
+        <label>Safari Zone Rule</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Amount of areas/Safari</fullName>
+                    <default>false</default>
+                    <label>Amount of areas/Safari</label>
+                </value>
+                <value>
+                    <fullName>One/Area</fullName>
+                    <default>false</default>
+                    <label>One/Area</label>
+                </value>
+                <value>
+                    <fullName>One/Safari</fullName>
+                    <default>false</default>
+                    <label>One/Safari</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Start_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Start Date</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <label>Nuzlocke</label>
+    <listViews>
+        <fullName>All</fullName>
+        <columns>NAME</columns>
+        <columns>Game_Version__c</columns>
+        <columns>Hero__c</columns>
+        <columns>Allowed_Catching_Methods_Per_Area__c</columns>
+        <columns>Safari_Zone_Rule__c</columns>
+        <columns>Legendaries_Rule__c</columns>
+        <columns>Start_Date__c</columns>
+        <columns>End_Date__c</columns>
+        <filterScope>Mine</filterScope>
+        <label>All</label>
+    </listViews>
+    <listViews>
+        <fullName>Finished_Nuzlockes</fullName>
+        <columns>NAME</columns>
+        <columns>Game_Version__c</columns>
+        <columns>Hero__c</columns>
+        <columns>Pokemons_Caught__c</columns>
+        <columns>Pokemons_Deceased__c</columns>
+        <columns>Start_Date__c</columns>
+        <columns>End_Date__c</columns>
+        <columns>End_Status__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Is_Finished__c</field>
+            <operation>equals</operation>
+            <value>1</value>
+        </filters>
+        <label>Finished Nuzlockes</label>
+    </listViews>
+    <listViews>
+        <fullName>Ongoing_Nuzlockes</fullName>
+        <columns>NAME</columns>
+        <columns>Game_Version__c</columns>
+        <columns>Hero__c</columns>
+        <columns>Pokemons_Caught__c</columns>
+        <columns>Pokemons_Deceased__c</columns>
+        <columns>Start_Date__c</columns>
+        <filterScope>Mine</filterScope>
+        <filters>
+            <field>Is_Finished__c</field>
+            <operation>equals</operation>
+            <value>0</value>
+        </filters>
+        <label>Ongoing Nuzlockes</label>
+    </listViews>
+    <nameField>
+        <label>Name</label>
+        <type>Text</type>
+    </nameField>
+    <pluralLabel>Nuzlockes</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Game_Version__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Hero__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Pokemons_Caught__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Pokemons_Deceased__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Allowed_Catching_Methods_Per_Area__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Safari_Zone_Rule__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Legendaries_Rule__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Start_Date__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>End_Date__c</customTabListAdditionalFields>
+        <searchResultsAdditionalFields>Game_Version__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Hero__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Pokemons_Caught__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Pokemons_Deceased__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Allowed_Catching_Methods_Per_Area__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Safari_Zone_Rule__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Legendaries_Rule__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Start_Date__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>End_Date__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>Private</sharingModel>
+    <validationRules>
+        <fullName>End_Data_On_Insert</fullName>
+        <active>true</active>
+        <description>You can&apos;t provide end data (status/date) when creating new Nuzlocke</description>
+        <errorConditionFormula>AND(
+ ISNEW(),
+ OR(
+  NOT(ISBLANK(TEXT(End_Status__c))),
+  NOT(ISBLANK(End_Date__c))
+ )
+)</errorConditionFormula>
+        <errorMessage>You can&apos;t provide end data (status/date) when creating new Nuzlocke</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>End_Date_Before_Start_Date</fullName>
+        <active>true</active>
+        <description>End Date can&apos;t be before Start Date</description>
+        <errorConditionFormula>End_Date__c &lt; Start_Date__c</errorConditionFormula>
+        <errorDisplayField>End_Date__c</errorDisplayField>
+        <errorMessage>End Date can&apos;t be before Start Date</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>No_Full_End_Data_Provided</fullName>
+        <active>true</active>
+        <description>When finishing the Nuzlocke you have to provide both End Date and End Status</description>
+        <errorConditionFormula>AND(
+ NOT(ISNEW()),
+ OR(
+  AND(
+   NOT(ISBLANK(End_Date__c)),
+   ISBLANK(TEXT(End_Status__c))
+  ),
+  AND(
+   NOT(ISBLANK(TEXT(End_Status__c))),
+   ISBLANK(End_Date__c)
+  )
+ )
+)</errorConditionFormula>
+        <errorMessage>When finishing the Nuzlocke you have to provide both End Date and End Status</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Nuzlocke_Finished</fullName>
+        <active>true</active>
+        <description>Can&apos;t finish Nuzlocke that is already finished</description>
+        <errorConditionFormula>AND(
+ PRIORVALUE(Is_Finished__c),
+ OR(
+  AND(
+   ISCHANGED(End_Status__c),
+   NOT(ISBLANK(TEXT(End_Status__c)))
+  ),
+  AND(
+   ISCHANGED(End_Date__c),
+   NOT(ISBLANK(End_Date__c))
+  )
+ )
+)</errorConditionFormula>
+        <errorMessage>Can&apos;t finish Nuzlocke that is already finished</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

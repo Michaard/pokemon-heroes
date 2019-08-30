@@ -1,0 +1,34 @@
+<aura:component description="PMHR_FinalTeamList">
+    <aura:attribute name="finalTeam" type="Object" access="public"/>
+
+    <lightning:card>
+        <aura:set attribute="title">
+            <aura:if isTrue="{! not(empty(v.finalTeam))}">
+                <a class="textUnderline outputLookupLink forceOutputLookup" href="{! '/lightning/r/' + v.finalTeam.id + '/view'}">
+                    <h3 class="slds-section__title test-id__section-header-container section-title-custom">
+                        {! v.finalTeam.name}
+                    </h3>
+                </a>
+                <aura:set attribute="else">
+                    <h3 class="slds-section__title test-id__section-header-container section-title-custom">
+                        {! $Label.c.PMHR_Section_Title_Final_Team_Members}
+                    </h3>
+                </aura:set>
+            </aura:if>
+        </aura:set>
+        <div style="padding-left: 1.1rem; padding-right: 1.1rem;">
+            <aura:iteration items="{! v.finalTeam.members}" var="member" indexVar="index">
+                <c:PMHR_FinalTeamMember index="{! index + 1}" teamMember="{! member}"/>
+            </aura:iteration>
+            <aura:if isTrue="{! and(empty(v.finalTeam.members), not(empty(v.finalTeam)))}">
+                <p>{! $Label.c.PMHR_Placeholder_Empty_Final_Team_Members_List}</p>
+                <aura:set attribute="else">
+                    <aura:if isTrue="{! empty(v.finalTeam.members)}">
+                        <p>{! $Label.c.PMHR_Placeholder_Final_Team_Members_List}</p>
+                    </aura:if>
+                </aura:set>
+            </aura:if>
+        </div>
+    </lightning:card>
+
+</aura:component>
