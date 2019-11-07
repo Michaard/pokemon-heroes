@@ -2,16 +2,7 @@ public class PMHR_PokemonPictureController {
     @AuraEnabled
     public static PokemonPicture getPokemonPicture(Id pokemonId) {
         Pokemon__c pokemon = getPokemonData(pokemonId);
-        PokemonPicture result;
-        if (pokemon.Variant__c == PMHR_Utilities.REGION_VARIANT_ALOLAN) {
-            result = new PokemonPicture(pokemon.Form__r.Alolan_Picture_Url__c, pokemon.Form__r.Alolan_Type__c);
-        } else if (pokemon.Variant__c == PMHR_Utilities.REGION_VARIANT_GALARIAN) {
-            result = new PokemonPicture(pokemon.Form__r.Galarian_Picture_Url__c, pokemon.Form__r.Galarian_Type__c);
-        } else {
-            result = new PokemonPicture(pokemon.Form__r.Picture_Url__c, pokemon.Form__r.Type__c);
-        }
-
-        return result;
+        return new PokemonPicture(pokemon);
     }
 
     private static Pokemon__c getPokemonData(Id pokemonId) {
@@ -29,9 +20,10 @@ public class PMHR_PokemonPictureController {
         @AuraEnabled public String pictureUrl { get; private set; }
         @AuraEnabled public String pokemonType { get; private set; }
 
-        public PokemonPicture (String pictureUrl, String pokemonType) {
-            this.pictureUrl = pictureUrl;
-            this.pokemonType = pokemonType;
+        public PokemonPicture (Pokemon__c pokemon) {
+            PMHR_PokemonPictureVariantsConfig config = PMHR_PokemonPictureVariantsConfig.getInstance();
+            this.pictureUrl = (String)pokemon.Form__r.get(config.getPictureFieldApiName(pokemon.Variant__c));
+            this.pokemonType = (String)pokemon.Form__r.get(config.getTypeFieldApiName(pokemon.Variant__c));
         }
     }
 }
