@@ -2338,7 +2338,7 @@
     </fields>
     <fields>
         <fullName>Galarian_Picture_Url__c</fullName>
-        <description>URL to the picture depicting galarian form of the pokemon</description>
+        <description>URL to the picture depicting galarian form of the Pokemon</description>
         <externalId>false</externalId>
         <label>Galarian Picture Url</label>
         <required>false</required>

@@ -4,7 +4,8 @@
     <aura:attribute name="standardType" type="String" access="private"/>
     <aura:attribute name="alolanPictireUrl" type="Url" access="private"/>
     <aura:attribute name="alolanType" type="String" access="private"/>
-    <aura:attribute name="hasAlolanForm" type="String" access="private"/>
+    <aura:attribute name="hasAlolanForm" type="Boolean" access="private"/>
+    <aura:attribute name="hasGalarianForm" type="Boolean" access="private"/>
 
     <aura:handler name="init" value="{! this}" action="{! c.init}"/>
 

@@ -8,4 +8,7 @@ public class PMHR_Utilities {
     public static final String POKEMON_CATCH_METHOD_EVENT = 'Event';
 
     public static final String GENDER_MALE = 'Male';
+
+    public static final String REGION_VARIANT_ALOLAN = 'Alolan';
+    public static final String REGION_VARIANT_GALARIAN = 'Galarian';
 }

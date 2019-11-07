@@ -267,7 +267,7 @@
         <fullName>Form__c</fullName>
         <deleteConstraint>Restrict</deleteConstraint>
         <externalId>false</externalId>
-        <inlineHelpText>If you&apos;re creating a new pokemon this field will be filled automatically</inlineHelpText>
+        <inlineHelpText>If you&apos;re creating a new Pokemon this field will be filled automatically</inlineHelpText>
         <label>Form</label>
         <referenceTo>Pokemon_Data__c</referenceTo>
         <relationshipLabel>Pokemons</relationshipLabel>
@@ -466,32 +466,32 @@
 				NOT(INCLUDES(Form__r.Region_Specific_Variants__c, &apos;Alolan&apos;))
 )</errorConditionFormula>
         <errorDisplayField>Variant__c</errorDisplayField>
-        <errorMessage>The pokemon form doesn&apos;t have alolan variant</errorMessage>
+        <errorMessage>The Pokemon form doesn&apos;t have alolan variant</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Forbidden_Galarian_Form</fullName>
         <active>true</active>
-        <description>The pokemon form doesn&apos;t have galarian variant</description>
+        <description>The Pokemon form doesn&apos;t have galarian variant</description>
         <errorConditionFormula>AND(
     ISPICKVAL(Variant__c, &apos;Galarian&apos;),
     NOT(INCLUDES(Form__r.Region_Specific_Variants__c, &apos;Galarian&apos;))
 )</errorConditionFormula>
         <errorDisplayField>Variant__c</errorDisplayField>
-        <errorMessage>The pokemon form doesn&apos;t have galarian variant</errorMessage>
+        <errorMessage>The Pokemon form doesn&apos;t have galarian variant</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Form_Wrong_Family</fullName>
         <active>true</active>
         <errorConditionFormula>TEXT(Caught_Form__r.Family__c) &lt;&gt; TEXT(Form__r.Family__c)</errorConditionFormula>
         <errorDisplayField>Form__c</errorDisplayField>
-        <errorMessage>The pokemon form must be related to the caught pokemon</errorMessage>
+        <errorMessage>The Pokemon form must be related to the caught Pokemon</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Form_Wrong_Stage</fullName>
         <active>true</active>
         <errorConditionFormula>Caught_Form__r.Family_Stage__c &gt; Form__r.Family_Stage__c</errorConditionFormula>
         <errorDisplayField>Form__c</errorDisplayField>
-        <errorMessage>The pokemon form stage cannot be lower than caught form stage</errorMessage>
+        <errorMessage>The Pokemon form stage cannot be lower than caught form stage</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Invalid_Death_Level</fullName>

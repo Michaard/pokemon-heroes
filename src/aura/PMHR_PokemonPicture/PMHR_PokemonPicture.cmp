@@ -1,33 +1,27 @@
-<aura:component description="PMHR_PokemonPicture" implements="flexipage:availableForRecordHome,force:hasRecordId">
+<aura:component description="PMHR_PokemonPicture" implements="flexipage:availableForRecordHome,force:hasRecordId" controller="PMHR_PokemonPictureController">
+    <aura:attribute name="displaySpinner" type="Boolean" default="false" access="private"/>
     <aura:attribute name="record" type="Pokemon__c" access="private"/>
-    <aura:attribute name="simpleRecord" type="Pokemon__c" access="private"/>
+    <aura:attribute name="pokemonPictureData" type="Object" access="private"/>
 
-    <aura:handler name="change" value="{! v.simpleRecord.Is_Alolan__c}" action="{! c.refreshPicture}"/>
+    <aura:handler name="init" value="{! this}" action="{! c.onInit}"/>
 
     <force:recordData aura:id="recordLoader"
                       mode="EDIT"
                       recordId="{! v.recordId}"
-                      targetRecord="{! v.record}"
-                      targetFields="{! v.simpleRecord}"
-                      fields="Death__c, Variant__c, Form__r.Picture_Url__c, Form__r.Alolan_Picture_Url__c, Form__r.Type__c, Form__r.Alolan_Type__c"/>
+                      targetFields="{! v.record}"
+                      recordUpdated="{! c.onRecordChange}"
+                      fields="Death__c"/>
 
     <lightning:card>
+        <aura:if isTrue="{! v.displaySpinner}">
+            <lightning:spinner alternativeText="{! $Label.c.Spinner_Alt_Text}"/>
+        </aura:if>
         <div class="slds-text-align--center">
             <div class="picture-container">
-                <aura:if isTrue="{! not(v.simpleRecord.Variant__c eq 'Alolan')}">
-                    <img class="{! 'picture' + (v.simpleRecord.Death__c ? ' picture-dead' : '')}" src="{! v.simpleRecord.Form__r.Picture_Url__c}"/>
-                    <aura:set attribute="else">
-                        <img class="{! 'picture' + (v.simpleRecord.Death__c ? ' picture-dead' : '')}" src="{! v.simpleRecord.Form__r.Alolan_Picture_Url__c}"/>
-                    </aura:set>
-                </aura:if>
+                <img class="{! 'picture' + (v.record.Death__c ? ' picture-dead' : '')}" src="{! v.pokemonPictureData.pictureUrl}"/>
             </div>
             <div style="padding-top: 1rem;">
-                <aura:if isTrue="{! not(v.simpleRecord.Variant__c eq 'Alolan')}">
-                    <lightning:badge label="{! v.simpleRecord.Form__r.Type__c}"/>
-                    <aura:set attribute="else">
-                        <lightning:badge label="{! v.simpleRecord.Form__r.Alolan_Type__c}"/>
-                    </aura:set>
-                </aura:if>
+                <lightning:badge label="{! v.pokemonPictureData.pokemonType}"/>
             </div>
         </div>
     </lightning:card>
