@@ -36,7 +36,7 @@ public class PMHR_TestDataFactory {
         Pokemon_Data__c pokemonData = new Pokemon_Data__c();
         pokemonData.Pokedex_Number__c = pokedexNr;
         pokemonData.Name = form;
-        pokemonData.Type__c = formType;
+        pokemonData.Primary_Type__c = formType;
         pokemonData.Family__c = family;
         pokemonData.Family_Stage__c = familyStage;
 

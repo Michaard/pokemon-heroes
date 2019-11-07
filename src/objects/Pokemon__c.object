@@ -347,6 +347,35 @@
         <type>Text</type>
         <unique>false</unique>
     </fields>
+    <fields>
+        <fullName>Variant__c</fullName>
+        <externalId>false</externalId>
+        <label>Variant</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Standard</fullName>
+                    <default>true</default>
+                    <label>Standard</label>
+                </value>
+                <value>
+                    <fullName>Alolan</fullName>
+                    <default>false</default>
+                    <label>Alolan</label>
+                </value>
+                <value>
+                    <fullName>Galarian</fullName>
+                    <default>false</default>
+                    <label>Galarian</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
     <label>Pokemon</label>
     <listViews>
         <fullName>All</fullName>
@@ -432,9 +461,23 @@
     <validationRules>
         <fullName>Forbidden_Alolan_Form</fullName>
         <active>true</active>
-        <errorConditionFormula>AND(Is_Alolan__c = true, Form__r.Has_Alolan_Variant__c = false)</errorConditionFormula>
-        <errorDisplayField>Is_Alolan__c</errorDisplayField>
+        <errorConditionFormula>AND(
+				ISPICKVAL(Variant__c, &apos;Alolan&apos;),
+				NOT(INCLUDES(Form__r.Region_Specific_Variants__c, &apos;Alolan&apos;))
+)</errorConditionFormula>
+        <errorDisplayField>Variant__c</errorDisplayField>
         <errorMessage>The pokemon form doesn&apos;t have alolan variant</errorMessage>
+    </validationRules>
+    <validationRules>
+        <fullName>Forbidden_Galarian_Form</fullName>
+        <active>true</active>
+        <description>The pokemon form doesn&apos;t have galarian variant</description>
+        <errorConditionFormula>AND(
+    ISPICKVAL(Variant__c, &apos;Galarian&apos;),
+    NOT(INCLUDES(Form__r.Region_Specific_Variants__c, &apos;Galarian&apos;))
+)</errorConditionFormula>
+        <errorDisplayField>Variant__c</errorDisplayField>
+        <errorMessage>The pokemon form doesn&apos;t have galarian variant</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Form_Wrong_Family</fullName>

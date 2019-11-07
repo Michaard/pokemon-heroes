@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <actionOverrides>
         <actionName>Accept</actionName>
         <type>Default</type>
@@ -149,9 +149,9 @@
         <fullName>Pokemon_Data_Info</fullName>
         <fields>Name</fields>
         <fields>Pokedex_Number__c</fields>
-        <fields>Family__c</fields>
         <fields>Type__c</fields>
         <fields>Alolan_Type__c</fields>
+        <fields>Galarian_Type__c</fields>
         <label>Pokemon Data Info</label>
     </compactLayouts>
     <deploymentStatus>Deployed</deploymentStatus>
@@ -173,10 +173,34 @@
         <type>Url</type>
     </fields>
     <fields>
+        <fullName>Alolan_Primary_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Alolan Primary Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Pokemon_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Alolan_Secondary_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Alolan Secondary Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Pokemon_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Alolan_Type__c</fullName>
         <externalId>false</externalId>
+        <formula>TEXT(Alolan_Primary_Type__c) &amp; IF(NOT(ISBLANK(TEXT(Alolan_Secondary_Type__c))), &apos;/&apos; &amp; TEXT(Alolan_Secondary_Type__c), &apos;&apos;)</formula>
         <label>Alolan Type</label>
-        <length>30</length>
         <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
@@ -2313,12 +2337,47 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Has_Alolan_Variant__c</fullName>
-        <defaultValue>false</defaultValue>
+        <fullName>Galarian_Picture_Url__c</fullName>
+        <description>URL to the picture depicting galarian form of the pokemon</description>
         <externalId>false</externalId>
-        <label>Has Alolan Variant</label>
+        <label>Galarian Picture Url</label>
+        <required>false</required>
         <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
+        <type>Url</type>
+    </fields>
+    <fields>
+        <fullName>Galarian_Primary_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Galarian Primary Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Pokemon_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Galarian_Secondary_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Galarian Secondary Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Pokemon_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Galarian_Type__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Galarian_Primary_Type__c) &amp; IF(NOT(ISBLANK(TEXT(Galarian_Secondary_Type__c))), &apos;/&apos; &amp; TEXT(Galarian_Secondary_Type__c), &apos;&apos;)</formula>
+        <label>Galarian Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
     </fields>
     <fields>
         <fullName>Picture_Url__c</fullName>
@@ -2341,11 +2400,61 @@
         <unique>true</unique>
     </fields>
     <fields>
+        <fullName>Primary_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Primary Type</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Pokemon_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Region_Specific_Variants__c</fullName>
+        <description>Does the Pokemon has any region specific variant?</description>
+        <externalId>false</externalId>
+        <label>Available Region Specific Variants</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Alolan</fullName>
+                    <default>false</default>
+                    <label>Alolan</label>
+                </value>
+                <value>
+                    <fullName>Galarian</fullName>
+                    <default>false</default>
+                    <label>Galarian</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Secondary_Type__c</fullName>
+        <externalId>false</externalId>
+        <label>Secondary Type</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Pokemon_Type</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Type__c</fullName>
         <externalId>false</externalId>
+        <formula>TEXT(Primary_Type__c) &amp; IF(NOT(ISBLANK(TEXT(Secondary_Type__c))), &apos;/&apos; &amp; TEXT(Secondary_Type__c), &apos;&apos;)</formula>
         <label>Type</label>
-        <length>30</length>
-        <required>true</required>
+        <required>false</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
@@ -2357,6 +2466,7 @@
         <columns>NAME</columns>
         <columns>Type__c</columns>
         <columns>Alolan_Type__c</columns>
+        <columns>Galarian_Type__c</columns>
         <filterScope>Everything</filterScope>
         <label>All</label>
     </listViews>
@@ -2367,16 +2477,19 @@
     <pluralLabel>Pokemons Data</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Pokedex_Number__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Type__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields>Alolan_Type__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields xsi:nil="true"/>
+        <customTabListAdditionalFields xsi:nil="true"/>
+        <customTabListAdditionalFields xsi:nil="true"/>
         <lookupDialogsAdditionalFields>Pokedex_Number__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Family__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Family_Stage__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Type__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields>Alolan_Type__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields xsi:nil="true"/>
+        <lookupDialogsAdditionalFields xsi:nil="true"/>
+        <lookupDialogsAdditionalFields xsi:nil="true"/>
         <searchResultsAdditionalFields>Pokedex_Number__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Alolan_Type__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Galarian_Type__c</searchResultsAdditionalFields>
     </searchLayouts>
     <sharingModel>ReadWrite</sharingModel>
     <visibility>Public</visibility>

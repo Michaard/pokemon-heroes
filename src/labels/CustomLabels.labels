@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
+        <fullName>Button_Back</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Back</shortDescription>
+        <value>Back</value>
+    </labels>
+    <labels>
         <fullName>Button_Cancel</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -20,6 +27,27 @@
         <protected>true</protected>
         <shortDescription>Button Edit</shortDescription>
         <value>Edit</value>
+    </labels>
+    <labels>
+        <fullName>Button_New</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button New</shortDescription>
+        <value>New</value>
+    </labels>
+    <labels>
+        <fullName>Button_Next</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Next</shortDescription>
+        <value>Next</value>
+    </labels>
+    <labels>
+        <fullName>Button_Regenerate</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Button Regenerate</shortDescription>
+        <value>Regenerate</value>
     </labels>
     <labels>
         <fullName>Button_Save</fullName>
@@ -246,6 +274,13 @@
         <value>{0} Picture(s)</value>
     </labels>
     <labels>
+        <fullName>Spinner_Alt_Text</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Spinner Alt Text</shortDescription>
+        <value>Loading...</value>
+    </labels>
+    <labels>
         <fullName>Toast_Error_Add_New_Final_Team</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -321,5 +356,12 @@
         <protected>true</protected>
         <shortDescription>Toast Success Picture Update</shortDescription>
         <value>Pokemon picture updated</value>
+    </labels>
+    <labels>
+        <fullName>Value_All</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Value_All</shortDescription>
+        <value>All</value>
     </labels>
 </CustomLabels>

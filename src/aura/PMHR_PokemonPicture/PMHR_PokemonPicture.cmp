@@ -9,12 +9,12 @@
                       recordId="{! v.recordId}"
                       targetRecord="{! v.record}"
                       targetFields="{! v.simpleRecord}"
-                      fields="Death__c, Is_Alolan__c, Form__r.Picture_Url__c, Form__r.Alolan_Picture_Url__c, Form__r.Type__c, Form__r.Alolan_Type__c"/>
+                      fields="Death__c, Variant__c, Form__r.Picture_Url__c, Form__r.Alolan_Picture_Url__c, Form__r.Type__c, Form__r.Alolan_Type__c"/>
 
     <lightning:card>
         <div class="slds-text-align--center">
             <div class="picture-container">
-                <aura:if isTrue="{! not(v.simpleRecord.Is_Alolan__c)}">
+                <aura:if isTrue="{! not(v.simpleRecord.Variant__c eq 'Alolan')}">
                     <img class="{! 'picture' + (v.simpleRecord.Death__c ? ' picture-dead' : '')}" src="{! v.simpleRecord.Form__r.Picture_Url__c}"/>
                     <aura:set attribute="else">
                         <img class="{! 'picture' + (v.simpleRecord.Death__c ? ' picture-dead' : '')}" src="{! v.simpleRecord.Form__r.Alolan_Picture_Url__c}"/>
@@ -22,7 +22,7 @@
                 </aura:if>
             </div>
             <div style="padding-top: 1rem;">
-                <aura:if isTrue="{! not(v.simpleRecord.Is_Alolan__c)}">
+                <aura:if isTrue="{! not(v.simpleRecord.Variant__c eq 'Alolan')}">
                     <lightning:badge label="{! v.simpleRecord.Form__r.Type__c}"/>
                     <aura:set attribute="else">
                         <lightning:badge label="{! v.simpleRecord.Form__r.Alolan_Type__c}"/>
