@@ -19,7 +19,7 @@
 
     <div>
         <aura:if isTrue="{! v.displaySpinner}">
-            <lightning:spinner/>
+            <lightning:spinner alternativeText="{! $Label.c.Spinner_Alt_Text}"/>
         </aura:if>
         <header class="slds-modal__header">
             <h2 class="slds-hyphenate slds-text-heading--medium">{! $Label.c.PMHR_Modal_Title_Add_New_Final_Team}</h2>

@@ -3,11 +3,15 @@ public class PMHR_PokemonPictureVariantsConfig {
     private static Map<String, List<String>> regionVariantToFieldsApiNamesMap;
 
     private PMHR_PokemonPictureVariantsConfig() {
-        regionVariantToFieldsApiNamesMap = new Map<String, List<String>> {
-                PMHR_Utilities.REGION_VARIANT_STANDARD => new List<String> {'Picture_Url__c', 'Type__c'},
-                PMHR_Utilities.REGION_VARIANT_ALOLAN => new List<String> {'Alolan_Picture_Url__c', 'Alolan_Type__c'},
-                PMHR_Utilities.REGION_VARIANT_GALARIAN => new List<String> {'Galarian_Picture_Url__c', 'Galarian_Type__c'}
-        };
+        regionVariantToFieldsApiNamesMap = new Map<String, List<String>>();
+        String pictureUrlFieldApiName = Pokemon_Data__c.Picture_Url__c.getDescribe().getName();
+        String typeFieldApiName = Pokemon_Data__c.Type__c.getDescribe().getName();
+        for (PicklistEntry variant : PMHR_Utilities.POKEMON_REGIONAL_VARIANT) {
+            String variantName = variant.getValue();
+            String pictureApiName = variantName == PMHR_Utilities.REGION_VARIANT_STANDARD ? pictureUrlFieldApiName : String.join(new List<String>{variantName, pictureUrlFieldApiName}, '_');
+            String typeApiName = variantName == PMHR_Utilities.REGION_VARIANT_STANDARD ? typeFieldApiName : String.join(new List<String>{variantName, typeFieldApiName}, '_');
+            regionVariantToFieldsApiNamesMap.put(variantName, new List<String>{pictureApiName, typeApiName});
+        }
     }
 
     public static PMHR_PokemonPictureVariantsConfig getInstance() {

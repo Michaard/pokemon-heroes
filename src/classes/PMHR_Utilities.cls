@@ -10,6 +10,6 @@ public class PMHR_Utilities {
     public static final String GENDER_MALE = 'Male';
 
     public static final String REGION_VARIANT_STANDARD = 'Standard';
-    public static final String REGION_VARIANT_ALOLAN = 'Alolan';
-    public static final String REGION_VARIANT_GALARIAN = 'Galarian';
+
+    public static final List<PicklistEntry> POKEMON_REGIONAL_VARIANT = Pokemon__c.Variant__c.getDescribe().getPicklistValues();
 }

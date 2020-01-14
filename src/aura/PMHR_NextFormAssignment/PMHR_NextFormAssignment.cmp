@@ -8,7 +8,7 @@
 
     <div class="slds-text-align--center">
         <aura:if isTrue="{! v.displaySpinner}">
-            <lightning:spinner/>
+            <lightning:spinner alternativeText="{! $Label.c.Spinner_Alt_Text}"/>
         </aura:if>
         <aura:if isTrue="{! not(empty(v.nextAvailableForms))}">
             <h3 class="slds-section__title test-id__section-header-container" style="display: block; margin-bottom: 0.8rem;">
@@ -17,7 +17,7 @@
             <div style="height: 70px; display: flex; align-items: center; justify-content: center; flex-wrap: wrap;">
                 <aura:iteration items="{! v.nextAvailableForms}" var="nextForm" indexVar="index">
                     <div style="padding: 0.3rem;">
-                        <lightning:button type="button" variant="brand" name="{! index}" label="{! format($Label.c.PMHR_PokedexNr_PokemonName, nextForm.Pokedex_Number__c, nextForm.Name)}" onclick="{! c.levelUp}"/>
+                        <lightning:button type="button" variant="brand" name="{! index}" label="{! format($Label.c.PMHR_PokedexNr_PokemonName, nextForm.pokedexNumber, nextForm.name)}" onclick="{! c.levelUp}"/>
                     </div>
                 </aura:iteration>
             </div>

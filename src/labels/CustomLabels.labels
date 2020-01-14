@@ -71,6 +71,20 @@
         <value>Review the errors on this page.</value>
     </labels>
     <labels>
+        <fullName>Label_Error</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Label Error</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
+        <fullName>Label_Invalid_Data</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Label Invalid Data</shortDescription>
+        <value>Invalid data</value>
+    </labels>
+    <labels>
         <fullName>PMHR_Death_Status_Alive</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -83,6 +97,13 @@
         <protected>true</protected>
         <shortDescription>PMHR Death Status Dead</shortDescription>
         <value>Dead</value>
+    </labels>
+    <labels>
+        <fullName>PMHR_Error_Retrieving_Picture</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PMHR_Error_Retrieving_Picture</shortDescription>
+        <value>Could not retrieve picture information</value>
     </labels>
     <labels>
         <fullName>PMHR_Field_Alolan_Picture_Url</fullName>

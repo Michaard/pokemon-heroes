@@ -238,19 +238,24 @@
                     <label>Game Corner (Any)</label>
                 </value>
                 <value>
-                    <fullName>Headbutt</fullName>
+                    <fullName>Grass</fullName>
                     <default>false</default>
-                    <label>Headbutt</label>
+                    <label>Grass</label>
                 </value>
                 <value>
-                    <fullName>Land</fullName>
+                    <fullName>Grass/Overworld</fullName>
                     <default>false</default>
-                    <label>Land</label>
+                    <label>Grass/Overworld</label>
                 </value>
                 <value>
-                    <fullName>Land/Water</fullName>
+                    <fullName>Grass/Water</fullName>
                     <default>false</default>
-                    <label>Land/Water</label>
+                    <label>Grass/Water</label>
+                </value>
+                <value>
+                    <fullName>Overworld</fullName>
+                    <default>false</default>
+                    <label>Overworld</label>
                 </value>
                 <value>
                     <fullName>Trade</fullName>
@@ -258,14 +263,19 @@
                     <label>Trade</label>
                 </value>
                 <value>
+                    <fullName>Tree</fullName>
+                    <default>false</default>
+                    <label>Tree</label>
+                </value>
+                <value>
                     <fullName>Water</fullName>
                     <default>false</default>
                     <label>Water</label>
                 </value>
                 <value>
-                    <fullName>Water/Headbutt</fullName>
+                    <fullName>Water/Tree</fullName>
                     <default>false</default>
-                    <label>Water/Headbutt</label>
+                    <label>Water/Tree</label>
                 </value>
             </valueSetDefinition>
         </valueSet>
