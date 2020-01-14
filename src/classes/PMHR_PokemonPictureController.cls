@@ -16,6 +16,7 @@ public class PMHR_PokemonPictureController {
                 LIMIT 1];
     }
 
+    @TestVisible
     private Class PokemonPicture {
         @AuraEnabled public String pictureUrl { get; private set; }
         @AuraEnabled public String pokemonType { get; private set; }

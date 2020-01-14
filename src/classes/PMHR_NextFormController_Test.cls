@@ -60,13 +60,13 @@ private class PMHR_NextFormController_Test {
         Test.stopTest();
 
         //then
-        System.assertEquals(1, secondStageForms.nextForms.size());
-        for (Pokemon_Data__c nextForm : secondStageForms.nextForms) {
-            System.assertEquals(2, nextForm.Family_Stage__c);
+        System.assertEquals(3, secondStageForms.nextForms.size());
+        for (PMHR_NextFormController.PokemonNextForm nextForm : secondStageForms.nextForms) {
+            System.assertEquals(2, nextForm.familyStage);
         }
-        System.assertEquals(2, thirdStageForms.nextForms.size());
-        for (Pokemon_Data__c nextForm : thirdStageForms.nextForms) {
-            System.assertEquals(3, nextForm.Family_Stage__c);
+        System.assertEquals(6, thirdStageForms.nextForms.size());
+        for (PMHR_NextFormController.PokemonNextForm nextForm : thirdStageForms.nextForms) {
+            System.assertEquals(3, nextForm.familyStage);
         }
         System.assertEquals(0, forthStageFormsOne.nextForms.size());
         System.assertEquals(0, forthStageFormsTwo.nextForms.size());
@@ -101,7 +101,7 @@ private class PMHR_NextFormController_Test {
 
     static testMethod void shouldSetNextPokemonForm() {
         //given
-        List<Pokemon__c> pokemons = [SELECT Id, Form__r.Family_Stage__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_ONE AND Form__r.Family_Stage__c < 3];
+        List<Pokemon__c> pokemons = [SELECT Id, Form__r.Family_Stage__c, Variant__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_ONE AND Form__r.Family_Stage__c < 3];
 
         Pokemon__c firstStagePokemon;
         Pokemon__c secondStagePokemon;
@@ -116,7 +116,7 @@ private class PMHR_NextFormController_Test {
 
         //when
         Test.startTest();
-        PMHR_NextFormController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c);
+        PMHR_NextFormController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c, secondStagePokemon.Variant__c);
         Test.stopTest();
 
         //then
@@ -126,12 +126,12 @@ private class PMHR_NextFormController_Test {
 
     static testMethod void shouldNotSetNextPokemonForm_formFamilyDifferent() {
         //given
-        Pokemon__c firstStagePokemon = [SELECT Id, Form__r.Family_Stage__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_TWO LIMIT 1];
-        Pokemon__c secondStagePokemon = [SELECT Id, Form__r.Family_Stage__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_ONE AND Form__r.Family_Stage__c = 2 LIMIT 1];
+        Pokemon__c firstStagePokemon = [SELECT Id, Form__r.Family_Stage__c, Variant__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_TWO LIMIT 1];
+        Pokemon__c secondStagePokemon = [SELECT Id, Form__r.Family_Stage__c, Variant__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_ONE AND Form__r.Family_Stage__c = 2 LIMIT 1];
 
         //when
         Test.startTest();
-        PMHR_NextFormController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c);
+        PMHR_NextFormController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c, secondStagePokemon.Variant__c);
         Test.stopTest();
 
         //then
@@ -141,7 +141,7 @@ private class PMHR_NextFormController_Test {
 
     static testMethod void shouldNotSetNextPokemonForm_formStageLower() {
         //given
-        List<Pokemon__c> pokemons = [SELECT Id, Form__r.Family_Stage__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_ONE AND Form__r.Family_Stage__c < 3];
+        List<Pokemon__c> pokemons = [SELECT Id, Form__r.Family_Stage__c, Variant__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_ONE AND Form__r.Family_Stage__c < 3];
 
         Pokemon__c firstStagePokemon;
         Pokemon__c secondStagePokemon;
@@ -156,7 +156,7 @@ private class PMHR_NextFormController_Test {
 
         //when
         Test.startTest();
-        PMHR_NextFormController.setPokemonForm(secondStagePokemon.Id, firstStagePokemon.Form__c);
+        PMHR_NextFormController.setPokemonForm(secondStagePokemon.Id, firstStagePokemon.Form__c, firstStagePokemon.Variant__c);
         Test.stopTest();
 
         //then
@@ -166,7 +166,7 @@ private class PMHR_NextFormController_Test {
 
     static testMethod void shouldNotSetNextPokemonForm_noPokemons() {
         //given
-        List<Pokemon__c> pokemons = [SELECT Id, Form__r.Family_Stage__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_ONE AND Form__r.Family_Stage__c < 3];
+        List<Pokemon__c> pokemons = [SELECT Id, Form__r.Family_Stage__c, Variant__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_ONE AND Form__r.Family_Stage__c < 3];
 
         Pokemon__c firstStagePokemon;
         Pokemon__c secondStagePokemon;
@@ -182,7 +182,7 @@ private class PMHR_NextFormController_Test {
 
         //when
         Test.startTest();
-        PMHR_NextFormController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c);
+        PMHR_NextFormController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c, secondStagePokemon.Variant__c);
         Test.stopTest();
 
         //then

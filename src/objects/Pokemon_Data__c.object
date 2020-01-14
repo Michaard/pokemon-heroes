@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionOverrides>
         <actionName>Accept</actionName>
         <type>Default</type>
@@ -2380,6 +2380,22 @@
         <unique>false</unique>
     </fields>
     <fields>
+        <fullName>Has_Alolan_Variant__c</fullName>
+        <externalId>false</externalId>
+        <formula>INCLUDES(Region_Specific_Variants__c, &apos;Alolan&apos;)</formula>
+        <label>Has Alolan Variant</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Has_Galarian_Variant__c</fullName>
+        <externalId>false</externalId>
+        <formula>INCLUDES(Region_Specific_Variants__c, &apos;Galarian&apos;)</formula>
+        <label>Has Galarian Variant</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
         <fullName>Picture_Url__c</fullName>
         <externalId>false</externalId>
         <label>Picture Url</label>
@@ -2477,15 +2493,9 @@
     <pluralLabel>Pokemons Data</pluralLabel>
     <searchLayouts>
         <customTabListAdditionalFields>Pokedex_Number__c</customTabListAdditionalFields>
-        <customTabListAdditionalFields xsi:nil="true"/>
-        <customTabListAdditionalFields xsi:nil="true"/>
-        <customTabListAdditionalFields xsi:nil="true"/>
         <lookupDialogsAdditionalFields>Pokedex_Number__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Family__c</lookupDialogsAdditionalFields>
         <lookupDialogsAdditionalFields>Family_Stage__c</lookupDialogsAdditionalFields>
-        <lookupDialogsAdditionalFields xsi:nil="true"/>
-        <lookupDialogsAdditionalFields xsi:nil="true"/>
-        <lookupDialogsAdditionalFields xsi:nil="true"/>
         <searchResultsAdditionalFields>Pokedex_Number__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Type__c</searchResultsAdditionalFields>
         <searchResultsAdditionalFields>Alolan_Type__c</searchResultsAdditionalFields>

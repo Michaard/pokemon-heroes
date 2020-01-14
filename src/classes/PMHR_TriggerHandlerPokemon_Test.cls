@@ -50,7 +50,7 @@ private class PMHR_TriggerHandlerPokemon_Test {
             }
         }
 
-        Pokemon__c newPokemon = PMHR_TestDataFactory.createPokemonObject('New', PMHR_Utilities.GENDER_MALE, firstStageForm.Id, secondStageForm.Id, PMHR_Utilities.POKEMON_CATCH_METHOD_EVENT, nuzlocke.Id);
+        Pokemon__c newPokemon = PMHR_TestDataFactory.createPokemonObject('New', PMHR_Utilities.GENDER_MALE, firstStageForm.Id, secondStageForm.Id, PMHR_Utilities.POKEMON_CATCH_METHOD_EVENT, nuzlocke.Id, PMHR_Utilities.REGION_VARIANT_STANDARD);
 
         //when
         Test.startTest();
