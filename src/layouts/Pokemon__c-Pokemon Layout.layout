@@ -56,8 +56,8 @@
                 <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
-                <behavior>Required</behavior>
-                <field>Variant__c</field>
+                <behavior>Edit</behavior>
+                <field>Region_Specific_Variant__c</field>
             </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>Alolan</fullName>
+        <default>false</default>
+        <label>Alolan</label>
+    </customValue>
+    <customValue>
+        <fullName>Galarian</fullName>
+        <default>false</default>
+        <label>Galarian</label>
+    </customValue>
+    <masterLabel>Region Specific Pokemon Variants</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>

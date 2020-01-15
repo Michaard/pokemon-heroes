@@ -2437,19 +2437,7 @@
         <type>MultiselectPicklist</type>
         <valueSet>
             <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Alolan</fullName>
-                    <default>false</default>
-                    <label>Alolan</label>
-                </value>
-                <value>
-                    <fullName>Galarian</fullName>
-                    <default>false</default>
-                    <label>Galarian</label>
-                </value>
-            </valueSetDefinition>
+            <valueSetName>Region_Specific_Pokemon_Variants</valueSetName>
         </valueSet>
         <visibleLines>3</visibleLines>
     </fields>
