@@ -337,6 +337,18 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Region_Specific_Variant__c</fullName>
+        <externalId>false</externalId>
+        <label>Region Specific Variant</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Region_Specific_Pokemon_Variants</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Trainer__c</fullName>
         <externalId>false</externalId>
         <formula>Nuzlocke__r.Hero__r.Name</formula>
@@ -346,35 +358,6 @@
         <trackTrending>false</trackTrending>
         <type>Text</type>
         <unique>false</unique>
-    </fields>
-    <fields>
-        <fullName>Variant__c</fullName>
-        <externalId>false</externalId>
-        <label>Variant</label>
-        <required>true</required>
-        <trackTrending>false</trackTrending>
-        <type>Picklist</type>
-        <valueSet>
-            <restricted>true</restricted>
-            <valueSetDefinition>
-                <sorted>false</sorted>
-                <value>
-                    <fullName>Standard</fullName>
-                    <default>true</default>
-                    <label>Standard</label>
-                </value>
-                <value>
-                    <fullName>Alolan</fullName>
-                    <default>false</default>
-                    <label>Alolan</label>
-                </value>
-                <value>
-                    <fullName>Galarian</fullName>
-                    <default>false</default>
-                    <label>Galarian</label>
-                </value>
-            </valueSetDefinition>
-        </valueSet>
     </fields>
     <label>Pokemon</label>
     <listViews>
@@ -462,10 +445,10 @@
         <fullName>Forbidden_Alolan_Form</fullName>
         <active>true</active>
         <errorConditionFormula>AND(
-				ISPICKVAL(Variant__c, &apos;Alolan&apos;),
+				ISPICKVAL(Region_Specific_Variant__c, &apos;Alolan&apos;),
 				NOT(INCLUDES(Form__r.Region_Specific_Variants__c, &apos;Alolan&apos;))
 )</errorConditionFormula>
-        <errorDisplayField>Variant__c</errorDisplayField>
+        <errorDisplayField>Region_Specific_Variant__c</errorDisplayField>
         <errorMessage>The Pokemon form doesn&apos;t have alolan variant</errorMessage>
     </validationRules>
     <validationRules>
@@ -473,10 +456,10 @@
         <active>true</active>
         <description>The Pokemon form doesn&apos;t have galarian variant</description>
         <errorConditionFormula>AND(
-    ISPICKVAL(Variant__c, &apos;Galarian&apos;),
+    ISPICKVAL(Region_Specific_Variant__c, &apos;Galarian&apos;),
     NOT(INCLUDES(Form__r.Region_Specific_Variants__c, &apos;Galarian&apos;))
 )</errorConditionFormula>
-        <errorDisplayField>Variant__c</errorDisplayField>
+        <errorDisplayField>Region_Specific_Variant__c</errorDisplayField>
         <errorMessage>The Pokemon form doesn&apos;t have galarian variant</errorMessage>
     </validationRules>
     <validationRules>
