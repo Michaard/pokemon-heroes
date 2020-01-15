@@ -7,7 +7,7 @@ public class PMHR_PokemonPictureController {
 
     private static Pokemon__c getPokemonData(Id pokemonId) {
         return [
-                SELECT Id, Variant__c,
+                SELECT Id, Region_Specific_Variant__c,
                         Form__r.Picture_Url__c, Form__r.Type__c,
                         Form__r.Alolan_Picture_Url__c, Form__r.Alolan_Type__c,
                         Form__r.Galarian_Picture_Url__c, Form__r.Galarian_Type__c
@@ -23,8 +23,8 @@ public class PMHR_PokemonPictureController {
 
         public PokemonPicture (Pokemon__c pokemon) {
             PMHR_PokemonPictureVariantsConfig config = PMHR_PokemonPictureVariantsConfig.getInstance();
-            this.pictureUrl = (String)pokemon.Form__r.get(config.getPictureFieldApiName(pokemon.Variant__c));
-            this.pokemonType = (String)pokemon.Form__r.get(config.getTypeFieldApiName(pokemon.Variant__c));
+            this.pictureUrl = (String)pokemon.Form__r.get(config.getPictureFieldApiName(pokemon.Region_Specific_Variant__c));
+            this.pokemonType = (String)pokemon.Form__r.get(config.getTypeFieldApiName(pokemon.Region_Specific_Variant__c));
         }
     }
 }

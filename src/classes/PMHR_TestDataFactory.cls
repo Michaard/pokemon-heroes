@@ -42,9 +42,7 @@ public class PMHR_TestDataFactory {
         pokemonData.Family_Stage__c = familyStage;
         List<String> variants = new List<String>();
         for (PicklistEntry variant : PMHR_Utilities.POKEMON_REGIONAL_VARIANT) {
-            if (variant.getValue() != PMHR_Utilities.REGION_VARIANT_STANDARD) {
-                variants.add(variant.getValue());
-            }
+            variants.add(variant.getValue());
         }
         pokemonData.Region_Specific_Variants__c = String.join(variants, ';');
 
@@ -52,7 +50,7 @@ public class PMHR_TestDataFactory {
     }
 
     public static Pokemon__c createPokemonObject(String name, String gender, Id caughtFormId, String catchMethod, Id nuzlockeId) {
-        return createPokemonObject(name, gender, caughtFormId, null, catchMethod, nuzlockeId, PMHR_Utilities.REGION_VARIANT_STANDARD);
+        return createPokemonObject(name, gender, caughtFormId, null, catchMethod, nuzlockeId, null);
     }
 
     public static Pokemon__c createPokemonObject(String name, String gender, Id caughtFormId, Id formId, String catchMethod, Id nuzlockeId, String variant) {
@@ -63,7 +61,7 @@ public class PMHR_TestDataFactory {
         pokemon.Form__c = formId;
         pokemon.Catch_Method__c = catchMethod;
         pokemon.Nuzlocke__c = nuzlockeId;
-        pokemon.Variant__c = variant;
+        pokemon.Region_Specific_Variant__c = variant;
 
         return pokemon;
     }

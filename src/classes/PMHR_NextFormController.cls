@@ -16,7 +16,7 @@ public class PMHR_NextFormController {
         try {
             Pokemon__c pokemon = [SELECT Form__c FROM Pokemon__c WHERE Id = :pokemonId LIMIT 1];
             pokemon.Form__c = nextFormId;
-            pokemon.Variant__c = variant;
+            pokemon.Region_Specific_Variant__c = variant;
             update pokemon;
         } catch (DmlException ex) {
             System.debug(ex.getDmlMessage(0));
@@ -69,7 +69,6 @@ public class PMHR_NextFormController {
             this.id = pokemonForm.Id;
             this.name = pokemonForm.Name;
             this.pokedexNumber = pokemonForm.Pokedex_Number__c;
-            this.variant = PMHR_Utilities.REGION_VARIANT_STANDARD;
             this.familyStage = pokemonForm.Family_Stage__c;
         }
 
