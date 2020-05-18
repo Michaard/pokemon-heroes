@@ -1,19 +1,8 @@
 public class PMHR_PokemonPictureController {
     @AuraEnabled
     public static PokemonPicture getPokemonPicture(Id pokemonId) {
-        Pokemon__c pokemon = getPokemonData(pokemonId);
+        Pokemon__c pokemon = PMHR_PokemonQueryService.getPokemonWithFormById(pokemonId);
         return new PokemonPicture(pokemon);
-    }
-
-    private static Pokemon__c getPokemonData(Id pokemonId) {
-        return [
-                SELECT Id, Region_Specific_Variant__c,
-                        Form__r.Picture_Url__c, Form__r.Type__c,
-                        Form__r.Alolan_Picture_Url__c, Form__r.Alolan_Type__c,
-                        Form__r.Galarian_Picture_Url__c, Form__r.Galarian_Type__c
-                FROM Pokemon__c
-                WHERE Id = :pokemonId
-                LIMIT 1];
     }
 
     @TestVisible

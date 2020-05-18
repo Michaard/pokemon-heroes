@@ -1,12 +1,21 @@
 @IsTest
 private class PMHR_TriggerHandlerFinalTeam_Test {
     @TestSetup static void setup() {
-        Hero__c hero = PMHR_TestDataFactory.createHeroObject('Hero', 'Test Region');
-        insert hero;
+        Hero__c hero = new PMHR_HeroBuilder()
+                .save();
 
         List<Nuzlocke__c> nuzlockes = new List<Nuzlocke__c>();
-        nuzlockes.add(PMHR_TestDataFactory.createNuzlockeObject('Test Nuzlocke', Date.today(), hero.Id));
-        nuzlockes.add(PMHR_TestDataFactory.createNuzlockeObject('Test Nuzlocke With Multiple Elite Four Fights', Date.today(), hero.Id, true));
+        nuzlockes.add(new PMHR_NuzlockeBuilder()
+                .setName('Test Nuzlocke')
+                .setHero(hero.Id)
+                .build()
+        );
+        nuzlockes.add(new PMHR_NuzlockeBuilder()
+                .setName('Test Nuzlocke With Multiple Elite Four Fights')
+                .setHero(hero.Id)
+                .setMultipleEliteFourFights(true)
+                .build()
+        );
         insert nuzlockes;
     }
 
@@ -14,11 +23,11 @@ private class PMHR_TriggerHandlerFinalTeam_Test {
         //given
         Nuzlocke__c nuzlocke = [SELECT Id, End_Date__c, End_Status__c FROM Nuzlocke__c LIMIT 1];
 
-        Final_Team__c newFinalTeam = PMHR_TestDataFactory.createFinalTeamObject('New Final Team', nuzlocke.Id);
-
         //when
         Test.startTest();
-        insert newFinalTeam;
+        Final_Team__c newFinalTeam = new PMHR_FinalTeamBuilder()
+                .setNuzlocke(nuzlocke.Id)
+                .save();
         Test.stopTest();
 
         //then
@@ -26,106 +35,113 @@ private class PMHR_TriggerHandlerFinalTeam_Test {
         System.assertEquals(null, nuzlocke.End_Status__c);
         Nuzlocke__c updatedNuzlocke = [SELECT Id, End_Date__c, End_Status__c FROM Nuzlocke__c LIMIT 1];
         System.assertNotEquals(null, updatedNuzlocke.End_Date__c);
-        System.assertEquals(PMHR_Utilities.NUZLOCKE_END_STATUS_SUCCESS, updatedNuzlocke.End_Status__c);
+        System.assertEquals(PMHR_NuzlockeBuilder.END_STATUS_SUCCESS, updatedNuzlocke.End_Status__c);
     }
 
     static testMethod void shouldNotMarkNuzlockeAsFinished_MultipleFinalTeams() {
         //given
         Nuzlocke__c nuzlocke = [SELECT Id, End_Date__c, End_Status__c FROM Nuzlocke__c WHERE Multiple_Elite_Four_Fights__c = true LIMIT 1];
 
-        Final_Team__c newFinalTeam = PMHR_TestDataFactory.createFinalTeamObject('New Final Team', nuzlocke.Id);
-
         //when
         Test.startTest();
-        insert newFinalTeam;
+        Final_Team__c newFinalTeam = new PMHR_FinalTeamBuilder()
+                .setNuzlocke(nuzlocke.Id)
+                .save();
         Test.stopTest();
 
         //then
-        Nuzlocke__c updatedNuzlocke = [SELECT Id, End_Date__c, End_Status__c FROM Nuzlocke__c WHERE Id = :nuzlocke.Id LIMIT 1];
-        System.assertEquals(null, updatedNuzlocke.End_Date__c);
-        System.assertEquals(null, updatedNuzlocke.End_Status__c);
+        nuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
+        System.assertEquals(null, nuzlocke.End_Date__c);
+        System.assertEquals(null, nuzlocke.End_Status__c);
     }
 
     static testMethod void shouldMarkNuzlockeAsNotFinished() {
         //given
         Nuzlocke__c nuzlocke = [SELECT Id, End_Date__c, End_Status__c FROM Nuzlocke__c WHERE Multiple_Elite_Four_Fights__c = false LIMIT 1];
 
-        Final_Team__c newFinalTeam = PMHR_TestDataFactory.createFinalTeamObject('New Final Team', nuzlocke.Id);
-
         //when
         Test.startTest();
-        insert newFinalTeam;
+        Final_Team__c newFinalTeam = new PMHR_FinalTeamBuilder()
+                .setNuzlocke(nuzlocke.Id)
+                .save();
 
-        Nuzlocke__c updatedNuzlocke = [SELECT Id, End_Date__c, End_Status__c, Is_Finished__c FROM Nuzlocke__c WHERE Id = :nuzlocke.Id LIMIT 1];
-        System.assert(updatedNuzlocke.Is_Finished__c);
-        System.assertNotEquals(null, updatedNuzlocke.End_Date__c);
-        System.assertEquals(PMHR_Utilities.NUZLOCKE_END_STATUS_SUCCESS, updatedNuzlocke.End_Status__c);
+        nuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
+        System.assert(nuzlocke.Is_Finished__c);
+        System.assertNotEquals(null, nuzlocke.End_Date__c);
+        System.assertEquals(PMHR_NuzlockeBuilder.END_STATUS_SUCCESS, nuzlocke.End_Status__c);
 
         delete newFinalTeam;
         Test.stopTest();
 
         //then
-        updatedNuzlocke = [SELECT Id, End_Date__c, End_Status__c, Is_Finished__c FROM Nuzlocke__c WHERE Id = :nuzlocke.Id LIMIT 1];
-        System.assert(!updatedNuzlocke.Is_Finished__c);
-        System.assertEquals(null, updatedNuzlocke.End_Date__c);
-        System.assertEquals(null, updatedNuzlocke.End_Status__c);
+        nuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
+        System.assert(!nuzlocke.Is_Finished__c);
+        System.assertEquals(null, nuzlocke.End_Date__c);
+        System.assertEquals(null, nuzlocke.End_Status__c);
     }
 
     static testMethod void shouldNotMarkNuzlockeAsNotFinished_ManyFinalTeams() {
         //given
         Nuzlocke__c nuzlocke = [SELECT Id, End_Date__c, End_Status__c FROM Nuzlocke__c WHERE Multiple_Elite_Four_Fights__c = true LIMIT 1];
 
-        Final_Team__c newFinalTeamOne = PMHR_TestDataFactory.createFinalTeamObject('New Final Team One', nuzlocke.Id);
-        Final_Team__c newFinalTeamTwo = PMHR_TestDataFactory.createFinalTeamObject('New Final Team Two', nuzlocke.Id);
-
-        List<Final_Team__c> finalTeamsToInsert = new List<Final_Team__c> {newFinalTeamOne, newFinalTeamTwo};
+        Final_Team__c newFinalTeamOne = new PMHR_FinalTeamBuilder()
+                .setName('New Final Team One')
+                .setNuzlocke(nuzlocke.Id)
+                .build();
+        Final_Team__c newFinalTeamTwo = new PMHR_FinalTeamBuilder()
+                .setName('New Final Team Two')
+                .setNuzlocke(nuzlocke.Id)
+                .build();
 
         //when
         Test.startTest();
-        insert finalTeamsToInsert;
+        insert new List<Final_Team__c> {newFinalTeamOne, newFinalTeamTwo};
 
-        Nuzlocke__c updatedNuzlocke = [SELECT Id, End_Date__c, End_Status__c, Is_Finished__c FROM Nuzlocke__c WHERE Id = :nuzlocke.Id LIMIT 1];
-        System.assertEquals(false, updatedNuzlocke.Is_Finished__c);
-        System.assertEquals(null, updatedNuzlocke.End_Date__c);
-        System.assertEquals(null, updatedNuzlocke.End_Status__c);
+        nuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
+        System.assertEquals(false, nuzlocke.Is_Finished__c);
+        System.assertEquals(null, nuzlocke.End_Date__c);
+        System.assertEquals(null, nuzlocke.End_Status__c);
 
-        nuzlocke.End_Date__c = Date.today();
-        nuzlocke.End_Status__c = PMHR_Utilities.NUZLOCKE_END_STATUS_SUCCESS;
-        update nuzlocke;
+        nuzlocke = new PMHR_NuzlockeBuilder(nuzlocke)
+                .setEndDate(Date.today())
+                .setEndStatus(PMHR_NuzlockeBuilder.END_STATUS_SUCCESS)
+                .save();
 
         delete newFinalTeamOne;
         Test.stopTest();
 
         //then
-        updatedNuzlocke = [SELECT Id, End_Date__c, End_Status__c, Is_Finished__c FROM Nuzlocke__c WHERE Id = :nuzlocke.Id LIMIT 1];
+        Nuzlocke__c updatedNuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
         System.assertEquals(true, updatedNuzlocke.Is_Finished__c);
         System.assertNotEquals(null, updatedNuzlocke.End_Date__c);
-        System.assertEquals(PMHR_Utilities.NUZLOCKE_END_STATUS_SUCCESS, updatedNuzlocke.End_Status__c);
+        System.assertEquals(PMHR_NuzlockeBuilder.END_STATUS_SUCCESS, updatedNuzlocke.End_Status__c);
     }
 
     static testMethod void shouldNotInsertFinalTeam_nuzlockeFinished() {
         //given
         Nuzlocke__c nuzlocke = [SELECT Id, End_Date__c, End_Status__c FROM Nuzlocke__c LIMIT 1];
-        nuzlocke.End_Date__c = Date.today();
-        nuzlocke.End_Status__c = PMHR_Utilities.NUZLOCKE_END_STATUS_FAILED;
+        nuzlocke = new PMHR_NuzlockeBuilder(nuzlocke)
+                .setEndDate(Date.today())
+                .setEndStatus(PMHR_NuzlockeBuilder.END_STATUS_FAILED)
+                .save();
 
-        Final_Team__c newFinalTeam = PMHR_TestDataFactory.createFinalTeamObject('New Final Team', nuzlocke.Id);
-        String errorMessage;
+        Boolean errorOccurred = false;
 
         //when
         Test.startTest();
         try {
-            update nuzlocke;
-            insert newFinalTeam;
+            Final_Team__c newFinalTeam = new PMHR_FinalTeamBuilder()
+                    .setNuzlocke(nuzlocke.Id)
+                    .save();
         } catch (DmlException ex) {
-            errorMessage = ex.getDmlMessage(0);
+            errorOccurred = true;
         }
         Test.stopTest();
 
         //then
-        nuzlocke = [SELECT Id, Is_Finished__c FROM Nuzlocke__c WHERE Id = :nuzlocke.Id LIMIT 1];
+        nuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
         System.assert(nuzlocke.Is_Finished__c);
-        System.assert(!String.isEmpty(errorMessage));
+        System.assert(errorOccurred);
         System.assertEquals(0, [SELECT Count() FROM Final_Team__c]);
     }
 }

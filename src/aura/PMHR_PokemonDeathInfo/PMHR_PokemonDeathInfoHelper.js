@@ -29,6 +29,7 @@
 
     saveRecord : function(component, isDead, deathLevel, deathReason) {
         let recordLoader = component.find("recordLoader");
+        let helper = this;
         if (recordLoader) {
             let record = component.get("v.record");
             record.Death__c = isDead;
@@ -45,13 +46,14 @@
                         });
                         toastEvent.fire();
                     }
+                    helper.toggleModal(component);
+                    component.set("v.record", record);
                 } else if (state === "ERROR") {
-                    let errors = saveResult.getError();
-                    this.showErrorMessage(component, errors[0].message);
+                    let errors = saveResult.error;
+                    let auraUtility = component.find("auraUtility");
+                    helper.showErrorMessage(component, auraUtility.parseErrorFromAction(errors));
                 }
             }));
-            component.set("v.record", record);
-            this.toggleModal(component);
         }
     },
 
@@ -67,5 +69,10 @@
         if (componentErrorMessage) {
             componentErrorMessage.showErrorMessage(false, null);
         }
+    },
+
+    showErrorOnFieldIfInvalid : function(component, field, fieldValue) {
+        let auraUtility = component.find("auraUtility");
+        return auraUtility.showErrorOnFieldIfEmpty(field, fieldValue);
     }
 })
