@@ -10,16 +10,31 @@
     saveRecord : function(component, event, helper) {
         let record = component.get("v.record");
         let isDead = !component.get("v.isAlive");
+
         let deathLevel = component.get("v.deathLevel");
+        let deathLevelInput = component.find("deathLevelInput");
+        let isDeathLevelInputFilled
+        if (deathLevelInput) {
+            isDeathLevelInputFilled = !helper.showErrorOnFieldIfInvalid(component, deathLevelInput, deathLevel);
+        } else {
+            isDeathLevelInputFilled = true;
+        }
+
         let deathReason = component.get("v.deathReason");
-        if ($A.util.isEmpty(deathLevel) || $A.util.isEmpty(deathReason)) {
-            helper.showErrorMessage(component, $A.get("$Label.c.Toast_Error_Missing_Fields"));
-        } else if (isDead && (deathLevel < 1 || deathLevel > 100)) {
-            helper.showErrorMessage(component, $A.get("$Label.c.Toast_Error_Death_Level"));
-        } else if (isDead && !($A.util.isEmpty(deathLevel) || $A.util.isEmpty(deathReason))) {
-            helper.saveRecord(component, isDead, deathLevel, deathReason);
-        } else if (!isDead) {
-            helper.saveRecord(component, isDead, "", "");
+        let deathReasonInput = component.find("deathReasonInput");
+        let isDeathReasonInputFilled;
+        if (deathReasonInput) {
+            isDeathReasonInputFilled = !helper.showErrorOnFieldIfInvalid(component, deathReasonInput, deathReason);
+        } else {
+            isDeathReasonInputFilled = true;
+        }
+
+        if (isDeathLevelInputFilled && isDeathReasonInputFilled) {
+            if (isDead) {
+                helper.saveRecord(component, isDead, deathLevel, deathReason);
+            } else if (!isDead) {
+                helper.saveRecord(component, isDead, "", "");
+            }
         }
     }
 })

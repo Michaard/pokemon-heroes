@@ -12,7 +12,6 @@
                 component.set("v.pokemonName", pokemonWithNextForms.name);
                 component.set("v.currentFormStage", pokemonWithNextForms.stage);
                 component.set("v.nextAvailableForms", pokemonWithNextForms.nextForms);
-                component.set("v.displaySpinner", false);
             } else if (state === "ERROR") {
                 let toastEvent = $A.get("e.force:showToast");
                 if (toastEvent) {
@@ -22,8 +21,8 @@
                     });
                     toastEvent.fire();
                 }
-                component.set("v.displaySpinner", false);
             }
+            component.set("v.displaySpinner", false);
         });
 
         $A.enqueueAction(action);
@@ -52,7 +51,6 @@
                         });
                         toastEvent.fire();
                     }
-                    component.set("v.displaySpinner", false);
                     $A.get("e.force:closeQuickAction").fire();
                     $A.get('e.force:refreshView').fire();
                 } else if (state === "ERROR") {
@@ -64,8 +62,8 @@
                         });
                         toastEvent.fire();
                     }
-                    component.set("v.displaySpinner", false);
                 }
+                component.set("v.displaySpinner", false);
             });
 
             $A.enqueueAction(action);
