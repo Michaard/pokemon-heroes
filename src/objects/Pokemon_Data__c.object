@@ -2409,7 +2409,7 @@
         <defaultValue>TEXT(000)</defaultValue>
         <externalId>true</externalId>
         <label>Pokedex Number</label>
-        <length>3</length>
+        <length>4</length>
         <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Text</type>

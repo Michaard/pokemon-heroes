@@ -425,7 +425,7 @@
         <active>true</active>
         <description>You can&apos;t provide death information while Pokemon is not dead</description>
         <errorConditionFormula>AND(
- Death__c = false,
+ NOT(Death__c),
  OR(
   NOT(ISBLANK(Death_Level__c)),
   NOT(ISBLANK(Cause_of_Death__c))
@@ -471,16 +471,16 @@
     <validationRules>
         <fullName>Invalid_Death_Level</fullName>
         <active>true</active>
-        <description>Deth level must be in range 1-100</description>
+        <description>Death level must be in range 1-100</description>
         <errorConditionFormula>AND(
- Death__c = true,
+ Death__c,
  OR(
   Death_Level__c &lt; 1,
   Death_Level__c &gt; 100
  )
 )</errorConditionFormula>
         <errorDisplayField>Death_Level__c</errorDisplayField>
-        <errorMessage>Deth level must be in range 1-100</errorMessage>
+        <errorMessage>Death level must be in range 1-100</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Nuzlocke_Finished</fullName>
