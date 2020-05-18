@@ -66,7 +66,9 @@ private class PMHR_NextFormController_Test {
             if (pokemon.Form__r.Family_Stage__c == 1) {
                 firstStagePokemon = pokemon;
             } else if (pokemon.Form__r.Family_Stage__c == 2) {
-                secondStagePokemon = pokemon;
+                secondStagePokemon = new PMHR_PokemonBuilder(pokemon)
+                        .setRegionSpecificVariant(PMHR_PokemonBuilder.REGION_VARIANT_ALOLAN)
+                        .save();
             } else {
                 if (thirdStagePokemonOne == null) {
                     thirdStagePokemonOne = pokemon;
@@ -89,7 +91,7 @@ private class PMHR_NextFormController_Test {
         for (PMHR_NextFormController.PokemonNextForm nextForm : secondStageForms.nextForms) {
             System.assertEquals(2, nextForm.familyStage);
         }
-        System.assertEquals(6, thirdStageForms.nextForms.size());
+        System.assertEquals(2, thirdStageForms.nextForms.size());
         for (PMHR_NextFormController.PokemonNextForm nextForm : thirdStageForms.nextForms) {
             System.assertEquals(3, nextForm.familyStage);
         }
