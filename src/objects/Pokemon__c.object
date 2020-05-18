@@ -306,14 +306,6 @@
         </valueSet>
     </fields>
     <fields>
-        <fullName>Is_Alolan__c</fullName>
-        <defaultValue>false</defaultValue>
-        <externalId>false</externalId>
-        <label>Is Alolan</label>
-        <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
-    </fields>
-    <fields>
         <fullName>Location__c</fullName>
         <externalId>false</externalId>
         <label>Catch Location</label>

@@ -1,15 +1,18 @@
 @IsTest
 private class PMHR_PokemonPictureController_Test {
     @TestSetup static void setup() {
-        Hero__c hero = PMHR_TestDataFactory.createHeroObject('Hero', 'Kanto');
-        insert hero;
-        Nuzlocke__c nuzlocke = PMHR_TestDataFactory.createNuzlockeObject('Nuzlocke', Date.today(), hero.Id);
-        insert nuzlocke;
-        Pokemon_Data__c pokemonData = PMHR_TestDataFactory.createPokemonDataObject('001', 'Test', 'Normal', 'Test', 1);
-        pokemonData.Picture_Url__c = 'www.test.com.pl';
-        insert pokemonData;
-        Pokemon__c pokemon = PMHR_TestDataFactory.createPokemonObject('Testing', PMHR_Utilities.GENDER_MALE, pokemonData.Id, PMHR_Utilities.POKEMON_CATCH_METHOD_EVENT, nuzlocke.Id);
-        insert pokemon;
+        Hero__c hero = new PMHR_HeroBuilder()
+                .save();
+        Nuzlocke__c nuzlocke = new PMHR_NuzlockeBuilder()
+                .setHero(hero.Id)
+                .save();
+        Pokemon_Data__c pokemonData = new PMHR_PokemonDataBuilder()
+                .setPictureUrl('www.test.com.pl')
+                .save();
+        Pokemon__c pokemon = new PMHR_PokemonBuilder()
+                .setCaughtForm(pokemonData.Id)
+                .setNuzlocke(nuzlocke.Id)
+                .save();
     }
 
     static testMethod void shouldGetPokemonDataUrl() {
