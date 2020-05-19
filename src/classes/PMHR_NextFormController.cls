@@ -27,11 +27,7 @@ public class PMHR_NextFormController {
             this.nextForms = new List<PokemonNextForm>();
             if (availableNextForms != null) {
                 for (Pokemon_Data__c nextForm : availableNextForms) {
-                    if (String.isBlank(pokemon.Region_Specific_Variant__c)) {
-                        nextForms.addAll(this.generatePokemonNextForms(nextForm));
-                    } else {
-                        nextForms.add(new PokemonNextForm(nextForm, pokemon.Region_Specific_Variant__c));
-                    }
+                    nextForms.addAll(this.generatePokemonNextForms(nextForm));
                 }
             }
         }
@@ -39,10 +35,8 @@ public class PMHR_NextFormController {
         private List<PokemonNextForm> generatePokemonNextForms(Pokemon_Data__c nextForm) {
             List<PokemonNextForm> availableNextForms = new List<PokemonNextForm>();
             availableNextForms.add(new PokemonNextForm(nextForm));
-            if (String.isNotBlank(nextForm.Region_Specific_Variants__c)) {
-                for (String variant : nextForm.Region_Specific_Variants__c.split(';')) {
-                    availableNextForms.add(new PokemonNextForm(nextForm, variant));
-                }
+            for (Pokemon_Data__c additionalVariant : nextForm.Additional_Variants__r) {
+                availableNextForms.add(new PokemonNextForm(nextForm, additionalVariant));
             }
             return availableNextForms;
         }
@@ -63,10 +57,10 @@ public class PMHR_NextFormController {
             this.familyStage = pokemonForm.Family_Stage__c;
         }
 
-        public PokemonNextForm(Pokemon_Data__c pokemonForm, String regionalVariant) {
+        public PokemonNextForm(Pokemon_Data__c pokemonForm, Pokemon_Data__c variant) {
             this(pokemonForm);
-            this.name = String.join(new List<String>{regionalVariant, pokemonForm.Name}, ' ');
-            this.variant = regionalVariant;
+            this.name = variant.Variant_Name__c;
+            this.variant = variant.Region_Specific_Variant__c;
         }
     }
 }

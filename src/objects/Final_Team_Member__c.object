@@ -286,7 +286,7 @@
     <fields>
         <fullName>Type__c</fullName>
         <externalId>false</externalId>
-        <formula>IF(ISPICKVAL(Pokemon__r.Region_Specific_Variant__c, &apos;Alolan&apos;), Pokemon__r.Form__r.Alolan_Type__c, Pokemon__r.Form__r.Type__c)</formula>
+        <formula>Pokemon__r.Form__r.Type__c</formula>
         <label>Type</label>
         <required>false</required>
         <trackTrending>false</trackTrending>

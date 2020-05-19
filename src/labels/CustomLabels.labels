@@ -99,6 +99,20 @@
         <value>Dead</value>
     </labels>
     <labels>
+        <fullName>PMHR_Duplicate_Value_Error</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PMHR_Duplicate_Value_Error</shortDescription>
+        <value>Duplicate value in SObject records</value>
+    </labels>
+    <labels>
+        <fullName>PMHR_Error_Forbidden_Form_Variant</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PMHR_Error_Forbidden_Form_Variant</shortDescription>
+        <value>The Pokemon form does not have {0} variant</value>
+    </labels>
+    <labels>
         <fullName>PMHR_Error_Retrieving_Picture</fullName>
         <language>en_US</language>
         <protected>true</protected>

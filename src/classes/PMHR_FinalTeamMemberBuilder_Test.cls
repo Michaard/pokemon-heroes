@@ -23,7 +23,7 @@ private class PMHR_FinalTeamMemberBuilder_Test {
         Nuzlocke__c nuzlocke = new PMHR_NuzlockeBuilder()
                 .setHero(hero.Id)
                 .save();
-        Pokemon_Data__c pokemonData = new PMHR_PokemonDataBuilder()
+        Pokemon_Data__c pokemonData = new PMHR_PokemonFormBuilder()
                 .save();
         Pokemon__c pokemon = new PMHR_PokemonBuilder()
                 .setNuzlocke(nuzlocke.Id)

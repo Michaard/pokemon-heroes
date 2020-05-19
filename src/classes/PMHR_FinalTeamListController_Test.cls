@@ -12,15 +12,14 @@ private class PMHR_FinalTeamListController_Test {
                 .save();
 
         List<Pokemon_Data__c> pokemonData = new List<Pokemon_Data__c>();
-        PMHR_PokemonDataBuilder pokemonDataBuilder = new PMHR_PokemonDataBuilder();
+        PMHR_PokemonFormBuilder pokemonFormBuilder = new PMHR_PokemonFormBuilder();
         for (Integer i = 0; i < numberOfPokemons; i++) {
-            pokemonData.add(pokemonDataBuilder
+            pokemonData.add(pokemonFormBuilder
                     .setPokedexNumber('00' + (i + 1))
                     .setForm('Testor v' + i)
                     .setPrimaryType(PMHR_PokemonDataBuilder.TYPE_NORMAL)
                     .setFamily('Testor v' + i)
                     .setFamilyStage(1)
-                    .setRegionSpecificVariants(regionSpecificVariants)
                     .build()
             );
         }

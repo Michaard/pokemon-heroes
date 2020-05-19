@@ -6,7 +6,7 @@
                       recordId="{! v.recordId}"
                       targetFields="{! v.record}"
                       recordUpdated="{! c.onRecordChange}"
-                      fields="Name, Picture_Url__c, Alolan_Picture_Url__c, Galarian_Picture_Url__c, Type__c, Alolan_Type__c, Galarian_Type__c, Has_Alolan_Variant__c, Has_Galarian_Variant__c"/>
+                      fields="Name, Picture_Url__c, Type__c"/>
 
     <lightning:card>
         <aura:set attribute="title">
@@ -19,24 +19,6 @@
             <div style="padding-top: 1rem;">
                 <lightning:badge label="{! v.record.Type__c}"/>
             </div>
-            <aura:if isTrue="{! v.record.Has_Alolan_Variant__c}">
-                <hr/>
-                <div class="picture-container">
-                    <img class="pokemon-picture" src="{! v.record.Alolan_Picture_Url__c}"/>
-                </div>
-                <div style="padding-top: 1rem;">
-                    <lightning:badge label="{! v.record.Alolan_Type__c}"/>
-                </div>
-            </aura:if>
-            <aura:if isTrue="{! v.record.Has_Galarian_Variant__c}">
-                <hr/>
-                <div class="picture-container">
-                    <img class="pokemon-picture" src="{! v.record.Galarian_Picture_Url__c}"/>
-                </div>
-                <div style="padding-top: 1rem;">
-                    <lightning:badge label="{! v.record.Galarian_Type__c}"/>
-                </div>
-            </aura:if>
         </div>
     </lightning:card>
 </aura:component>

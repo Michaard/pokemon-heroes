@@ -11,10 +11,7 @@ public with sharing class PMHR_PokemonQueryService {
 
     public static Pokemon__c getPokemonWithFormById(Id pokemonId) {
         return [
-                SELECT Name, Region_Specific_Variant__c, Form__r.Family__c, Form__r.Family_Stage__c, Form__r.Region_Specific_Variants__c,
-                        Form__r.Picture_Url__c, Form__r.Type__c,
-                        Form__r.Alolan_Picture_Url__c, Form__r.Alolan_Type__c,
-                        Form__r.Galarian_Picture_Url__c, Form__r.Galarian_Type__c
+                SELECT Name, Region_Specific_Variant__c, Form__c, Form__r.Family__c, Form__r.Family_Stage__c
                 FROM Pokemon__c
                 WHERE Id = :pokemonId
                 LIMIT 1

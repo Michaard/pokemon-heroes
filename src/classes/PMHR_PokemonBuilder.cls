@@ -1,15 +1,14 @@
 public with sharing class PMHR_PokemonBuilder {
     public static final String CATCH_METHOD_EVENT = 'Event';
 
-    public static final String REGION_VARIANT_ALOLAN = 'Alolan';
-
     private Pokemon__c record;
 
     private Pokemon__c defaultData() {
         return new Pokemon__c(
                 Name = 'Default Pokemon',
                 Gender__c = PMHR_Utilities.GENDER_MALE,
-                Catch_Method__c = 'Route 1'
+                Catch_Method__c = 'Route 1',
+                Region_Specific_Variant__c = PMHR_Utilities.REGION_VARIANT_STANDARD
         );
     }
 
@@ -89,7 +88,7 @@ public with sharing class PMHR_PokemonBuilder {
     }
 
     public PMHR_PokemonBuilder setRegionSpecificVariant(String variant) {
-        this.record.Region_Specific_Variant__c = variant;
+        this.record.Region_Specific_Variant__c = String.isBlank(variant) ? PMHR_Utilities.REGION_VARIANT_STANDARD : variant;
         return this;
     }
 }

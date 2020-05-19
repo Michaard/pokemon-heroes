@@ -227,6 +227,15 @@
         <deleteConstraint>Restrict</deleteConstraint>
         <externalId>false</externalId>
         <label>Caught Form</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Pokemon_Data__c.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Form</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
         <referenceTo>Pokemon_Data__c</referenceTo>
         <relationshipLabel>Pokemons (Caught)</relationshipLabel>
         <relationshipName>Caught_Pokemons</relationshipName>
@@ -269,6 +278,15 @@
         <externalId>false</externalId>
         <inlineHelpText>If you&apos;re creating a new Pokemon this field will be filled automatically</inlineHelpText>
         <label>Form</label>
+        <lookupFilter>
+            <active>true</active>
+            <filterItems>
+                <field>Pokemon_Data__c.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Form</value>
+            </filterItems>
+            <isOptional>false</isOptional>
+        </lookupFilter>
         <referenceTo>Pokemon_Data__c</referenceTo>
         <relationshipLabel>Pokemons</relationshipLabel>
         <relationshipName>Pokemons</relationshipName>
@@ -332,7 +350,7 @@
         <fullName>Region_Specific_Variant__c</fullName>
         <externalId>false</externalId>
         <label>Region Specific Variant</label>
-        <required>false</required>
+        <required>true</required>
         <trackTrending>false</trackTrending>
         <type>Picklist</type>
         <valueSet>
@@ -432,27 +450,6 @@
  )
 )</errorConditionFormula>
         <errorMessage>You can&apos;t provide death information while Pokemon is not dead</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Forbidden_Alolan_Form</fullName>
-        <active>true</active>
-        <errorConditionFormula>AND(
-				ISPICKVAL(Region_Specific_Variant__c, &apos;Alolan&apos;),
-				NOT(INCLUDES(Form__r.Region_Specific_Variants__c, &apos;Alolan&apos;))
-)</errorConditionFormula>
-        <errorDisplayField>Region_Specific_Variant__c</errorDisplayField>
-        <errorMessage>The Pokemon form doesn&apos;t have alolan variant</errorMessage>
-    </validationRules>
-    <validationRules>
-        <fullName>Forbidden_Galarian_Form</fullName>
-        <active>true</active>
-        <description>The Pokemon form doesn&apos;t have galarian variant</description>
-        <errorConditionFormula>AND(
-    ISPICKVAL(Region_Specific_Variant__c, &apos;Galarian&apos;),
-    NOT(INCLUDES(Form__r.Region_Specific_Variants__c, &apos;Galarian&apos;))
-)</errorConditionFormula>
-        <errorDisplayField>Region_Specific_Variant__c</errorDisplayField>
-        <errorMessage>The Pokemon form doesn&apos;t have galarian variant</errorMessage>
     </validationRules>
     <validationRules>
         <fullName>Form_Wrong_Family</fullName>
