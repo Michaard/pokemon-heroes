@@ -10,7 +10,7 @@ private class PMHR_TriggerHandlerPokemon_Test {
 
         List<Pokemon_Data__c> pokemonData = new List<Pokemon_Data__c>();
         for (Integer i = 1; i < 3; i++) {
-            pokemonData.add(new PMHR_PokemonDataBuilder()
+            pokemonData.add(new PMHR_PokemonFormBuilder()
                     .setPokedexNumber('00' + i)
                     .setForm('Testor v' + i)
                     .setPrimaryType(PMHR_PokemonDataBuilder.TYPE_NORMAL)
@@ -19,7 +19,7 @@ private class PMHR_TriggerHandlerPokemon_Test {
                     .build()
             );
         }
-        pokemonData.add(new PMHR_PokemonDataBuilder()
+        pokemonData.add(new PMHR_PokemonFormBuilder()
                 .setPokedexNumber('003')
                 .setForm('Alestor')
                 .setPrimaryType(PMHR_PokemonDataBuilder.TYPE_DARK)
@@ -105,5 +105,104 @@ private class PMHR_TriggerHandlerPokemon_Test {
         //then
         System.assert(errorOccurred);
         System.assertEquals(0, [SELECT Count() FROM Pokemon__c]);
+    }
+
+    static testMethod void shouldInsertPokemon_allowedVariant() {
+        //given
+        Pokemon_Data__c form = [SELECT Id FROM Pokemon_Data__c LIMIT 1];
+        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
+        Pokemon_Data__c additionalVariant = new PMHR_PokemonAdditionalVariantBuilder()
+                .setVariantOf(form.Id)
+                .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
+                .save();
+
+        //when
+        Test.startTest();
+        Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+                .setNuzlocke(nuzlocke.Id)
+                .setCaughtForm(form.Id)
+                .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
+                .save();
+        Test.stopTest();
+
+        //then
+        System.assertEquals(1, [SELECT Count() FROM Pokemon__c]);
+    }
+
+    static testMethod void shouldNotInsertPokemon_forbiddenVariant() {
+        //given
+        Pokemon_Data__c form = [SELECT Id FROM Pokemon_Data__c LIMIT 1];
+        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
+
+        Boolean errorOccurred = false;
+
+        //when
+        Test.startTest();
+        try {
+            Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+                    .setNuzlocke(nuzlocke.Id)
+                    .setCaughtForm(form.Id)
+                    .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
+                    .save();
+        } catch (DmlException ex) {
+            errorOccurred = true;
+        }
+        Test.stopTest();
+
+        //then
+        System.assert(errorOccurred);
+        System.assertEquals(0, [SELECT Count() FROM Pokemon__c]);
+    }
+
+    static testMethod void shouldUpdatePokemon_allowedVariant() {
+        //given
+        Pokemon_Data__c form = [SELECT Id FROM Pokemon_Data__c LIMIT 1];
+        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
+        Pokemon_Data__c additionalVariant = new PMHR_PokemonAdditionalVariantBuilder()
+                .setVariantOf(form.Id)
+                .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
+                .save();
+        Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+                .setNuzlocke(nuzlocke.Id)
+                .setCaughtForm(form.Id)
+                .save();
+
+        //when
+        Test.startTest();
+        newPokemon = new PMHR_PokemonBuilder(newPokemon)
+                .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
+                .save();
+        Test.stopTest();
+
+        //then
+        newPokemon = PMHR_PokemonQueryService.getPokemonById(newPokemon.Id);
+        System.assertEquals(PMHR_Utilities.REGION_VARIANT_ALOLAN, newPokemon.Region_Specific_Variant__c);
+    }
+
+    static testMethod void shouldNotUpdatePokemon_forbiddenVariant() {
+        //given
+        Pokemon_Data__c form = [SELECT Id FROM Pokemon_Data__c LIMIT 1];
+        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
+        Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+                .setNuzlocke(nuzlocke.Id)
+                .setCaughtForm(form.Id)
+                .save();
+
+        Boolean errorOccurred = false;
+
+        //when
+        Test.startTest();
+        try {
+            newPokemon = new PMHR_PokemonBuilder(newPokemon)
+                    .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
+                    .save();
+        } catch (DmlException ex) {
+            errorOccurred = true;
+        }
+        Test.stopTest();
+
+        //then
+        newPokemon = PMHR_PokemonQueryService.getPokemonById(newPokemon.Id);
+        System.assertNotEquals(PMHR_Utilities.REGION_VARIANT_ALOLAN, newPokemon.Region_Specific_Variant__c);
     }
 }

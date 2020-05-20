@@ -13,31 +13,42 @@ private class PMHR_NextFormController_Test {
 
         List<Pokemon_Data__c> pokemonData = new List<Pokemon_Data__c>();
         List<String> regionSpecificVariants = PMHR_Utilities.getPokemonRegionalVariantsValues();
+        regionSpecificVariants.remove(0);
         Integer stage = 1;
         for (Integer i = 0; i < 4; i++) {
             if (stage > 3) {
                 stage = 3;
             }
-            pokemonData.add(new PMHR_PokemonDataBuilder()
+            Pokemon_Data__c pokemonForm = new PMHR_PokemonFormBuilder()
                     .setPokedexNumber('00' + (i + 1))
                     .setForm('Testor v' + i)
                     .setPrimaryType(PMHR_PokemonDataBuilder.TYPE_NORMAL)
                     .setFamily(FAMILY_ONE)
                     .setFamilyStage(stage++)
-                    .setRegionSpecificVariants(regionSpecificVariants)
-                    .build()
-            );
+                    .build();
+            pokemonData.add(pokemonForm);
         }
-        pokemonData.add(new PMHR_PokemonDataBuilder()
+        pokemonData.add(new PMHR_PokemonFormBuilder()
                 .setPokedexNumber('005')
                 .setForm('Alestor')
                 .setPrimaryType(PMHR_PokemonDataBuilder.TYPE_DARK)
                 .setFamily(FAMILY_TWO)
                 .setFamilyStage(1)
-                .setRegionSpecificVariants(regionSpecificVariants)
                 .build()
         );
         insert pokemonData;
+
+        List<Pokemon_Data__c> pokemonAdditionalVariants = new List<Pokemon_Data__c>();
+        for (Pokemon_Data__c pokemonForm : pokemonData) {
+            for (String variant : regionSpecificVariants) {
+                pokemonAdditionalVariants.add(new PMHR_PokemonAdditionalVariantBuilder()
+                        .setVariantOf(pokemonForm.Id)
+                        .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
+                        .build()
+                );
+            }
+        }
+        insert pokemonAdditionalVariants;
 
         List<Pokemon__c> pokemons = new List<Pokemon__c>();
         for (Integer i = 0; i < 5; i++) {
@@ -67,7 +78,7 @@ private class PMHR_NextFormController_Test {
                 firstStagePokemon = pokemon;
             } else if (pokemon.Form__r.Family_Stage__c == 2) {
                 secondStagePokemon = new PMHR_PokemonBuilder(pokemon)
-                        .setRegionSpecificVariant(PMHR_PokemonBuilder.REGION_VARIANT_ALOLAN)
+                        .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
                         .save();
             } else {
                 if (thirdStagePokemonOne == null) {
@@ -91,7 +102,7 @@ private class PMHR_NextFormController_Test {
         for (PMHR_NextFormController.PokemonNextForm nextForm : secondStageForms.nextForms) {
             System.assertEquals(2, nextForm.familyStage);
         }
-        System.assertEquals(2, thirdStageForms.nextForms.size());
+        System.assertEquals(6, thirdStageForms.nextForms.size());
         for (PMHR_NextFormController.PokemonNextForm nextForm : thirdStageForms.nextForms) {
             System.assertEquals(3, nextForm.familyStage);
         }

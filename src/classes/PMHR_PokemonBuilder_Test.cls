@@ -7,8 +7,11 @@ private class PMHR_PokemonBuilder_Test {
         Nuzlocke__c nuzlocke = new PMHR_NuzlockeBuilder()
                 .setHero(hero.Id)
                 .save();
-        Pokemon_Data__c form = new PMHR_PokemonDataBuilder()
-                .setRegionSpecificVariants(PMHR_Utilities.getPokemonRegionalVariantsValues())
+        Pokemon_Data__c form = new PMHR_PokemonFormBuilder()
+                .save();
+        Pokemon_Data__c additionalVariant = new PMHR_PokemonAdditionalVariantBuilder()
+                .setVariantOf(form.Id)
+                .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
                 .save();
         String name = 'Barry';
         String catchLocation = 'Route 1';
@@ -24,7 +27,7 @@ private class PMHR_PokemonBuilder_Test {
                 .setGender(PMHR_Utilities.GENDER_MALE)
                 .setCatchLocation(catchLocation)
                 .setCatchMethod(PMHR_PokemonBuilder.CATCH_METHOD_EVENT)
-                .setRegionSpecificVariant(PMHR_PokemonBuilder.REGION_VARIANT_ALOLAN)
+                .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
                 .save();
 
         pokemon = new PMHR_PokemonBuilder(pokemon)
@@ -42,7 +45,7 @@ private class PMHR_PokemonBuilder_Test {
         System.assertEquals(PMHR_Utilities.GENDER_MALE, pokemon.Gender__c);
         System.assertEquals(catchLocation, pokemon.Location__c);
         System.assertEquals(PMHR_PokemonBuilder.CATCH_METHOD_EVENT, pokemon.Catch_Method__c);
-        System.assertEquals(PMHR_PokemonBuilder.REGION_VARIANT_ALOLAN, pokemon.Region_Specific_Variant__c);
+        System.assertEquals(PMHR_Utilities.REGION_VARIANT_ALOLAN, pokemon.Region_Specific_Variant__c);
         System.assert(pokemon.Death__c);
         System.assertEquals(deathCause, pokemon.Cause_of_Death__c);
         System.assertEquals(deathLevel, Integer.valueOf(pokemon.Death_Level__c));

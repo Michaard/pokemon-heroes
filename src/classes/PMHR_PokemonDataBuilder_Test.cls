@@ -1,6 +1,6 @@
 @IsTest
 private class PMHR_PokemonDataBuilder_Test {
-    static testMethod void shouldBuildPokemonData() {
+    static testMethod void shouldBuildPokemonForm() {
         //given
         String form = 'Bulbasaur';
         String pokedexNumber = '001';
@@ -10,7 +10,7 @@ private class PMHR_PokemonDataBuilder_Test {
         List<String> regionSpecificVariants = PMHR_Utilities.getPokemonRegionalVariantsValues();
 
         //when
-        Pokemon_Data__c pokemonData = new PMHR_PokemonDataBuilder()
+        Pokemon_Data__c pokemonData = new PMHR_PokemonFormBuilder()
                 .setPokedexNumber(pokedexNumber)
                 .setForm(form)
                 .setFamily(form)
@@ -18,11 +18,10 @@ private class PMHR_PokemonDataBuilder_Test {
                 .setPrimaryType(PMHR_PokemonDataBuilder.TYPE_NORMAL)
                 .setSecondaryType(PMHR_PokemonDataBuilder.TYPE_DARK)
                 .setPictureUrl(pictureUrl)
-                .setRegionSpecificVariants(regionSpecificVariants)
                 .save();
 
         //then
-        pokemonData = PMHR_PokemonDataQueryService.getPokemonDataById(pokemonData.Id);
+        pokemonData = PMHR_PokemonDataQueryService.getPokemonFormById(pokemonData.Id);
         System.assertEquals(form, pokemonData.Name);
         System.assertEquals(pokedexNumber, pokemonData.Pokedex_Number__c);
         System.assertEquals(form, pokemonData.Family__c);
@@ -31,25 +30,29 @@ private class PMHR_PokemonDataBuilder_Test {
         System.assertEquals(PMHR_PokemonDataBuilder.TYPE_DARK, pokemonData.Secondary_Type__c);
         System.assertEquals(pictureUrl, pokemonData.Picture_Url__c);
         System.assertEquals(pictureUrl, pokemonData.Picture_Url__c);
-        for (String variant : regionSpecificVariants) {
-            System.assert(pokemonData.Region_Specific_Variants__c.contains(variant));
-        }
     }
 
-    static testMethod void shouldThrowExceptionNullRegionVariants() {
+    static testMethod void shouldBuildPokemonAdditionalVariant() {
         //given
-        Boolean errorOccurred = false;
+        String pictureUrl = 'https://test.picture.com';
+        Pokemon_Data__c pokemonForm = new PMHR_PokemonFormBuilder()
+                .save();
 
         //when
-        try {
-            Pokemon_Data__c pokemonData = new PMHR_PokemonDataBuilder()
-                    .setRegionSpecificVariants(null)
-                    .build();
-        } catch (PMHR_PokemonDataBuilder.NullRegionSpecificVariantsException ex) {
-            errorOccurred = true;
-        }
+        Pokemon_Data__c additionalVariant = new PMHR_PokemonAdditionalVariantBuilder()
+                .setVariantOf(pokemonForm.Id)
+                .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
+                .setPrimaryType(PMHR_PokemonDataBuilder.TYPE_DARK)
+                .setPictureUrl(pictureUrl)
+                .save();
 
         //then
-        System.assert(errorOccurred);
+        additionalVariant = PMHR_PokemonDataQueryService.getAdditionalVariantById(additionalVariant.Id);
+        System.assertEquals(pokemonForm.Id, additionalVariant.Variant_Of__c);
+        System.assertEquals(PMHR_Utilities.REGION_VARIANT_ALOLAN, additionalVariant.Region_Specific_Variant__c);
+        System.assertEquals(PMHR_PokemonDataBuilder.TYPE_DARK, additionalVariant.Primary_Type__c);
+        System.assertEquals(additionalVariant.Variant_Name__c, additionalVariant.Name);
+        System.assert(additionalVariant.Name.contains(pokemonForm.Name));
+        System.assert(additionalVariant.Name.contains(PMHR_Utilities.REGION_VARIANT_ALOLAN));
     }
 }

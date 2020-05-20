@@ -56,7 +56,7 @@
                 <emptySpace>true</emptySpace>
             </layoutItems>
             <layoutItems>
-                <behavior>Edit</behavior>
+                <behavior>Required</behavior>
                 <field>Region_Specific_Variant__c</field>
             </layoutItems>
         </layoutColumns>
