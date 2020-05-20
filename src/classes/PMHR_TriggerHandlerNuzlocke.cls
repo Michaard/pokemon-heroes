@@ -1,4 +1,4 @@
-public class PMHR_TriggerHandlerNuzlocke implements ITrigger {
+public without sharing class PMHR_TriggerHandlerNuzlocke implements ITrigger {
     private Map<Id, Nuzlocke__c> oldNuzlockesWithFinalTeams;
 
     public void bulkBefore() {

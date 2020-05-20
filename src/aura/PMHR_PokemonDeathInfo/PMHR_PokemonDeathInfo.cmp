@@ -7,6 +7,7 @@
     <aura:attribute name="errorMessage" type="String" access="private"/>
 
     <aura:handler name="init" value="{! this}" action="{! c.init}"/>
+    <c:PMHR_AuraUtility aura:id="auraUtility"/>
 
     <force:recordData aura:id="recordLoader"
                       mode="EDIT"
@@ -83,8 +84,8 @@
                     </div>
                         <aura:if isTrue="{! not(v.isAlive)}">
                             <div>
-                                <lightning:input type="number" label="{! $Label.c.PMHR_Field_Death_Level}" value="{! v.deathLevel}" required="true" min="1" max="100"/>
-                                <lightning:input type="text" label="{! $Label.c.PMHR_Field_Death_Reason}" value="{! v.deathReason}" required="true"/>
+                                <lightning:input aura:id="deathLevelInput" type="number" label="{! $Label.c.PMHR_Field_Death_Level}" value="{! v.deathLevel}" required="true" min="1" max="100"/>
+                                <lightning:input aura:id="deathReasonInput" type="text" label="{! $Label.c.PMHR_Field_Death_Reason}" value="{! v.deathReason}" required="true"/>
                             </div>
                         </aura:if>
                 </div>

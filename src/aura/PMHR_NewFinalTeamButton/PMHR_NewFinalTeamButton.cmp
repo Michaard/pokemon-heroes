@@ -16,6 +16,7 @@
     <aura:attribute name="errorMessage" type="String" access="private"/>
 
     <aura:registerEvent name="finalTeamAddedEvent" type="c:PMHR_EventFinalTeamAdded"/>
+    <c:PMHR_AuraUtility aura:id="auraUtility"/>
 
     <div>
         <aura:if isTrue="{! v.displaySpinner}">
@@ -26,7 +27,7 @@
         </header>
         <div class="slds-modal__content" style="padding: 0 1.5rem; margin: 1rem 0 2rem;">
             <c:PMHR_ComponentErrorMessage aura:id="componentErrorMessage"/>
-            <lightning:input type="text" label="{! $Label.c.PMHR_Field_Name}" required="true" value="{! v.finalTeamName}"/>
+            <lightning:input aura:id="nameInput" type="text" label="{! $Label.c.PMHR_Field_Name}" required="true" value="{! v.finalTeamName}"/>
         </div>
 
         <div class="modal-footer slds-modal__footer">

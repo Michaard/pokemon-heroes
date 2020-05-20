@@ -26,7 +26,8 @@
                 }
             } else if (state === "ERROR") {
                 let errors = response.getError();
-                this.showErrorMessage(component, errors[0].message);
+                let auraUtility = component.find("auraUtility");
+                this.showErrorMessage(component, auraUtility.parseErrorFromAction(errors));
             }
             component.set("v.displaySpinner", false);
         });
@@ -44,5 +45,10 @@
         if (componentErrorMessage) {
             componentErrorMessage.showErrorMessage(true, errorMessage);
         }
+    },
+
+    showErrorOnFieldIfInvalid : function(component, field, fieldValue) {
+        let auraUtility = component.find("auraUtility");
+        return auraUtility.showErrorOnFieldIfEmpty(field, fieldValue);
     }
 })

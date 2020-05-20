@@ -1,19 +1,9 @@
 public class PMHR_PokemonPictureController {
     @AuraEnabled
     public static PokemonPicture getPokemonPicture(Id pokemonId) {
-        Pokemon__c pokemon = getPokemonData(pokemonId);
-        return new PokemonPicture(pokemon);
-    }
-
-    private static Pokemon__c getPokemonData(Id pokemonId) {
-        return [
-                SELECT Id, Region_Specific_Variant__c,
-                        Form__r.Picture_Url__c, Form__r.Type__c,
-                        Form__r.Alolan_Picture_Url__c, Form__r.Alolan_Type__c,
-                        Form__r.Galarian_Picture_Url__c, Form__r.Galarian_Type__c
-                FROM Pokemon__c
-                WHERE Id = :pokemonId
-                LIMIT 1];
+        Pokemon__c pokemon = PMHR_PokemonQueryService.getPokemonWithFormById(pokemonId);
+        Pokemon_Data__c pokemonForm = PMHR_PokemonDataQueryService.getPokemonFormById(pokemon.Form__c);
+        return new PokemonPicture(pokemonForm, pokemon.Region_Specific_Variant__c);
     }
 
     @TestVisible
@@ -21,10 +11,23 @@ public class PMHR_PokemonPictureController {
         @AuraEnabled public String pictureUrl { get; private set; }
         @AuraEnabled public String pokemonType { get; private set; }
 
-        public PokemonPicture (Pokemon__c pokemon) {
-            PMHR_PokemonPictureVariantsConfig config = PMHR_PokemonPictureVariantsConfig.getInstance();
-            this.pictureUrl = (String)pokemon.Form__r.get(config.getPictureFieldApiName(pokemon.Region_Specific_Variant__c));
-            this.pokemonType = (String)pokemon.Form__r.get(config.getTypeFieldApiName(pokemon.Region_Specific_Variant__c));
+        public PokemonPicture (Pokemon_Data__c pokemonForm, String regionSpecificVariant) {
+            if (regionSpecificVariant == PMHR_Utilities.REGION_VARIANT_STANDARD) {
+                this.pictureUrl = pokemonForm.Picture_Url__c;
+                this.pokemonType = pokemonForm.Type__c;
+            } else {
+                this.setFieldsFromAdditionalVariant(pokemonForm.Additional_Variants__r, regionSpecificVariant);
+            }
+        }
+
+        private void setFieldsFromAdditionalVariant(List<Pokemon_Data__c> additionalVariants, String regionSpecificVariant) {
+            for (Pokemon_Data__c additionalForm : additionalVariants) {
+                if (additionalForm.Region_Specific_Variant__c == regionSpecificVariant) {
+                    this.pictureUrl = additionalForm.Picture_Url__c;
+                    this.pokemonType = additionalForm.Type__c;
+                    return;
+                }
+            }
         }
     }
 }
