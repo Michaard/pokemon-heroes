@@ -2309,7 +2309,7 @@
     </fields>
     <fields>
         <fullName>Pokedex_Number__c</fullName>
-        <defaultValue>TEXT(000)</defaultValue>
+        <defaultValue>&apos;000&apos;</defaultValue>
         <externalId>true</externalId>
         <label>Pokedex Number</label>
         <length>4</length>
@@ -2397,11 +2397,29 @@
     </fields>
     <label>Pokemon Data</label>
     <listViews>
+        <fullName>Additional_Variants</fullName>
+        <columns>NAME</columns>
+        <columns>Variant_Of__c</columns>
+        <columns>Type__c</columns>
+        <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Pokemon_Data__c.Additional_Variant</value>
+        </filters>
+        <label>Additional Variants</label>
+    </listViews>
+    <listViews>
         <fullName>All</fullName>
         <columns>Pokedex_Number__c</columns>
         <columns>NAME</columns>
         <columns>Type__c</columns>
         <filterScope>Everything</filterScope>
+        <filters>
+            <field>RECORDTYPE</field>
+            <operation>equals</operation>
+            <value>Pokemon_Data__c.Form</value>
+        </filters>
         <label>All</label>
     </listViews>
     <nameField>
@@ -6157,8 +6175,8 @@
         <active>true</active>
         <description>Pokedex Number cannot be edited</description>
         <errorConditionFormula>AND(
-				NOT(ISNEW()),
-				ISCHANGED(Pokedex_Number__c)
+ NOT(ISNEW()),
+ ISCHANGED(Pokedex_Number__c)
 )</errorConditionFormula>
         <errorDisplayField>Pokedex_Number__c</errorDisplayField>
         <errorMessage>Pokedex Number cannot be edited</errorMessage>
