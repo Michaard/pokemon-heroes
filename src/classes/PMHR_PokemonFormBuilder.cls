@@ -6,7 +6,8 @@ public with sharing class PMHR_PokemonFormBuilder extends PMHR_PokemonDataBuilde
                 Primary_Type__c = TYPE_NORMAL,
                 Family__c = 'Default Pokemon',
                 Family_Stage__c = 1,
-                RecordTypeId = PMHR_Utilities.getRecordTypeIdByName(SObjectType.Pokemon_Data__c, PMHR_PokemonDataBuilder.RT_FORM)
+                RecordTypeId = PMHR_Utilities.getRecordTypeIdByName(SObjectType.Pokemon_Data__c, PMHR_PokemonDataBuilder.RT_FORM),
+                Evolves_from_Variant__c = PMHR_Utilities.REGION_VARIANT_STANDARD
         );
     }
 

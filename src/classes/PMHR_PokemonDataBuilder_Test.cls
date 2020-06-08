@@ -18,6 +18,7 @@ private class PMHR_PokemonDataBuilder_Test {
                 .setPrimaryType(PMHR_PokemonDataBuilder.TYPE_NORMAL)
                 .setSecondaryType(PMHR_PokemonDataBuilder.TYPE_DARK)
                 .setPictureUrl(pictureUrl)
+                .setEvolvesFromVariant(PMHR_Utilities.REGION_VARIANT_STANDARD)
                 .save();
 
         //then
@@ -30,6 +31,7 @@ private class PMHR_PokemonDataBuilder_Test {
         System.assertEquals(PMHR_PokemonDataBuilder.TYPE_DARK, pokemonData.Secondary_Type__c);
         System.assertEquals(pictureUrl, pokemonData.Picture_Url__c);
         System.assertEquals(pictureUrl, pokemonData.Picture_Url__c);
+        System.assertEquals(PMHR_Utilities.REGION_VARIANT_STANDARD, pokemonData.Evolves_from_Variant__c);
     }
 
     static testMethod void shouldBuildPokemonAdditionalVariant() {

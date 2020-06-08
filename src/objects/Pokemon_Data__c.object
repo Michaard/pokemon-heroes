@@ -170,6 +170,19 @@
     <enableSharing>true</enableSharing>
     <enableStreamingApi>true</enableStreamingApi>
     <fields>
+        <fullName>Evolves_from_Variant__c</fullName>
+        <description>Locks evolving into the form for region specific variants - pokemon region specific variant must correspond with provided value.</description>
+        <externalId>false</externalId>
+        <label>Evolves from Variant</label>
+        <required>true</required>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetName>Region_Specific_Pokemon_Variants</valueSetName>
+        </valueSet>
+    </fields>
+    <fields>
         <fullName>Family_Stage__c</fullName>
         <defaultValue>1</defaultValue>
         <externalId>false</externalId>
@@ -227,6 +240,11 @@
                     <label>Anorith</label>
                 </value>
                 <value>
+                    <fullName>Applin</fullName>
+                    <default>false</default>
+                    <label>Applin</label>
+                </value>
+                <value>
                     <fullName>Arceus</fullName>
                     <default>false</default>
                     <label>Arceus</label>
@@ -237,9 +255,24 @@
                     <label>Archen</label>
                 </value>
                 <value>
+                    <fullName>Arctovish</fullName>
+                    <default>false</default>
+                    <label>Arctovish</label>
+                </value>
+                <value>
+                    <fullName>Arctozolt</fullName>
+                    <default>false</default>
+                    <label>Arctozolt</label>
+                </value>
+                <value>
                     <fullName>Aron</fullName>
                     <default>false</default>
                     <label>Aron</label>
+                </value>
+                <value>
+                    <fullName>Arrokuda</fullName>
+                    <default>false</default>
+                    <label>Arrokuda</label>
                 </value>
                 <value>
                     <fullName>Articuno</fullName>
@@ -315,6 +348,11 @@
                     <fullName>Blacephalon</fullName>
                     <default>false</default>
                     <label>Blacephalon</label>
+                </value>
+                <value>
+                    <fullName>Blipbug</fullName>
+                    <default>false</default>
+                    <label>Blipbug</label>
                 </value>
                 <value>
                     <fullName>Blitzle</fullName>
@@ -442,6 +480,11 @@
                     <label>Chespin</label>
                 </value>
                 <value>
+                    <fullName>Chewtle</fullName>
+                    <default>false</default>
+                    <label>Chewtle</label>
+                </value>
+                <value>
                     <fullName>Chikorita</fullName>
                     <default>false</default>
                     <label>Chikorita</label>
@@ -475,6 +518,11 @@
                     <fullName>Cleffa</fullName>
                     <default>false</default>
                     <label>Cleffa</label>
+                </value>
+                <value>
+                    <fullName>Clobbopus</fullName>
+                    <default>false</default>
+                    <label>Clobbopus</label>
                 </value>
                 <value>
                     <fullName>Cobalion</fullName>
@@ -517,6 +565,11 @@
                     <label>Crabrawler</label>
                 </value>
                 <value>
+                    <fullName>Cramorant</fullName>
+                    <default>false</default>
+                    <label>Cramorant</label>
+                </value>
+                <value>
                     <fullName>Cranidos</fullName>
                     <default>false</default>
                     <label>Cranidos</label>
@@ -545,6 +598,11 @@
                     <fullName>Cubone</fullName>
                     <default>false</default>
                     <label>Cubone</label>
+                </value>
+                <value>
+                    <fullName>Cufant</fullName>
+                    <default>false</default>
+                    <label>Cufant</label>
                 </value>
                 <value>
                     <fullName>Cutiefly</fullName>
@@ -627,6 +685,16 @@
                     <label>Doduo</label>
                 </value>
                 <value>
+                    <fullName>Dracovish</fullName>
+                    <default>false</default>
+                    <label>Dracovish</label>
+                </value>
+                <value>
+                    <fullName>Dracozolt</fullName>
+                    <default>false</default>
+                    <label>Dracozolt</label>
+                </value>
+                <value>
                     <fullName>Drampa</fullName>
                     <default>false</default>
                     <label>Drampa</label>
@@ -635,6 +703,11 @@
                     <fullName>Dratini</fullName>
                     <default>false</default>
                     <label>Dratini</label>
+                </value>
+                <value>
+                    <fullName>Dreepy</fullName>
+                    <default>false</default>
+                    <label>Dreepy</label>
                 </value>
                 <value>
                     <fullName>Drifloon</fullName>
@@ -667,6 +740,11 @@
                     <label>Dunsparce</label>
                 </value>
                 <value>
+                    <fullName>Duraludon</fullName>
+                    <default>false</default>
+                    <label>Duraludon</label>
+                </value>
+                <value>
                     <fullName>Durant</fullName>
                     <default>false</default>
                     <label>Durant</label>
@@ -685,6 +763,11 @@
                     <fullName>Eevee</fullName>
                     <default>false</default>
                     <label>Eevee</label>
+                </value>
+                <value>
+                    <fullName>Eiscue</fullName>
+                    <default>false</default>
+                    <label>Eiscue</label>
                 </value>
                 <value>
                     <fullName>Ekans</fullName>
@@ -722,9 +805,19 @@
                     <label>Espurr</label>
                 </value>
                 <value>
+                    <fullName>Eternatus</fullName>
+                    <default>false</default>
+                    <label>Eternatus</label>
+                </value>
+                <value>
                     <fullName>Exeggcute</fullName>
                     <default>false</default>
                     <label>Exeggcute</label>
+                </value>
+                <value>
+                    <fullName>Falinks</fullName>
+                    <default>false</default>
+                    <label>Falinks</label>
                 </value>
                 <value>
                     <fullName>Farfetch&apos;d</fullName>
@@ -842,6 +935,11 @@
                     <label>Goomy</label>
                 </value>
                 <value>
+                    <fullName>Gossifleur</fullName>
+                    <default>false</default>
+                    <label>Gossifleur</label>
+                </value>
+                <value>
                     <fullName>Gothita</fullName>
                     <default>false</default>
                     <label>Gothita</label>
@@ -850,6 +948,11 @@
                     <fullName>Grimer</fullName>
                     <default>false</default>
                     <label>Grimer</label>
+                </value>
+                <value>
+                    <fullName>Grookey</fullName>
+                    <default>false</default>
+                    <label>Grookey</label>
                 </value>
                 <value>
                     <fullName>Groudon</fullName>
@@ -880,6 +983,11 @@
                     <fullName>Happiny</fullName>
                     <default>false</default>
                     <label>Happiny</label>
+                </value>
+                <value>
+                    <fullName>Hatenna</fullName>
+                    <default>false</default>
+                    <label>Hatenna</label>
                 </value>
                 <value>
                     <fullName>Hawlucha</fullName>
@@ -955,6 +1063,16 @@
                     <fullName>Illumise</fullName>
                     <default>false</default>
                     <label>Illumise</label>
+                </value>
+                <value>
+                    <fullName>Impidimp</fullName>
+                    <default>false</default>
+                    <label>Impidimp</label>
+                </value>
+                <value>
+                    <fullName>Indeedee</fullName>
+                    <default>false</default>
+                    <label>Indeedee</label>
                 </value>
                 <value>
                     <fullName>Inkay</fullName>
@@ -1242,6 +1360,11 @@
                     <label>Mienfoo</label>
                 </value>
                 <value>
+                    <fullName>Milcery</fullName>
+                    <default>false</default>
+                    <label>Milcery</label>
+                </value>
+                <value>
                     <fullName>Miltank</fullName>
                     <default>false</default>
                     <label>Miltank</label>
@@ -1287,6 +1410,11 @@
                     <label>Morelull</label>
                 </value>
                 <value>
+                    <fullName>Morpeko</fullName>
+                    <default>false</default>
+                    <label>Morpeko</label>
+                </value>
+                <value>
                     <fullName>Mudbray</fullName>
                     <default>false</default>
                     <label>Mudbray</label>
@@ -1320,6 +1448,11 @@
                     <fullName>Necrozma</fullName>
                     <default>false</default>
                     <label>Necrozma</label>
+                </value>
+                <value>
+                    <fullName>Nickit</fullName>
+                    <default>false</default>
+                    <label>Nickit</label>
                 </value>
                 <value>
                     <fullName>Nidoran (F)</fullName>
@@ -1482,6 +1615,11 @@
                     <label>Pikipek</label>
                 </value>
                 <value>
+                    <fullName>Pincurchin</fullName>
+                    <default>false</default>
+                    <label>Pincurchin</label>
+                </value>
+                <value>
                     <fullName>Pineco</fullName>
                     <default>false</default>
                     <label>Pineco</label>
@@ -1632,6 +1770,16 @@
                     <label>Roggenrola</label>
                 </value>
                 <value>
+                    <fullName>Rolycoly</fullName>
+                    <default>false</default>
+                    <label>Rolycoly</label>
+                </value>
+                <value>
+                    <fullName>Rookidee</fullName>
+                    <default>false</default>
+                    <label>Rookidee</label>
+                </value>
+                <value>
                     <fullName>Rotom</fullName>
                     <default>false</default>
                     <label>Rotom</label>
@@ -1680,6 +1828,11 @@
                     <fullName>Scatterbug</fullName>
                     <default>false</default>
                     <label>Scatterbug</label>
+                </value>
+                <value>
+                    <fullName>Scorbunny</fullName>
+                    <default>false</default>
+                    <label>Scorbunny</label>
                 </value>
                 <value>
                     <fullName>Scraggy</fullName>
@@ -1767,6 +1920,21 @@
                     <label>Sigilyph</label>
                 </value>
                 <value>
+                    <fullName>Silicobra</fullName>
+                    <default>false</default>
+                    <label>Silicobra</label>
+                </value>
+                <value>
+                    <fullName>Sinistea</fullName>
+                    <default>false</default>
+                    <label>Sinistea</label>
+                </value>
+                <value>
+                    <fullName>Sizzlipede</fullName>
+                    <default>false</default>
+                    <label>Sizzlipede</label>
+                </value>
+                <value>
                     <fullName>Skarmory</fullName>
                     <default>false</default>
                     <label>Skarmory</label>
@@ -1790,6 +1958,11 @@
                     <fullName>Skrelp</fullName>
                     <default>false</default>
                     <label>Skrelp</label>
+                </value>
+                <value>
+                    <fullName>Skwovet</fullName>
+                    <default>false</default>
+                    <label>Skwovet</label>
                 </value>
                 <value>
                     <fullName>Slakoth</fullName>
@@ -1827,6 +2000,11 @@
                     <label>Snivy</label>
                 </value>
                 <value>
+                    <fullName>Snom</fullName>
+                    <default>false</default>
+                    <label>Snom</label>
+                </value>
+                <value>
                     <fullName>Snorunt</fullName>
                     <default>false</default>
                     <label>Snorunt</label>
@@ -1840,6 +2018,11 @@
                     <fullName>Snubbull</fullName>
                     <default>false</default>
                     <label>Snubbull</label>
+                </value>
+                <value>
+                    <fullName>Sobble</fullName>
+                    <default>false</default>
+                    <label>Sobble</label>
                 </value>
                 <value>
                     <fullName>Solosis</fullName>
@@ -1910,6 +2093,11 @@
                     <fullName>Staryu</fullName>
                     <default>false</default>
                     <label>Staryu</label>
+                </value>
+                <value>
+                    <fullName>Stonjourner</fullName>
+                    <default>false</default>
+                    <label>Stonjourner</label>
                 </value>
                 <value>
                     <fullName>Stufful</fullName>
@@ -2062,6 +2250,11 @@
                     <label>Totodile</label>
                 </value>
                 <value>
+                    <fullName>Toxel</fullName>
+                    <default>false</default>
+                    <label>Toxel</label>
+                </value>
+                <value>
                     <fullName>Trapinch</fullName>
                     <default>false</default>
                     <label>Trapinch</label>
@@ -2212,6 +2405,11 @@
                     <label>Woobat</label>
                 </value>
                 <value>
+                    <fullName>Wooloo</fullName>
+                    <default>false</default>
+                    <label>Wooloo</label>
+                </value>
+                <value>
                     <fullName>Wooper</fullName>
                     <default>false</default>
                     <label>Wooper</label>
@@ -2242,6 +2440,11 @@
                     <label>Yamask</label>
                 </value>
                 <value>
+                    <fullName>Yamper</fullName>
+                    <default>false</default>
+                    <label>Yamper</label>
+                </value>
+                <value>
                     <fullName>Yanma</fullName>
                     <default>false</default>
                     <label>Yanma</label>
@@ -2255,6 +2458,16 @@
                     <fullName>Yveltal</fullName>
                     <default>false</default>
                     <label>Yveltal</label>
+                </value>
+                <value>
+                    <fullName>Zacian</fullName>
+                    <default>false</default>
+                    <label>Zacian</label>
+                </value>
+                <value>
+                    <fullName>Zamazenta</fullName>
+                    <default>false</default>
+                    <label>Zamazenta</label>
                 </value>
                 <value>
                     <fullName>Zangoose</fullName>
@@ -2414,6 +2627,8 @@
         <columns>Pokedex_Number__c</columns>
         <columns>NAME</columns>
         <columns>Type__c</columns>
+        <columns>Family__c</columns>
+        <columns>Family_Stage__c</columns>
         <filterScope>Everything</filterScope>
         <filters>
             <field>RECORDTYPE</field>
@@ -2433,6 +2648,21 @@
         <compactLayoutAssignment>Additional_Variant_Info</compactLayoutAssignment>
         <description>Additional variant of Pokemon form, like Alolan or Galarian</description>
         <label>Additional Variant</label>
+        <picklistValues>
+            <picklist>Evolves_from_Variant__c</picklist>
+            <values>
+                <fullName>Alolan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Galarian</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
         <picklistValues>
             <picklist>Family__c</picklist>
             <values>
@@ -2464,6 +2694,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Applin</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Arceus</fullName>
                 <default>false</default>
             </values>
@@ -2472,7 +2706,19 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Arctovish</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Arctozolt</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Aron</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Arrokuda</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2533,6 +2779,10 @@
             </values>
             <values>
                 <fullName>Blacephalon</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blipbug</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2636,6 +2886,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Chewtle</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Chikorita</fullName>
                 <default>false</default>
             </values>
@@ -2661,6 +2915,10 @@
             </values>
             <values>
                 <fullName>Cleffa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clobbopus</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2696,6 +2954,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Cramorant</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Cranidos</fullName>
                 <default>false</default>
             </values>
@@ -2717,6 +2979,10 @@
             </values>
             <values>
                 <fullName>Cubone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cufant</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2784,11 +3050,23 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Dracovish</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dracozolt</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Drampa</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Dratini</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dreepy</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2816,6 +3094,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Duraludon</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Durant</fullName>
                 <default>false</default>
             </values>
@@ -2829,6 +3111,10 @@
             </values>
             <values>
                 <fullName>Eevee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eiscue</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2860,7 +3146,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Eternatus</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Exeggcute</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Falinks</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2956,11 +3250,19 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Gossifleur</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Gothita</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Grimer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grookey</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -2985,6 +3287,10 @@
             </values>
             <values>
                 <fullName>Happiny</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hatenna</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3045,6 +3351,14 @@
             </values>
             <values>
                 <fullName>Illumise</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Impidimp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Indeedee</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3276,6 +3590,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Milcery</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Miltank</fullName>
                 <default>false</default>
             </values>
@@ -3312,6 +3630,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Morpeko</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mudbray</fullName>
                 <default>false</default>
             </values>
@@ -3337,6 +3659,10 @@
             </values>
             <values>
                 <fullName>Necrozma</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Nickit</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3468,6 +3794,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Pincurchin</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Pineco</fullName>
                 <default>false</default>
             </values>
@@ -3588,6 +3918,14 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Rolycoly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rookidee</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Rotom</fullName>
                 <default>false</default>
             </values>
@@ -3625,6 +3963,10 @@
             </values>
             <values>
                 <fullName>Scatterbug</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scorbunny</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3696,6 +4038,18 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Silicobra</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sinistea</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sizzlipede</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Skarmory</fullName>
                 <default>false</default>
             </values>
@@ -3713,6 +4067,10 @@
             </values>
             <values>
                 <fullName>Skrelp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Skwovet</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3744,6 +4102,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Snom</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Snorunt</fullName>
                 <default>false</default>
             </values>
@@ -3753,6 +4115,10 @@
             </values>
             <values>
                 <fullName>Snubbull</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sobble</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3809,6 +4175,10 @@
             </values>
             <values>
                 <fullName>Staryu</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stonjourner</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -3932,6 +4302,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Toxel</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Trapinch</fullName>
                 <default>false</default>
             </values>
@@ -4052,6 +4426,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Wooloo</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Wooper</fullName>
                 <default>false</default>
             </values>
@@ -4076,6 +4454,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Yamper</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Yanma</fullName>
                 <default>false</default>
             </values>
@@ -4085,6 +4467,14 @@
             </values>
             <values>
                 <fullName>Yveltal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Zacian</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Zamazenta</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4301,6 +4691,21 @@
         <description>Standard form of the Pokemon species</description>
         <label>Form</label>
         <picklistValues>
+            <picklist>Evolves_from_Variant__c</picklist>
+            <values>
+                <fullName>Alolan</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Galarian</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Standard</fullName>
+                <default>true</default>
+            </values>
+        </picklistValues>
+        <picklistValues>
             <picklist>Family__c</picklist>
             <values>
                 <fullName>Abra</fullName>
@@ -4331,6 +4736,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Applin</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Arceus</fullName>
                 <default>false</default>
             </values>
@@ -4339,7 +4748,19 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Arctovish</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Arctozolt</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Aron</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Arrokuda</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4400,6 +4821,10 @@
             </values>
             <values>
                 <fullName>Blacephalon</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Blipbug</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4503,6 +4928,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Chewtle</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Chikorita</fullName>
                 <default>false</default>
             </values>
@@ -4528,6 +4957,10 @@
             </values>
             <values>
                 <fullName>Cleffa</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Clobbopus</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4563,6 +4996,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Cramorant</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Cranidos</fullName>
                 <default>false</default>
             </values>
@@ -4584,6 +5021,10 @@
             </values>
             <values>
                 <fullName>Cubone</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Cufant</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4651,11 +5092,23 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Dracovish</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dracozolt</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Drampa</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Dratini</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Dreepy</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4683,6 +5136,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Duraludon</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Durant</fullName>
                 <default>false</default>
             </values>
@@ -4696,6 +5153,10 @@
             </values>
             <values>
                 <fullName>Eevee</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Eiscue</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4727,7 +5188,15 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Eternatus</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Exeggcute</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Falinks</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4823,11 +5292,19 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Gossifleur</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Gothita</fullName>
                 <default>false</default>
             </values>
             <values>
                 <fullName>Grimer</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Grookey</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4852,6 +5329,10 @@
             </values>
             <values>
                 <fullName>Happiny</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Hatenna</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -4912,6 +5393,14 @@
             </values>
             <values>
                 <fullName>Illumise</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Impidimp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Indeedee</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5143,6 +5632,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Milcery</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Miltank</fullName>
                 <default>false</default>
             </values>
@@ -5179,6 +5672,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Morpeko</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Mudbray</fullName>
                 <default>false</default>
             </values>
@@ -5204,6 +5701,10 @@
             </values>
             <values>
                 <fullName>Necrozma</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Nickit</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5335,6 +5836,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Pincurchin</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Pineco</fullName>
                 <default>false</default>
             </values>
@@ -5455,6 +5960,14 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Rolycoly</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Rookidee</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Rotom</fullName>
                 <default>false</default>
             </values>
@@ -5492,6 +6005,10 @@
             </values>
             <values>
                 <fullName>Scatterbug</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Scorbunny</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5563,6 +6080,18 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Silicobra</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sinistea</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sizzlipede</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Skarmory</fullName>
                 <default>false</default>
             </values>
@@ -5580,6 +6109,10 @@
             </values>
             <values>
                 <fullName>Skrelp</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Skwovet</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5611,6 +6144,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Snom</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Snorunt</fullName>
                 <default>false</default>
             </values>
@@ -5620,6 +6157,10 @@
             </values>
             <values>
                 <fullName>Snubbull</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Sobble</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5676,6 +6217,10 @@
             </values>
             <values>
                 <fullName>Staryu</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Stonjourner</fullName>
                 <default>false</default>
             </values>
             <values>
@@ -5799,6 +6344,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Toxel</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Trapinch</fullName>
                 <default>false</default>
             </values>
@@ -5919,6 +6468,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Wooloo</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Wooper</fullName>
                 <default>false</default>
             </values>
@@ -5943,6 +6496,10 @@
                 <default>false</default>
             </values>
             <values>
+                <fullName>Yamper</fullName>
+                <default>false</default>
+            </values>
+            <values>
                 <fullName>Yanma</fullName>
                 <default>false</default>
             </values>
@@ -5952,6 +6509,14 @@
             </values>
             <values>
                 <fullName>Yveltal</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Zacian</fullName>
+                <default>false</default>
+            </values>
+            <values>
+                <fullName>Zamazenta</fullName>
                 <default>false</default>
             </values>
             <values>

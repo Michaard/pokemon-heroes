@@ -25,6 +25,10 @@
                 <behavior>Required</behavior>
                 <field>Variant_Of__c</field>
             </layoutItems>
+            <layoutItems>
+                <behavior>Required</behavior>
+                <field>Evolves_from_Variant__c</field>
+            </layoutItems>
         </layoutColumns>
         <style>TwoColumnsTopToBottom</style>
     </layoutSections>
