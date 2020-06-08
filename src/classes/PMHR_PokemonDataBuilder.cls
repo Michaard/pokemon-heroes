@@ -78,4 +78,9 @@ public abstract class PMHR_PokemonDataBuilder {
         this.record.Region_Specific_Variant__c = variant;
         return this;
     }
+
+    public PMHR_PokemonDataBuilder setEvolvesFromVariant(String variant) {
+        this.record.Evolves_from_Variant__c = variant;
+        return this;
+    }
 }

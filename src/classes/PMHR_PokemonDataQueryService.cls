@@ -5,8 +5,8 @@ public with sharing class PMHR_PokemonDataQueryService {
 
     public static List<Pokemon_Data__c> getPokemonFormsByIds(Set<Id> pokemonDataIds) {
         return [
-                SELECT Id, Name, Pokedex_Number__c, Family__c, Family_Stage__c, Type__c, Primary_Type__c, Secondary_Type__c, Picture_Url__c,
-                    (SELECT Id, Variant_Name__c, Region_Specific_Variant__c, Type__c, Picture_Url__c
+                SELECT Id, Name, Pokedex_Number__c, Family__c, Family_Stage__c, Type__c, Primary_Type__c, Secondary_Type__c, Picture_Url__c, Evolves_from_Variant__c,
+                    (SELECT Id, Variant_Name__c, Region_Specific_Variant__c, Type__c, Picture_Url__c, Evolves_from_Variant__c
                     FROM Additional_Variants__r)
                 FROM Pokemon_Data__c
                 WHERE Id IN :pokemonDataIds
@@ -16,8 +16,8 @@ public with sharing class PMHR_PokemonDataQueryService {
 
     public static List<Pokemon_Data__c> getAvailableNextPokemonForms(Pokemon__c pokemon) {
         return [
-                SELECT Id, Name, Pokedex_Number__c, Family_Stage__c,
-                    (SELECT Id, Variant_Name__c, Region_Specific_Variant__c
+                SELECT Id, Name, Pokedex_Number__c, Family_Stage__c, Evolves_from_Variant__c,
+                    (SELECT Id, Variant_Name__c, Region_Specific_Variant__c, Evolves_from_Variant__c
                     FROM Additional_Variants__r)
                 FROM Pokemon_Data__c
                 WHERE Family__c = :pokemon.Form__r.Family__c

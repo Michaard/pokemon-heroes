@@ -43,7 +43,8 @@ private class PMHR_NextFormController_Test {
             for (String variant : regionSpecificVariants) {
                 pokemonAdditionalVariants.add(new PMHR_PokemonAdditionalVariantBuilder()
                         .setVariantOf(pokemonForm.Id)
-                        .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
+                        .setRegionSpecificVariant(variant)
+                        .setEvolvesFromVariant(variant)
                         .build()
                 );
             }
@@ -66,7 +67,7 @@ private class PMHR_NextFormController_Test {
 
     static testMethod void shouldGetNextAvailableForms() {
         //given
-        List<Pokemon__c> pokemons = [SELECT Id, Form__r.Family_Stage__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_ONE];
+        List<Pokemon__c> pokemons = [SELECT Id, Form__r.Name, Form__r.Family_Stage__c FROM Pokemon__c WHERE Form__r.Family__c = :FAMILY_ONE];
 
         Pokemon__c firstStagePokemon;
         Pokemon__c secondStagePokemon;
@@ -98,11 +99,11 @@ private class PMHR_NextFormController_Test {
         Test.stopTest();
 
         //then
-        System.assertEquals(3, secondStageForms.nextForms.size());
+        System.assertEquals(1, secondStageForms.nextForms.size());
         for (PMHR_NextFormController.PokemonNextForm nextForm : secondStageForms.nextForms) {
             System.assertEquals(2, nextForm.familyStage);
         }
-        System.assertEquals(6, thirdStageForms.nextForms.size());
+        System.assertEquals(2, thirdStageForms.nextForms.size());
         for (PMHR_NextFormController.PokemonNextForm nextForm : thirdStageForms.nextForms) {
             System.assertEquals(3, nextForm.familyStage);
         }

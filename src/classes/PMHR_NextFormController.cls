@@ -27,16 +27,20 @@ public class PMHR_NextFormController {
             this.nextForms = new List<PokemonNextForm>();
             if (availableNextForms != null) {
                 for (Pokemon_Data__c nextForm : availableNextForms) {
-                    nextForms.addAll(this.generatePokemonNextForms(nextForm));
+                    nextForms.addAll(this.generatePokemonNextForms(pokemon.Region_Specific_Variant__c, nextForm));
                 }
             }
         }
 
-        private List<PokemonNextForm> generatePokemonNextForms(Pokemon_Data__c nextForm) {
+        private List<PokemonNextForm> generatePokemonNextForms(String pokemonVariant, Pokemon_Data__c nextForm) {
             List<PokemonNextForm> availableNextForms = new List<PokemonNextForm>();
-            availableNextForms.add(new PokemonNextForm(nextForm));
+            if (nextForm.Evolves_from_Variant__c == pokemonVariant) {
+                availableNextForms.add(new PokemonNextForm(nextForm));
+            }
             for (Pokemon_Data__c additionalVariant : nextForm.Additional_Variants__r) {
-                availableNextForms.add(new PokemonNextForm(nextForm, additionalVariant));
+                if (additionalVariant.Evolves_from_Variant__c == pokemonVariant) {
+                    availableNextForms.add(new PokemonNextForm(nextForm, additionalVariant));
+                }
             }
             return availableNextForms;
         }

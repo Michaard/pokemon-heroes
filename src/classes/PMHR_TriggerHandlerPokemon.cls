@@ -23,6 +23,7 @@ public without sharing class PMHR_TriggerHandlerPokemon implements ITrigger {
 
     public void beforeUpdate(SObject oldSo, SObject so) {
         Pokemon__c pokemon = (Pokemon__c) so;
+        PMHR_TriggerHandlerPokemon_Helper.copyCaughtFormToForm(pokemon);
         PMHR_TriggerHandlerPokemon_Helper.validateRegionSpecificVariant(pokemon, relatedPokemonData);
     }
 
