@@ -1,0 +1,17 @@
+.THIS .section-title-custom {
+    display: flex;
+    align-items: center;
+    background: rgb(243, 242, 242);
+    width: 100%;
+    text-align: left;
+    color: currentColor;
+    font-size: inherit;
+    padding: 0 .5rem;
+    margin-top: 0.3rem;
+}
+
+.THIS .section-title-button {
+    width: 100%;
+    text-align: left;
+    padding-left: 0.5rem;
+}

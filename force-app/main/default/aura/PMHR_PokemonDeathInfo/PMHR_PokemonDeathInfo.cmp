@@ -1,0 +1,100 @@
+<aura:component description="PMHR_PokemonDeathInfo" implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name="record" type="Pokemon__c" access="private"/>
+    <aura:attribute name="isAlive" type="Boolean" access="private"/>
+    <aura:attribute name="deathLevel" type="Integer" access="private"/>
+    <aura:attribute name="deathReason" type="String" access="private"/>
+    <aura:attribute name="showError" type="Boolean" access="private" default="false"/>
+    <aura:attribute name="errorMessage" type="String" access="private"/>
+
+    <aura:handler name="init" value="{! this}" action="{! c.init}"/>
+    <c:PMHR_AuraUtility aura:id="auraUtility"/>
+
+    <force:recordData aura:id="recordLoader"
+                      mode="EDIT"
+                      recordId="{! v.recordId}"
+                      targetFields="{! v.record}"
+                      fields="Name, Death__c, Death_Level__c, Cause_of_Death__c"/>
+
+    <lightning:card>
+        <aura:set attribute="title">
+            <h3 class="slds-section__title test-id__section-header-container section-title-custom">{! $Label.c.PMHR_Section_Title_Death_Info}</h3>
+        </aura:set>
+        <aura:set attribute="actions">
+            <lightning:button class="section-header-button" type="button" variant="neutral" label="{! $Label.c.Button_Edit}" onclick="{! c.toggleModal}"/>
+        </aura:set>
+        <div class="slds-grid slds-p-horizontal--small">
+            <div class="{! 'slds-p-horizontal--small slds-col' + (v.record.Death__c ? ' slds-size--1-of-2' : '')}">
+                <div class="slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow slds-hint-parent override--slds-form-element">
+                    <div class="test-id__field-label-container slds-form-element__label">
+                        <span class="test-id__field-label">{! $Label.c.PMHR_Field_Life_Status}</span>
+                    </div>
+                    <div class="slds-form-element__control slds-grid itemBody">
+                        <span class="test-id__field-value slds-form-element__static slds-grow">
+                            {! v.record.Death__c ? $Label.c.PMHR_Death_Status_Dead : $Label.c.PMHR_Death_Status_Alive}
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <aura:if isTrue="{! v.record.Death__c}">
+                <div class="slds-p-horizontal--small slds-col slds-size--1-of-2">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow slds-hint-parent override--slds-form-element">
+                        <div class="test-id__field-label-container slds-form-element__label">
+                            <span class="test-id__field-label">
+                                    {! $Label.c.PMHR_Field_Death_Level}
+                            </span>
+                        </div>
+                        <div class="slds-form-element__control slds-grid itemBody">
+                            <span class="test-id__field-value slds-form-element__static slds-grow ">
+                                {! v.record.Death_Level__c}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </aura:if>
+        </div>
+        <aura:if isTrue="{! v.record.Death__c}">
+            <div class="slds-p-horizontal--small">
+                <div class="slds-p-horizontal--small">
+                    <div class="slds-form-element slds-form-element_readonly slds-form-element_edit slds-grow slds-hint-parent override--slds-form-element">
+                        <div class="test-id__field-label-container slds-form-element__label">
+                            <span class="test-id__field-label">{! $Label.c.PMHR_Field_Death_Reason}</span>
+                        </div>
+                        <div class="slds-form-element__control slds-grid itemBody">
+                            <span class="test-id__field-value slds-form-element__static slds-grow ">
+                                {! v.record.Cause_of_Death__c}
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aura:if>
+    </lightning:card>
+
+    <div>
+        <section aura:id="editModal" role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-modal="true" aria-describedby="modal-content-id-1" class="slds-modal">
+            <div class="slds-modal__container">
+                <header class="slds-modal__header">
+                    <lightning:buttonIcon iconName="utility:close" alternativeText="{! $Label.c.Button_Close}" variant="bare-inverse" class="slds-modal__close" iconClass="slds-button__icon_large" onclick="{! c.toggleModal}"/>
+                    <h2 id="modal-heading-01" class="slds-text-heading_medium slds-hyphenate">{! format($Label.c.PMHR_Modal_Title_Edit_Death_Info, v.record.Name)}</h2>
+                </header>
+                <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+                    <c:PMHR_ComponentErrorMessage aura:id="componentErrorMessage"/>
+                    <div>
+                        <lightning:input type="toggle" label="{! $Label.c.PMHR_Field_Death}" checked="{! v.isAlive}" value="{! v.isAlive}" messageToggleInactive="{! $Label.c.PMHR_Death_Status_Dead}" messageToggleActive="{! $Label.c.PMHR_Death_Status_Alive}" variant="label-hidden"/>
+                    </div>
+                        <aura:if isTrue="{! not(v.isAlive)}">
+                            <div>
+                                <lightning:input aura:id="deathLevelInput" type="number" label="{! $Label.c.PMHR_Field_Death_Level}" value="{! v.deathLevel}" required="true" min="1" max="100"/>
+                                <lightning:input aura:id="deathReasonInput" type="text" label="{! $Label.c.PMHR_Field_Death_Reason}" value="{! v.deathReason}" required="true"/>
+                            </div>
+                        </aura:if>
+                </div>
+                <footer class="slds-modal__footer">
+                    <lightning:button variant="neutral" label="{! $Label.c.Button_Cancel}" onclick="{! c.toggleModal}"/>
+                    <lightning:button variant="brand" label="{! $Label.c.Button_Save}" onclick="{! c.saveRecord}"/>
+                </footer>
+            </div>
+        </section>
+        <div aura:id="editModalBackdrop" class="slds-backdrop"/>
+    </div>
+</aura:component>

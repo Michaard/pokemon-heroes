@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Standard_no_Allowed_for_Regional_Variant</fullName>
+    <active>true</active>
+    <description>You cannot choose this value for this record.</description>
+    <errorConditionFormula>ISPICKVAL(Region_Specific_Variant__c, &apos;Standard&apos;)</errorConditionFormula>
+    <errorDisplayField>Region_Specific_Variant__c</errorDisplayField>
+    <errorMessage>You cannot choose this value for this record.</errorMessage>
+</ValidationRule>

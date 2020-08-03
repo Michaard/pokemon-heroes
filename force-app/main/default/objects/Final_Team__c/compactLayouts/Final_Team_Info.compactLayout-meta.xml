@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Final_Team_Info</fullName>
+    <fields>Name</fields>
+    <fields>Nuzlocke__c</fields>
+    <label>Final Team Info</label>
+</CompactLayout>
