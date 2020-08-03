@@ -1,4 +1,10 @@
-/src/package.xml
-/Nuzlocke.iml
-/IlluminatedCloud/
-/.idea/
+/.forceignore
+/.eslintignore
+/.prettierignore
+/.prettierrc
+/.sfdx
+/.vscode
+/config
+/scripts
+README.md
+sfdx-project.json
