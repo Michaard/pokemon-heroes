@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nuzlocke_Mismatch</fullName>
+    <active>true</active>
+    <description>Pokemon must be from the same Nuzlocke as the Final Team</description>
+    <errorConditionFormula>Pokemon__r.Nuzlocke__c &lt;&gt; Final_Team__r.Nuzlocke__c</errorConditionFormula>
+    <errorDisplayField>Pokemon__c</errorDisplayField>
+    <errorMessage>Pokemon must be from the same Nuzlocke as the Final Team</errorMessage>
+</ValidationRule>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Final_Team__c</fullName>
+    <externalId>false</externalId>
+    <label>Final Team</label>
+    <referenceTo>Final_Team__c</referenceTo>
+    <relationshipLabel>Final Team Members</relationshipLabel>
+    <relationshipName>Final_Team_Members</relationshipName>
+    <relationshipOrder>1</relationshipOrder>
+    <reparentableMasterDetail>false</reparentableMasterDetail>
+    <trackTrending>false</trackTrending>
+    <type>MasterDetail</type>
+    <writeRequiresMasterRead>false</writeRequiresMasterRead>
+</CustomField>
