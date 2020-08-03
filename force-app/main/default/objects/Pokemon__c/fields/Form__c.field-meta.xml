@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Form__c</fullName>
+    <deleteConstraint>Restrict</deleteConstraint>
+    <externalId>false</externalId>
+    <inlineHelpText>If you&apos;re creating a new Pokemon this field will be filled automatically</inlineHelpText>
+    <label>Form</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>Pokemon_Data__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Form</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>Pokemon_Data__c</referenceTo>
+    <relationshipLabel>Pokemons</relationshipLabel>
+    <relationshipName>Pokemons</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

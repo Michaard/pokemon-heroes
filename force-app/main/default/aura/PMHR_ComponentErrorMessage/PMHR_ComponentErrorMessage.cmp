@@ -1,0 +1,22 @@
+<aura:component description="PMHR_ComponentErrorMessage">
+    <aura:attribute name="showError" type="Boolean" access="private"/>
+    <aura:attribute name="errorMessage" type="String" access="private"/>
+
+    <aura:method name="showErrorMessage" action="{! c.showErrorMessage}" access="public">
+        <aura:attribute name="showError" type="Boolean" required="true"/>
+        <aura:attribute name="errorMessage" type="String" required="true"/>
+    </aura:method>
+
+    <aura:if isTrue="{! v.showError}">
+        <div class="pageLevelErrors">
+            <div class="desktop forcePageError">
+                <div class="genericNotification">
+                    <span class="genericError uiOutputText">{! $Label.c.Error_Message_Review_Errors}</span>
+                </div>
+                <ul class="errorsList">
+                    <li>{! v.errorMessage}</li>
+                </ul>
+            </div>
+        </div>
+    </aura:if>
+</aura:component>

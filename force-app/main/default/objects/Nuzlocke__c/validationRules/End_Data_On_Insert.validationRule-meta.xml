@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>End_Data_On_Insert</fullName>
+    <active>true</active>
+    <description>You can&apos;t provide end data (status/date) when creating new Nuzlocke</description>
+    <errorConditionFormula>AND(
+ ISNEW(),
+ OR(
+  NOT(ISBLANK(TEXT(End_Status__c))),
+  NOT(ISBLANK(End_Date__c))
+ )
+)</errorConditionFormula>
+    <errorMessage>You can&apos;t provide end data (status/date) when creating new Nuzlocke</errorMessage>
+</ValidationRule>

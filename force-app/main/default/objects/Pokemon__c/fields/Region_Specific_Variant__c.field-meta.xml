@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Region_Specific_Variant__c</fullName>
+    <externalId>false</externalId>
+    <label>Region Specific Variant</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetName>Region_Specific_Pokemon_Variants</valueSetName>
+    </valueSet>
+</CustomField>

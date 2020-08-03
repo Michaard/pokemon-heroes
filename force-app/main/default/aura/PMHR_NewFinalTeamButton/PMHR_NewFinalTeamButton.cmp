@@ -1,0 +1,38 @@
+<aura:component description="PMHR_NewFinalTeamButton" controller="PMHR_NewFinalTeamButtonController" implements="force:lightningQuickActionWithoutHeader,force:hasRecordId">
+    <aura:html tag="style">
+        .slds-p-around--medium, .cuf-content {
+            padding: 0rem !important;
+        }
+        .slds-modal__content {
+            overflow-y: hidden !important;
+            height: unset !important;
+            max-height: unset !important;
+        }
+    </aura:html>
+
+    <aura:attribute name="displaySpinner" type="Boolean" default="false" access="private"/>
+    <aura:attribute name="finalTeamName" type="String" access="private"/>
+    <aura:attribute name="showError" type="Boolean" access="private" default="false"/>
+    <aura:attribute name="errorMessage" type="String" access="private"/>
+
+    <aura:registerEvent name="finalTeamAddedEvent" type="c:PMHR_EventFinalTeamAdded"/>
+    <c:PMHR_AuraUtility aura:id="auraUtility"/>
+
+    <div>
+        <aura:if isTrue="{! v.displaySpinner}">
+            <lightning:spinner alternativeText="{! $Label.c.Spinner_Alt_Text}"/>
+        </aura:if>
+        <header class="slds-modal__header">
+            <h2 class="slds-hyphenate slds-text-heading--medium">{! $Label.c.PMHR_Modal_Title_Add_New_Final_Team}</h2>
+        </header>
+        <div class="slds-modal__content" style="padding: 0 1.5rem; margin: 1rem 0 2rem;">
+            <c:PMHR_ComponentErrorMessage aura:id="componentErrorMessage"/>
+            <lightning:input aura:id="nameInput" type="text" label="{! $Label.c.PMHR_Field_Name}" required="true" value="{! v.finalTeamName}"/>
+        </div>
+
+        <div class="modal-footer slds-modal__footer">
+            <lightning:button label="{! $Label.c.Button_Cancel}" variant="neutral" onclick="{! c.onCancelClick}"/>
+            <lightning:button label="{! $Label.c.Button_Save}" variant="brand" onclick="{! c.onSaveClick}"/>
+        </div>
+    </div>
+</aura:component>
