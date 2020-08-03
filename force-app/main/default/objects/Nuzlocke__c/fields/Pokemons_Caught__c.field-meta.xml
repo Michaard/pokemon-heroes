@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Pokemons_Caught__c</fullName>
+    <description>Number of caught Pokemons</description>
+    <externalId>false</externalId>
+    <label>Pokemons Caught</label>
+    <summaryForeignKey>Pokemon__c.Nuzlocke__c</summaryForeignKey>
+    <summaryOperation>count</summaryOperation>
+    <trackTrending>false</trackTrending>
+    <type>Summary</type>
+</CustomField>

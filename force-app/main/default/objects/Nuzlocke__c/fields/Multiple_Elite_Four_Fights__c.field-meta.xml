@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Multiple_Elite_Four_Fights__c</fullName>
+    <defaultValue>false</defaultValue>
+    <description>Indicates if Nuzlocke run involves more than one Elite Four fights, thus assembling more than one final team</description>
+    <externalId>false</externalId>
+    <inlineHelpText>Check, if Nuzlocke run involves more than one Elite Four fights, thus assembling more than one final team</inlineHelpText>
+    <label>Multiple Elite Four Fights</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

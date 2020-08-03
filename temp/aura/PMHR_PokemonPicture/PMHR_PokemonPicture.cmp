@@ -1,0 +1,28 @@
+<aura:component description="PMHR_PokemonPicture" implements="flexipage:availableForRecordHome,force:hasRecordId" controller="PMHR_PokemonPictureController">
+    <aura:attribute name="displaySpinner" type="Boolean" default="false" access="private"/>
+    <aura:attribute name="record" type="Pokemon__c" access="private"/>
+    <aura:attribute name="pokemonPictureData" type="Object" access="private"/>
+
+    <aura:handler name="init" value="{! this}" action="{! c.onInit}"/>
+
+    <force:recordData aura:id="recordLoader"
+                      mode="EDIT"
+                      recordId="{! v.recordId}"
+                      targetFields="{! v.record}"
+                      recordUpdated="{! c.onRecordChange}"
+                      fields="Death__c"/>
+
+    <lightning:card>
+        <aura:if isTrue="{! v.displaySpinner}">
+            <lightning:spinner alternativeText="{! $Label.c.Spinner_Alt_Text}"/>
+        </aura:if>
+        <div class="slds-text-align--center">
+            <div class="picture-container">
+                <img class="{! 'picture' + (v.record.Death__c ? ' picture-dead' : '')}" src="{! v.pokemonPictureData.pictureUrl}"/>
+            </div>
+            <div style="padding-top: 1rem;">
+                <lightning:badge label="{! v.pokemonPictureData.pokemonType}"/>
+            </div>
+        </div>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>Pokedex_Number__c</columns>
+    <columns>NAME</columns>
+    <columns>Type__c</columns>
+    <columns>Family__c</columns>
+    <columns>Family_Stage__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>Pokemon_Data__c.Form</value>
+    </filters>
+    <label>All</label>
+</ListView>

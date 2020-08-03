@@ -1,0 +1,5 @@
+<design:component label="Pokemon Picture">
+    <sfdc:objects>
+        <sfdc:object>Pokemon_Data__c</sfdc:object>
+    </sfdc:objects>
+</design:component>

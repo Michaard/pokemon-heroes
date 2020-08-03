@@ -1,0 +1,5 @@
+<design:component label="Pokemon Death Information">
+    <sfdc:objects>
+        <sfdc:object>Pokemon__c</sfdc:object>
+    </sfdc:objects>
+</design:component>

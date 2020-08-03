@@ -1,0 +1,24 @@
+<aura:component description="PMHR_PokemonDataPicture" implements="flexipage:availableForRecordHome,force:hasRecordId">
+    <aura:attribute name="record" type="Pokemon__c" access="private"/>
+
+    <force:recordData aura:id="recordLoader"
+                      mode="EDIT"
+                      recordId="{! v.recordId}"
+                      targetFields="{! v.record}"
+                      recordUpdated="{! c.onRecordChange}"
+                      fields="Name, Picture_Url__c, Type__c"/>
+
+    <lightning:card>
+        <aura:set attribute="title">
+            <h3 class="slds-section__title test-id__section-header-container section-title-custom">{! format($Label.c.PMHR_Section_Title_Pokemon_Picture, v.record.Name)}</h3>
+        </aura:set>
+        <div class="slds-p-horizontal--small slds-text-align--center">
+            <div class="picture-container">
+                <img class="pokemon-picture" src="{! v.record.Picture_Url__c}"/>
+            </div>
+            <div style="padding-top: 1rem;">
+                <lightning:badge label="{! v.record.Type__c}"/>
+            </div>
+        </div>
+    </lightning:card>
+</aura:component>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>Add new Final Team to Nuzlocke</description>
+    <height>150</height>
+    <label>Add New Final Team</label>
+    <lightningComponent>PMHR_NewFinalTeamButton</lightningComponent>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <type>LightningComponent</type>
+    <width>-100</width>
+</QuickAction>
