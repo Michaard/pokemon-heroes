@@ -13,7 +13,7 @@
 
         let deathLevel = component.get("v.deathLevel");
         let deathLevelInput = component.find("deathLevelInput");
-        let isDeathLevelInputFilled;
+        let isDeathLevelInputFilled
         if (deathLevelInput) {
             isDeathLevelInputFilled = !helper.showErrorOnFieldIfInvalid(component, deathLevelInput, deathLevel);
         } else {
