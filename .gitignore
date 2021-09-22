@@ -13,9 +13,8 @@ scripts/
 .prettierignore
 .prettierrc
 package.json
-README.md
-sfdx-project.json
 .eslintrc.json
+sfdx-project.json
 
 # LWC VSCode autocomplete
 **/lwc/jsconfig.json
