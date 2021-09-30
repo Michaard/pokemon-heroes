@@ -1,11 +1,11 @@
-.THIS .picture-container {
+.picture-container {
     width: 100%;
 }
 
-.THIS .picture {
+.picture {
     height: 150px;
 }
 
-.THIS .picture-dead {
+.picture-dead {
     filter: grayscale(100%);
 }

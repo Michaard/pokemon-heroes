@@ -21,11 +21,10 @@
     <label>PKMN Heroes</label>
     <navType>Standard</navType>
     <tabs>standard-home</tabs>
-    <tabs>Hero__c</tabs>
     <tabs>Nuzlocke__c</tabs>
     <tabs>Pokemon__c</tabs>
     <tabs>Final_Team__c</tabs>
-    <tabs>Final_Team_Member__c</tabs>
+    <tabs>Hero__c</tabs>
     <tabs>Pokemon_Data__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>PKMN_Heroes_UtilityBar</utilityBar>
