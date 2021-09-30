@@ -4,7 +4,7 @@ import getPokemonPicture from '@salesforce/apex/PMHR_PokemonPictureController.ge
 import { getRecord } from 'lightning/uiRecordApi';
 import POKEMON_ID_FIELD from '@salesforce/schema/Pokemon__c.Id';
 
-const pictureDeadCssClass = 'picture-dead';
+const CSS_CLASS_PICTURE_DEAD = 'picture-dead';
 
 export default class Pmhr_PokemonPictureCard extends LightningElement {
     @api recordId;
@@ -33,9 +33,9 @@ export default class Pmhr_PokemonPictureCard extends LightningElement {
             this.pokemonData = result;
             let pokemonDataPicture = this.template.querySelector('[data-id="pokemonDataPicture"]');
             if (result.isDead) {
-                pokemonDataPicture.classList.add(pictureDeadCssClass);
+                pokemonDataPicture.classList.add(CSS_CLASS_PICTURE_DEAD);
             } else {
-                pokemonDataPicture.classList.remove(pictureDeadCssClass);
+                pokemonDataPicture.classList.remove(CSS_CLASS_PICTURE_DEAD);
             }
             this.displaySpinner = false;
         })
