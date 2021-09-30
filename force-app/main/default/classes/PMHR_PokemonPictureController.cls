@@ -3,15 +3,17 @@ public class PMHR_PokemonPictureController {
     public static PokemonPicture getPokemonPicture(Id pokemonId) {
         Pokemon__c pokemon = PMHR_PokemonQueryService.getPokemonWithFormById(pokemonId);
         Pokemon_Data__c pokemonForm = PMHR_PokemonDataQueryService.getPokemonFormById(pokemon.Form__c);
-        return new PokemonPicture(pokemonForm, pokemon.Region_Specific_Variant__c);
+        return new PokemonPicture(pokemonForm, pokemon.Death__c, pokemon.Region_Specific_Variant__c);
     }
 
     @TestVisible
     private Class PokemonPicture {
         @AuraEnabled public String pictureUrl { get; private set; }
         @AuraEnabled public String pokemonType { get; private set; }
+        @AuraEnabled public Boolean isDead { get; private set; }
 
-        public PokemonPicture (Pokemon_Data__c pokemonForm, String regionSpecificVariant) {
+        public PokemonPicture (Pokemon_Data__c pokemonForm, Boolean isDead, String regionSpecificVariant) {
+            this.isDead = isDead;
             if (regionSpecificVariant == PMHR_Utilities.REGION_VARIANT_STANDARD) {
                 this.pictureUrl = pokemonForm.Picture_Url__c;
                 this.pokemonType = pokemonForm.Type__c;
