@@ -85,6 +85,20 @@
         <value>Invalid data</value>
     </labels>
     <labels>
+        <fullName>Label_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Label_Name</shortDescription>
+        <value>Name</value>
+    </labels>
+    <labels>
+        <fullName>Label_Type</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Label_Type</shortDescription>
+        <value>Type</value>
+    </labels>
+    <labels>
         <fullName>PMHR_Death_Status_Alive</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -314,6 +328,258 @@
         <protected>true</protected>
         <shortDescription>Spinner Alt Text</shortDescription>
         <value>Loading...</value>
+    </labels>
+    <labels>
+        <fullName>TM_CreatorBaseErrorMissingField</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_CreatorBaseErrorMissingField</shortDescription>
+        <value>Tournament name, type and participants have to be provided</value>
+    </labels>
+    <labels>
+        <fullName>TM_Draw</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Draw</shortDescription>
+        <value>Draw</value>
+    </labels>
+    <labels>
+        <fullName>TM_FinalSteps</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_FinalSteps</shortDescription>
+        <value>Final Steps</value>
+    </labels>
+    <labels>
+        <fullName>TM_GroupNamePrefix</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_GroupNamePrefix</shortDescription>
+        <value>Group {0}</value>
+    </labels>
+    <labels>
+        <fullName>TM_InvalidNumberOfParticipants</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_InvalidNumberOfParticipants</shortDescription>
+        <value>Invalid number of participants</value>
+    </labels>
+    <labels>
+        <fullName>TM_InvalidNumberOfParticipantsCup</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_InvalidNumberOfParticipantsCup</shortDescription>
+        <value>The number of participants must be 2, 4, 8 or 16</value>
+    </labels>
+    <labels>
+        <fullName>TM_InvalidNumberOfParticipantsElse</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_InvalidNumberOfParticipantsElse</shortDescription>
+        <value>The number of participants must be between 4 and 64</value>
+    </labels>
+    <labels>
+        <fullName>TM_InvalidNumberOfParticipantsLeague</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_InvalidNumberOfParticipantsLeague</shortDescription>
+        <value>The number of participants must be between 2 and 64</value>
+    </labels>
+    <labels>
+        <fullName>TM_InvalidParticipantsData</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_InvalidParticipantsData</shortDescription>
+        <value>Invalid participants data provided</value>
+    </labels>
+    <labels>
+        <fullName>TM_InvalidPointScore</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_InvalidPointScore</shortDescription>
+        <value>Points per victory must be greater than points per draw/lose, and points per draw must be greater than points per lose</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Allow_Draws</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Allow_Draws</shortDescription>
+        <value>Allow Draws</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Battle_Royale</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Battle_Royale</shortDescription>
+        <value>Battle Royale</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Cup</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Cup</shortDescription>
+        <value>Cup</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Cup_Groups</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Cup_Groups</shortDescription>
+        <value>Cup (with groups)</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_League</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_League</shortDescription>
+        <value>League</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Number_Of_Groups</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Number_Of_Groups</shortDescription>
+        <value>Number of Groups</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Number_Of_Participants</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Number_Of_Participants</shortDescription>
+        <value>Number of Participants</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Participants</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Participants</shortDescription>
+        <value>Participants</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Point_Draw</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Point_Draw</shortDescription>
+        <value>Points per Draw</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Point_Lose</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Point_Lose</shortDescription>
+        <value>Points per Lose</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Point_Victory</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Point_Victory</shortDescription>
+        <value>Points per Victory</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Third_Place_Match</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Third_Place_Match</shortDescription>
+        <value>Third Place Match</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Tournament_Name</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Tournament_Name</shortDescription>
+        <value>Tournament Name</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_Tournament_Type</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_Tournament_Type</shortDescription>
+        <value>Tournament Type</value>
+    </labels>
+    <labels>
+        <fullName>TM_Label_With_Rematches</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_Label_With_Rematches</shortDescription>
+        <value>With Rematches</value>
+    </labels>
+    <labels>
+        <fullName>TM_MatchNotResolved</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_MatchNotResolved</shortDescription>
+        <value>Match not yet resolved</value>
+    </labels>
+    <labels>
+        <fullName>TM_NoTournaments</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_NoTournaments</shortDescription>
+        <value>No tournaments found...</value>
+    </labels>
+    <labels>
+        <fullName>TM_ParticipantsPlaceholder</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_ParticipantsPlaceholder</shortDescription>
+        <value>Place every single participant in a new line...</value>
+    </labels>
+    <labels>
+        <fullName>TM_PhaseSetup</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_PhaseSetup</shortDescription>
+        <value>Phase Setup</value>
+    </labels>
+    <labels>
+        <fullName>TM_TournamentBrowserHeader</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_TournamentBrowserHeader</shortDescription>
+        <value>Tournaments</value>
+    </labels>
+    <labels>
+        <fullName>TM_TournamentCreatorHeader</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_TournamentCreatorHeader</shortDescription>
+        <value>Tournament Creator</value>
+    </labels>
+    <labels>
+        <fullName>TM_TournamentIconAltText</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_TournamentIconAltText</shortDescription>
+        <value>Tournament Icon</value>
+    </labels>
+    <labels>
+        <fullName>TM_TournamentNamePlaceholder</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_TournamentNamePlaceholder</shortDescription>
+        <value>Tournament name...</value>
+    </labels>
+    <labels>
+        <fullName>TM_TournamentPhaseSessionKey</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_TournamentPhaseSessionKey</shortDescription>
+        <value>tournamentPhaseDataSessionCache</value>
+    </labels>
+    <labels>
+        <fullName>TM_TournamentSessionKey</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_TournamentSessionKey</shortDescription>
+        <value>tournamentDataSessionCache</value>
+    </labels>
+    <labels>
+        <fullName>TM_TournamentSetup</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>TM_TournamentSetup</shortDescription>
+        <value>Tournament Setup</value>
     </labels>
     <labels>
         <fullName>Toast_Error_Add_New_Final_Team</fullName>

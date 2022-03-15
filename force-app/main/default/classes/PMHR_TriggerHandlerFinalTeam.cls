@@ -31,6 +31,9 @@ public without sharing class PMHR_TriggerHandlerFinalTeam implements ITrigger {
     public void beforeUpdate(SObject oldSo, SObject so) {
     }
 
+    public void afterUpdate(SObject oldSo, SObject so) {
+    }
+
     public void afterDelete(SObject so) {
         Final_Team__c finalTeam = (Final_Team__c) so;
 

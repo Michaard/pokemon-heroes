@@ -1,15 +1,16 @@
 import { LightningElement, api, wire } from 'lwc';
-import Spinner_Alt_Text from '@salesforce/label/c.Spinner_Alt_Text';
-import getPokemonPicture from '@salesforce/apex/PMHR_PokemonPictureController.getPokemonPicture';
 import { getRecord } from 'lightning/uiRecordApi';
+import getPokemonPicture from '@salesforce/apex/PMHR_PokemonPictureController.getPokemonPicture';
 import POKEMON_ID_FIELD from '@salesforce/schema/Pokemon__c.Id';
+import Spinner_Alt_Text from '@salesforce/label/c.Spinner_Alt_Text';
 
 const CSS_CLASS_PICTURE_DEAD = 'picture-dead';
 
 export default class Pmhr_PokemonPictureCard extends LightningElement {
     @api recordId;
-    displaySpinner;
     labels;
+    displaySpinner;
+    pokemonData;
 
     @wire(getRecord, {recordId: '$recordId', fields: [POKEMON_ID_FIELD]}) record({error, data}){
         if (data) {
@@ -19,9 +20,7 @@ export default class Pmhr_PokemonPictureCard extends LightningElement {
 
     constructor() {
         super();
-        this.labels = {
-            Spinner_Alt_Text
-        };
+        this.labels = {Spinner_Alt_Text};
         this.displaySpinner = false;
         this.pokemonData = {};
     }

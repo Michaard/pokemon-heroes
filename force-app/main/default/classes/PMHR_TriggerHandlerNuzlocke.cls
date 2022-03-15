@@ -25,6 +25,9 @@ public without sharing class PMHR_TriggerHandlerNuzlocke implements ITrigger {
         }
     }
 
+    public void afterUpdate(SObject oldSo, SObject so) {
+    }
+
     public void afterDelete(SObject so) {
     }
 

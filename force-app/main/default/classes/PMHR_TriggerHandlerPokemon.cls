@@ -27,6 +27,9 @@ public without sharing class PMHR_TriggerHandlerPokemon implements ITrigger {
         PMHR_TriggerHandlerPokemon_Helper.validateRegionSpecificVariant(pokemon, relatedPokemonData);
     }
 
+    public void afterUpdate(SObject oldSo, SObject so) {
+    }
+
     public void afterDelete(SObject so) {
     }
 
