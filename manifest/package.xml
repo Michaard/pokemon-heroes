@@ -285,6 +285,7 @@
         <members>Nuzlocke__c.Add_New_Final_Team</members>
         <members>Nuzlocke__c.Finish_Nuzlocke</members>
         <members>Pokemon__c.Evolve</members>
+        <members>Pokemon__c.Immortalize</members>
         <name>QuickAction</name>
     </types>
     <types>
