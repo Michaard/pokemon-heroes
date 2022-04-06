@@ -8,6 +8,15 @@
         <type>Flexipage</type>
         <pageOrSobjectType>standard-home</pageOrSobjectType>
     </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>PMHR_Pokemon_Record_Page</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>Pokemon__c</pageOrSobjectType>
+    </actionOverrides>
     <brand>
         <headerColor>#BA0003</headerColor>
         <logo>X280954</logo>

@@ -2,10 +2,10 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Nuzlocke_Finished</fullName>
     <active>true</active>
-    <description>You can&apos;t add new Pokemon to finished Nuzlocke</description>
+    <description>You can&apos;t add new Pokemon to finished Nuzlocke.</description>
     <errorConditionFormula>AND(
  ISNEW(),
  Nuzlocke__r.Is_Finished__c
 )</errorConditionFormula>
-    <errorMessage>You can&apos;t add new Pokemon to finished Nuzlocke</errorMessage>
+    <errorMessage>You can&apos;t add new Pokemon to finished Nuzlocke.</errorMessage>
 </ValidationRule>

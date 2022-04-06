@@ -2,8 +2,7 @@ public without sharing class PMHR_TriggerHandlerFinalTeam implements ITrigger {
     private Map<Id, Nuzlocke__c> relatedNuzlockes;
     private List<Final_Team__c> finalTeams;
 
-    public void bulkBefore() {
-    }
+    public void bulkBefore() {}
 
     public void bulkAfter() {
         if (Trigger.isInsert) {
@@ -17,8 +16,7 @@ public without sharing class PMHR_TriggerHandlerFinalTeam implements ITrigger {
         }
     }
 
-    public void beforeInsert(SObject so) {
-    }
+    public void beforeInsert(SObject so) {}
 
     public void afterInsert(SObject so) {
         Final_Team__c finalTeam = (Final_Team__c) so;
@@ -28,8 +26,9 @@ public without sharing class PMHR_TriggerHandlerFinalTeam implements ITrigger {
         }
     }
 
-    public void beforeUpdate(SObject oldSo, SObject so) {
-    }
+    public void beforeUpdate(SObject oldSo, SObject so) {}
+
+    public void afterUpdate(SObject oldSo, SObject so) {}
 
     public void afterDelete(SObject so) {
         Final_Team__c finalTeam = (Final_Team__c) so;

@@ -1,4 +1,4 @@
-public without sharing class PMHR_TriggerHandlerPokemonData implements iTrigger {
+public without sharing class PMHR_TriggerHandlerPokemonData implements ITrigger {
     private Map<Id, Pokemon_Data__c> existingPokemonForms;
     private Set<String> existingPokedexNumbers;
     private List<Pokemon_Data__c> additionalVariantsToDelete;
@@ -30,8 +30,7 @@ public without sharing class PMHR_TriggerHandlerPokemonData implements iTrigger 
         }
     }
 
-    public void afterInsert(SObject so) {
-    }
+    public void afterInsert(SObject so) {}
 
     public void beforeUpdate(SObject oldSo, SObject so) {
         Pokemon_Data__c pokemonData = (Pokemon_Data__c) so;
@@ -41,8 +40,9 @@ public without sharing class PMHR_TriggerHandlerPokemonData implements iTrigger 
         }
     }
 
-    public void afterDelete(SObject so) {
-    }
+    public void afterUpdate(SObject oldSo, SObject so) {}
+
+    public void afterDelete(SObject so) {}
 
     public void andFinally() {
         if (Trigger.isDelete) {

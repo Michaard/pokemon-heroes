@@ -1,3 +1,4 @@
+<!-- Pokemon Picture Card -->
 <template>
     <lightning-card class="slds-is-relative">
         <template if:true={displaySpinner}>
@@ -5,7 +6,7 @@
         </template>
         <div class="slds-text-align_center">
             <div class="picture-container">
-                <img data-id="pokemonDataPicture" class="picture" src={pokemonData.pictureUrl}></img>
+                <img data-id="pokemonDataPicture" class="picture" src={pokemonData.pictureUrl}/>
             </div>
             <div style="padding-top: 1rem;">
                 <lightning-badge label={pokemonData.pokemonType}></lightning-badge>
