@@ -7,14 +7,11 @@ public without sharing class PMHR_TriggerHandlerNuzlocke implements ITrigger {
         }
     }
 
-    public void bulkAfter() {
-    }
+    public void bulkAfter() {}
 
-    public void beforeInsert(SObject so) {
-    }
+    public void beforeInsert(SObject so) {}
 
-    public void afterInsert(SObject so) {
-    }
+    public void afterInsert(SObject so) {}
 
     public void beforeUpdate(SObject oldSo, SObject so) {
         Nuzlocke__c oldNuzlocke = (Nuzlocke__c) oldSo;
@@ -25,12 +22,9 @@ public without sharing class PMHR_TriggerHandlerNuzlocke implements ITrigger {
         }
     }
 
-    public void afterUpdate(SObject oldSo, SObject so) {
-    }
+    public void afterUpdate(SObject oldSo, SObject so) {}
 
-    public void afterDelete(SObject so) {
-    }
+    public void afterDelete(SObject so) {}
 
-    public void andFinally() {
-    }
+    public void andFinally() {}
 }

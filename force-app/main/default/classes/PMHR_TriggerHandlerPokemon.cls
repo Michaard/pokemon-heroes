@@ -9,8 +9,7 @@ public without sharing class PMHR_TriggerHandlerPokemon implements ITrigger {
         }
     }
 
-    public void bulkAfter() {
-    }
+    public void bulkAfter() {}
 
     public void beforeInsert(SObject so) {
         Pokemon__c pokemon = (Pokemon__c) so;
@@ -18,8 +17,7 @@ public without sharing class PMHR_TriggerHandlerPokemon implements ITrigger {
         PMHR_TriggerHandlerPokemon_Helper.validateRegionSpecificVariant(pokemon, relatedPokemonData);
     }
 
-    public void afterInsert(SObject so) {
-    }
+    public void afterInsert(SObject so) {}
 
     public void beforeUpdate(SObject oldSo, SObject so) {
         Pokemon__c pokemon = (Pokemon__c) so;
@@ -27,12 +25,9 @@ public without sharing class PMHR_TriggerHandlerPokemon implements ITrigger {
         PMHR_TriggerHandlerPokemon_Helper.validateRegionSpecificVariant(pokemon, relatedPokemonData);
     }
 
-    public void afterUpdate(SObject oldSo, SObject so) {
-    }
+    public void afterUpdate(SObject oldSo, SObject so) {}
 
-    public void afterDelete(SObject so) {
-    }
+    public void afterDelete(SObject so) {}
 
-    public void andFinally() {
-    }
+    public void andFinally() {}
 }
