@@ -2,7 +2,7 @@
 <ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
     <fullName>Invalid_Death_Level</fullName>
     <active>true</active>
-    <description>Death level must be in range 1-100</description>
+    <description>Death level must be in range 1-100.</description>
     <errorConditionFormula>AND(
  Death__c,
  OR(
@@ -11,5 +11,5 @@
  )
 )</errorConditionFormula>
     <errorDisplayField>Death_Level__c</errorDisplayField>
-    <errorMessage>Death level must be in range 1-100</errorMessage>
+    <errorMessage>Death level must be in range 1-100.</errorMessage>
 </ValidationRule>

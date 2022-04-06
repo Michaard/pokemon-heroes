@@ -1,32 +1,28 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
 import PMHR_Section_Title_Death_Info from '@salesforce/label/c.PMHR_Section_Title_Death_Info';
-import Button_Edit from '@salesforce/label/c.Button_Edit';
 import PMHR_Field_Life_Status from '@salesforce/label/c.PMHR_Field_Life_Status';
 import PMHR_Field_Death_Level from '@salesforce/label/c.PMHR_Field_Death_Level';
 import PMHR_Field_Death_Reason from '@salesforce/label/c.PMHR_Field_Death_Reason';
 import PMHR_Death_Status_Dead from '@salesforce/label/c.PMHR_Death_Status_Dead';
 import PMHR_Death_Status_Alive from '@salesforce/label/c.PMHR_Death_Status_Alive';
 
-const POKEMON_FIELDS = ['Pokemon__c.Name', 'Pokemon__c.Death__c', 'Pokemon__c.Death_Level__c', 'Pokemon__c.Cause_of_Death__c'];
+const POKEMON_FIELDS = ['Pokemon__c.Death__c', 'Pokemon__c.Death_Level__c', 'Pokemon__c.Cause_of_Death__c'];
 const CSS_CLASS_SLDS_SIZE_1_OF_2 = 'slds-size_1-of-2';
 
 class PokemonData {
-    constructor(name, isDead, deathLevel, causeOfDeath) {
-        this.name = name;
+    constructor(isDead, deathLevel, causeOfDeath) {
         this.isDead = isDead;
         this.deathLevel = deathLevel;
         this.causeOfDeath = causeOfDeath;
     }
 }
 
-export default class Pmhr_PokemonDeathInfoForm extends LightningElement {
+export default class PmhrPokemonLifeInformationCard extends LightningElement {
     @api recordId;
     displaySpinner;
     labels;
     pokemonData;
-    displayModal;
-    modalBody;
 
     @wire(getRecord, {recordId: '$recordId', fields: POKEMON_FIELDS}) record({error, data}){
         if (data) {
@@ -36,10 +32,8 @@ export default class Pmhr_PokemonDeathInfoForm extends LightningElement {
 
     constructor() {
         super();
-        this.displaySpinner = false;
         this.labels = {
             PMHR_Section_Title_Death_Info,
-            Button_Edit,
             PMHR_Field_Life_Status,
             PMHR_Field_Death_Level,
             PMHR_Field_Death_Reason,
@@ -47,7 +41,6 @@ export default class Pmhr_PokemonDeathInfoForm extends LightningElement {
             PMHR_Death_Status_Alive
         };
         this.pokemonData = new PokemonData();
-        this.displayModal = false;
     }
 
     get lifeStatus() {
@@ -62,7 +55,7 @@ export default class Pmhr_PokemonDeathInfoForm extends LightningElement {
 
     setPokemonData(data) {
         this.displaySpinner = true;
-        this.pokemonData = new PokemonData(data.fields.Name.value, data.fields.Death__c.value, data.fields.Death_Level__c.value, data.fields.Cause_of_Death__c.value);
+        this.pokemonData = new PokemonData(data.fields.Death__c.value, data.fields.Death_Level__c.value, data.fields.Cause_of_Death__c.value);
         let lifeStatusDiv = this.template.querySelector('[data-id="lifeStatusDiv"]');
         if (this.pokemonData.isDead) {
             lifeStatusDiv.classList.add(CSS_CLASS_SLDS_SIZE_1_OF_2);
@@ -70,15 +63,5 @@ export default class Pmhr_PokemonDeathInfoForm extends LightningElement {
             lifeStatusDiv.classList.remove(CSS_CLASS_SLDS_SIZE_1_OF_2);
         }
         this.displaySpinner = false;
-    }
-
-    openEditModal() {
-        this.displayModal = !this.displayModal;
-        let editPokemonDeathInfoModal = this.template.querySelector('[data-id="editPokemonDeathInfoModal"');
-        if (this.displayModal) {
-            editPokemonDeathInfoModal.showModal();
-        } else {
-            editPokemonDeathInfoModal.hideModal();
-        }
     }
 }

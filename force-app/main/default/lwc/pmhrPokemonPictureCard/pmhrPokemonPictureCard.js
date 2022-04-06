@@ -6,7 +6,7 @@ import Spinner_Alt_Text from '@salesforce/label/c.Spinner_Alt_Text';
 
 const CSS_CLASS_PICTURE_DEAD = 'picture-dead';
 
-export default class Pmhr_PokemonPictureCard extends LightningElement {
+export default class PmhrPokemonPictureCard extends LightningElement {
     @api recordId;
     labels;
     displaySpinner;
@@ -43,5 +43,4 @@ export default class Pmhr_PokemonPictureCard extends LightningElement {
             this.displaySpinner = false;
         })
     }
-
 }

@@ -1,11 +1,11 @@
+<!-- Pokemon Life Information Card -->
 <template>
     <lightning-card class="slds-is-relative" title={labels.PMHR_Section_Title_Death_Info} variant="narrow">
         <template if:true={displaySpinner}>
             <lightning-spinner alternative-text={labels.Spinner_Alt_Text}></lightning-spinner>
         </template>
-        <lightning-button label={labels.Button_Edit} slot="actions" onclick={openEditModal}></lightning-button>
         <div class="slds-grid slds-var-p-horizontal_small">
-            <div data-id="lifeStatusDiv" class="slds-col slds-size_1-of-2 slds-var-p-horizontal_small">
+            <div data-id="lifeStatusDiv" class="slds-col slds-var-p-horizontal_small">
                 <div class="slds-form-element slds-form-element_readonly">
                     <div class="slds-form-element__label">
                         <span>{labels.PMHR_Field_Life_Status}</span>
@@ -43,5 +43,4 @@
             </div>
         </template>
     </lightning-card>
-    <c-pmhr_-edit-pokemon-death-info-modal data-id="editPokemonDeathInfoModal"></c-pmhr_-edit-pokemon-death-info-modal>
 </template>
