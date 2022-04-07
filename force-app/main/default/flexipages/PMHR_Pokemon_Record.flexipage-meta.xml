@@ -83,7 +83,7 @@
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Pokemon Record Page</masterLabel>
+    <masterLabel>Pokemon Record</masterLabel>
     <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
     <sobjectType>Pokemon__c</sobjectType>
     <template>

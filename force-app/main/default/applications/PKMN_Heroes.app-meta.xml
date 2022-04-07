@@ -11,7 +11,7 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>PMHR_Pokemon_Record_Page</content>
+        <content>PMHR_Pokemon_Record</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
@@ -29,6 +29,60 @@
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <label>PKMN Heroes</label>
     <navType>Standard</navType>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PMHR_Pokemon_Data_Additional_Variant_Record</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
+        <recordType>Pokemon_Data__c.Additional_Variant</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PMHR_Pokemon_Data_Additional_Variant_Record</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
+        <recordType>Pokemon_Data__c.Additional_Variant</recordType>
+        <type>Flexipage</type>
+        <profile>Standard</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PMHR_Pokemon_Data_Additional_Variant_Record</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
+        <recordType>Pokemon_Data__c.Additional_Variant</recordType>
+        <type>Flexipage</type>
+        <profile>StandardAul</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PMHR_Pokemon_Data_Record</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
+        <recordType>Pokemon_Data__c.Form</recordType>
+        <type>Flexipage</type>
+        <profile>Admin</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PMHR_Pokemon_Data_Record</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
+        <recordType>Pokemon_Data__c.Form</recordType>
+        <type>Flexipage</type>
+        <profile>Standard</profile>
+    </profileActionOverrides>
+    <profileActionOverrides>
+        <actionName>View</actionName>
+        <content>PMHR_Pokemon_Data_Record</content>
+        <formFactor>Large</formFactor>
+        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
+        <recordType>Pokemon_Data__c.Form</recordType>
+        <type>Flexipage</type>
+        <profile>StandardAul</profile>
+    </profileActionOverrides>
     <tabs>standard-home</tabs>
     <tabs>Nuzlocke__c</tabs>
     <tabs>Pokemon__c</tabs>
