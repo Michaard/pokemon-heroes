@@ -1,28 +1,28 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
 import getPokemonPicture from '@salesforce/apex/PMHR_PokemonPictureController.getPokemonPicture';
-import POKEMON_ID_FIELD from '@salesforce/schema/Pokemon__c.Id';
 import Spinner_Alt_Text from '@salesforce/label/c.Spinner_Alt_Text';
 
+const POKEMON_FIELDS = ['Pokemon__c.Id'];
 const CSS_CLASS_PICTURE_DEAD = 'picture-dead';
 
-export default class PmhrPokemonPictureCard extends LightningElement {
+export default class PMHR_PokemonPictureCard extends LightningElement {
     @api recordId;
     labels;
     displaySpinner;
     pokemonData;
-
-    @wire(getRecord, {recordId: '$recordId', fields: [POKEMON_ID_FIELD]}) record({error, data}){
-        if (data) {
-            this.getPokemonPicture();
-        }
-    }
 
     constructor() {
         super();
         this.labels = {Spinner_Alt_Text};
         this.displaySpinner = false;
         this.pokemonData = {};
+    }
+
+    @wire(getRecord, {recordId: '$recordId', fields: POKEMON_FIELDS}) record({error, data}){
+        if (data) {
+            this.getPokemonPicture();
+        }
     }
 
     getPokemonPicture() {

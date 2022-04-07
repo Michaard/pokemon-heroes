@@ -8,6 +8,10 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>enableActionsConfiguration</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>hideChatterActions</name>
                     <value>false</value>
                 </componentInstanceProperties>
@@ -37,15 +41,15 @@
     <flexiPageRegions>
         <itemInstances>
             <componentInstance>
-                <componentName>PMHR_PokemonDataPicture</componentName>
-                <identifier>PMHR_PokemonDataPicture</identifier>
+                <componentName>pmhrPokemonDataPicture</componentName>
+                <identifier>c_pmhrPokemonDataPicture1</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Additional Variant Record Page</masterLabel>
+    <masterLabel>Additional Variant Record</masterLabel>
     <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
     <sobjectType>Pokemon_Data__c</sobjectType>
     <template>

@@ -18,7 +18,7 @@ class PokemonData {
     }
 }
 
-export default class PmhrPokemonLifeInformationCard extends LightningElement {
+export default class PMHR_PokemonLifeInformationCard extends LightningElement {
     @api recordId;
     displaySpinner;
     labels;
@@ -26,7 +26,7 @@ export default class PmhrPokemonLifeInformationCard extends LightningElement {
 
     @wire(getRecord, {recordId: '$recordId', fields: POKEMON_FIELDS}) record({error, data}){
         if (data) {
-            this.setPokemonData(data);
+            this.initPokemonData(data);
         }
     }
 
@@ -53,7 +53,7 @@ export default class PmhrPokemonLifeInformationCard extends LightningElement {
         }
     }
 
-    setPokemonData(data) {
+    initPokemonData(data) {
         this.displaySpinner = true;
         this.pokemonData = new PokemonData(data.fields.Death__c.value, data.fields.Death_Level__c.value, data.fields.Cause_of_Death__c.value);
         let lifeStatusDiv = this.template.querySelector('[data-id="lifeStatusDiv"]');
