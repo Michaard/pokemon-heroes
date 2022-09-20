@@ -25,11 +25,11 @@ public class TriggerHandler {
                     triggerHandler.afterInsert(so);
                 }
             }
-//            else if (Trigger.isUpdate) {
-//                for (SObject so : Trigger.old) {
-//                    triggerHandler.afterUpdate(so, Trigger.newMap.get(so.Id));
-//                }
-//            }
+            else if (Trigger.isUpdate) {
+                for (SObject so : Trigger.old) {
+                    triggerHandler.afterUpdate(so, Trigger.newMap.get(so.Id));
+                }
+            }
             else if (Trigger.isDelete) {
                 for (SObject so : Trigger.old) {
                     triggerHandler.afterDelete(so);

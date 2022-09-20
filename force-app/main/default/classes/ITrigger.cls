@@ -8,7 +8,7 @@ public interface ITrigger {
 //    void beforeDelete(SObject so);
 
     void afterInsert(SObject so);
-//    void afterUpdate(SObject oldSo, SObject so);
+    void afterUpdate(SObject oldSo, SObject so);
     void afterDelete(SObject so);
 //    void afterUndelete(SObject so);
 

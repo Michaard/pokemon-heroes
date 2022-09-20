@@ -271,14 +271,14 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>PMHR Placeholder Empty Final Team Members List</shortDescription>
-        <value>The Final Team has no members</value>
+        <value>The Final Team has no members.</value>
     </labels>
     <labels>
         <fullName>PMHR_Placeholder_Final_Team_Members_List</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>PMHR Placeholder Final Team Members List</shortDescription>
-        <value>The Final Team for this Nuzlocke is not assembled</value>
+        <value>The Final Team for this Nuzlocke is not assembled.</value>
     </labels>
     <labels>
         <fullName>PMHR_PokedexNr_PokemonName</fullName>
