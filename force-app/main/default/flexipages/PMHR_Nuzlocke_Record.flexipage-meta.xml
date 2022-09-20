@@ -8,6 +8,14 @@
                     <value>true</value>
                 </componentInstanceProperties>
                 <componentInstanceProperties>
+                    <name>enableActionsConfiguration</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
+                    <name>hideChatterActions</name>
+                    <value>false</value>
+                </componentInstanceProperties>
+                <componentInstanceProperties>
                     <name>numVisibleActions</name>
                     <value>10</value>
                 </componentInstanceProperties>
@@ -76,15 +84,15 @@
         </itemInstances>
         <itemInstances>
             <componentInstance>
-                <componentName>PMHR_FinalTeamLists</componentName>
-                <identifier>PMHR_FinalTeamLists</identifier>
+                <componentName>pmhrNuzlockeFinalTeams</componentName>
+                <identifier>c_pmhrNuzlockeFinalTeams1</identifier>
             </componentInstance>
         </itemInstances>
         <mode>Replace</mode>
         <name>sidebar</name>
         <type>Region</type>
     </flexiPageRegions>
-    <masterLabel>Nuzlocke Record Page</masterLabel>
+    <masterLabel>Nuzlocke Record</masterLabel>
     <parentFlexiPage>flexipage__default_rec_L</parentFlexiPage>
     <sobjectType>Nuzlocke__c</sobjectType>
     <template>

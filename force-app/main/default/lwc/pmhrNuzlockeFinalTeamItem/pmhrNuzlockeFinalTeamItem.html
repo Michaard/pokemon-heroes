@@ -1,0 +1,25 @@
+<!-- Nuzlocke Final Team Item -->
+<template>
+    <lightning-card>
+        <h1 slot="title">
+            <a href={finalTeamUrl}>
+                {finalTeamCardTitle}
+            </a>
+        </h1>
+        <div class="slds-p-horizontal_medium">
+            <template if:false={isFinalTeamNull}>
+                <p if:true={isFinalTeamEmpty}>
+                    {labels.PMHR_Placeholder_Empty_Final_Team_Members_List}
+                </p>
+                <template if:false={isFinalTeamEmpty}>
+                    <template for:each={finalTeam.members} for:item="member">
+                        <c-pmhr-nuzlocke-final-team-member team-member={member} key={member.id}></c-pmhr-nuzlocke-final-team-member>
+                    </template>
+                </template>
+            </template>
+            <p if:true={isFinalTeamNull}>
+                {labels.PMHR_Placeholder_Final_Team_Members_List}
+            </p>
+        </div>
+    </lightning-card>
+</template>

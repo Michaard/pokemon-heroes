@@ -21,11 +21,11 @@ export default class PMHR_PokemonPictureCard extends LightningElement {
 
     @wire(getRecord, {recordId: '$recordId', fields: POKEMON_FIELDS}) record({error, data}){
         if (data) {
-            this.getPokemonPicture();
+            this.initialize();
         }
     }
 
-    getPokemonPicture() {
+    initialize() {
         this.displaySpinner = true;
         getPokemonPicture({pokemonId: this.recordId})
         .then(result => {
@@ -37,8 +37,7 @@ export default class PMHR_PokemonPictureCard extends LightningElement {
                 pokemonDataPicture.classList.remove(CSS_CLASS_PICTURE_DEAD);
             }
             this.displaySpinner = false;
-        })
-        .catch(error => {
+        }).catch(error => {
             console.log(error);
             this.displaySpinner = false;
         })
