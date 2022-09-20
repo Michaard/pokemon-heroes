@@ -22,7 +22,7 @@ public with sharing class PMHR_FinalTeamListControllerHelper {
             result.add(new FinalTeam(finalTeam, finalTeamMembers));
         }
 
-        return result;
+        return result.isEmpty() ? null : result;
     }
 
     public class FinalTeam {

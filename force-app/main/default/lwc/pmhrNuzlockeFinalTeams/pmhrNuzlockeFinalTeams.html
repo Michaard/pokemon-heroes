@@ -1,0 +1,16 @@
+<!-- Final Teams -->
+<template>
+    <div class="slds-is-relative">
+        <div if:true={displaySpinner}>
+            <lightning-spinner alternative-text={labels.Spinner_Alt_Text}></lightning-spinner>
+        </div>
+        <template if:true={finalTeams}>
+            <template for:each={finalTeams} for:item="finalTeam">
+                <c-pmhr-nuzlocke-final-team-item final-team={finalTeam} key={finalTeam.id}></c-pmhr-nuzlocke-final-team-item>
+            </template>
+        </template>
+        <template if:true={isFinalTeamsListEmpty}>
+            <c-pmhr-nuzlocke-final-team-item></c-pmhr-nuzlocke-final-team-item>
+        </template>
+    </div>
+</template>
