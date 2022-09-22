@@ -1,0 +1,17 @@
+.form-container {
+    height: 175px;
+    margin: 0.2rem 0.1rem 0 0.1rem;
+}
+
+.form-container:hover {
+    cursor: pointer;
+    border-color: var(--lwc-brandAccessibleActive);
+}
+
+.picture-container {
+    height: 100px;
+}
+
+.picture {
+    height: 100%;
+}
