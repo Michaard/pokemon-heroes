@@ -1,0 +1,10 @@
+<!-- Evolve Pokemon Item -->
+<template>
+    <div class="form-container slds-box slds-button_outline-brand" onclick={handleFormClick}>
+        <div class="picture-container">
+            <img src={formData.pictureUrl} class="picture"/>
+        </div>
+        <p>{formData.pokedexNumber}. {formData.name}</p>
+        <lightning-badge label={formData.type}></lightning-badge>
+    </div>
+</template>

@@ -71,18 +71,11 @@
         <value>Review the errors on this page.</value>
     </labels>
     <labels>
-        <fullName>Label_Error</fullName>
+        <fullName>PMHR_Choose_Next_Form</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Label Error</shortDescription>
-        <value>Error</value>
-    </labels>
-    <labels>
-        <fullName>Label_Invalid_Data</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label Invalid Data</shortDescription>
-        <value>Invalid data</value>
+        <shortDescription>PMHR Choose Next Form</shortDescription>
+        <value>Choose the next form:</value>
     </labels>
     <labels>
         <fullName>PMHR_Death_Status_Alive</fullName>
@@ -232,6 +225,13 @@
         <value>Type:</value>
     </labels>
     <labels>
+        <fullName>PMHR_Label_Error</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Label Error</shortDescription>
+        <value>Error</value>
+    </labels>
+    <labels>
         <fullName>PMHR_Modal_Title_Add_New_Final_Team</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -257,14 +257,14 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>PMHR Next Available Form Header</shortDescription>
-        <value>Stage {0} available forms for {1}:</value>
+        <value>Evolve {0}</value>
     </labels>
     <labels>
         <fullName>PMHR_No_Next_Available_Form</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>PMHR No Next Available Form</shortDescription>
-        <value>{0} is in it&apos;s final form</value>
+        <value>{0} is in it&apos;s final form.</value>
     </labels>
     <labels>
         <fullName>PMHR_Placeholder_Empty_Final_Team_Members_List</fullName>
@@ -309,11 +309,18 @@
         <value>{0} Picture(s)</value>
     </labels>
     <labels>
-        <fullName>Spinner_Alt_Text</fullName>
+        <fullName>PMHR_Spinner_Alt_Text</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Spinner Alt Text</shortDescription>
         <value>Loading...</value>
+    </labels>
+    <labels>
+        <fullName>PMHR_Toast_Success_Next_Form_Assigned</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Toast Success Next Form Assigned</shortDescription>
+        <value>Congratulations! Your {0} evolved into {1}!</value>
     </labels>
     <labels>
         <fullName>Toast_Error_Add_New_Final_Team</fullName>
@@ -377,13 +384,6 @@
         <protected>true</protected>
         <shortDescription>Toast Success Death Info Update</shortDescription>
         <value>Life information updated</value>
-    </labels>
-    <labels>
-        <fullName>Toast_Success_Next_Form_Assigned</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Toast Success Next Form Assigned</shortDescription>
-        <value>Pokemon leveled up</value>
     </labels>
     <labels>
         <fullName>Toast_Success_Picture_Update</fullName>

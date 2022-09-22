@@ -1,10 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
-    <description>Assigns the next form for the Pokemon if possible.</description>
-    <height>150</height>
+    <actionSubtype>ScreenAction</actionSubtype>
+    <description>Evolve the Pokemon by assigning a next form to it, if possible.</description>
     <label>Evolve</label>
-    <lightningComponent>PMHR_NextFormAssignment</lightningComponent>
+    <lightningWebComponent>pmhrEvolvePokemon</lightningWebComponent>
     <optionsCreateFeedItem>false</optionsCreateFeedItem>
-    <type>LightningComponent</type>
-    <width>-100</width>
+    <type>LightningWebComponent</type>
 </QuickAction>
