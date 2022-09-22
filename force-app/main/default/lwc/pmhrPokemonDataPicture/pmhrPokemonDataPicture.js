@@ -1,6 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi'
-import Spinner_Alt_Text from '@salesforce/label/c.Spinner_Alt_Text';
+import PMHR_Spinner_Alt_Text from '@salesforce/label/c.PMHR_Spinner_Alt_Text';
 import PMHR_Section_Title_Pokemon_Picture from '@salesforce/label/c.PMHR_Section_Title_Pokemon_Picture'
 import { PMHR_Utils } from 'c/pmhrUtils'
 
@@ -21,7 +21,7 @@ export default class PMHR_PokemonDataPicture extends LightningElement {
     constructor() {
         super();
         this.labels = {
-            Spinner_Alt_Text,
+            PMHR_Spinner_Alt_Text,
             PMHR_Section_Title_Pokemon_Picture
         };
         this.displaySpinner = false;

@@ -55,4 +55,3 @@ package.json
 *.iml
 sfdx-project.json
 .idea
-manifest

@@ -1,5 +1,4 @@
-@IsTest
-private class PMHR_NextFormController_Test {
+@IsTest private class PMHR_EvolvePokemonControllerTest {
     private static final String FAMILY_ONE = 'Family 1';
     private static final String FAMILY_TWO = 'Family 2';
 
@@ -92,23 +91,23 @@ private class PMHR_NextFormController_Test {
 
         //when
         Test.startTest();
-        PMHR_NextFormController.PokemonWithNextForms secondStageForms = PMHR_NextFormController.getNextAvailableForms(firstStagePokemon.Id);
-        PMHR_NextFormController.PokemonWithNextForms thirdStageForms = PMHR_NextFormController.getNextAvailableForms(secondStagePokemon.Id);
-        PMHR_NextFormController.PokemonWithNextForms forthStageFormsOne = PMHR_NextFormController.getNextAvailableForms(thirdStagePokemonOne.Id);
-        PMHR_NextFormController.PokemonWithNextForms forthStageFormsTwo = PMHR_NextFormController.getNextAvailableForms(thirdStagePokemonTwo.Id);
+        List<PMHR_EvolvePokemonController.PokemonNextForm> secondStageForms = PMHR_EvolvePokemonController.getNextAvailableForms(firstStagePokemon.Id);
+        List<PMHR_EvolvePokemonController.PokemonNextForm> thirdStageForms = PMHR_EvolvePokemonController.getNextAvailableForms(secondStagePokemon.Id);
+        List<PMHR_EvolvePokemonController.PokemonNextForm> forthStageFormsOne = PMHR_EvolvePokemonController.getNextAvailableForms(thirdStagePokemonOne.Id);
+        List<PMHR_EvolvePokemonController.PokemonNextForm> forthStageFormsTwo = PMHR_EvolvePokemonController.getNextAvailableForms(thirdStagePokemonTwo.Id);
         Test.stopTest();
 
         //then
-        System.assertEquals(1, secondStageForms.nextForms.size());
-        for (PMHR_NextFormController.PokemonNextForm nextForm : secondStageForms.nextForms) {
+        System.assertEquals(1, secondStageForms.size());
+        for (PMHR_EvolvePokemonController.PokemonNextForm nextForm : secondStageForms) {
             System.assertEquals(2, nextForm.familyStage);
         }
-        System.assertEquals(2, thirdStageForms.nextForms.size());
-        for (PMHR_NextFormController.PokemonNextForm nextForm : thirdStageForms.nextForms) {
+        System.assertEquals(2, thirdStageForms.size());
+        for (PMHR_EvolvePokemonController.PokemonNextForm nextForm : thirdStageForms) {
             System.assertEquals(3, nextForm.familyStage);
         }
-        System.assertEquals(0, forthStageFormsOne.nextForms.size());
-        System.assertEquals(0, forthStageFormsTwo.nextForms.size());
+        System.assertEquals(0, forthStageFormsOne.size());
+        System.assertEquals(0, forthStageFormsTwo.size());
     }
 
     static testMethod void shouldNotGetNextAvailableForms_noNextForms() {
@@ -117,11 +116,11 @@ private class PMHR_NextFormController_Test {
 
         //when
         Test.startTest();
-        PMHR_NextFormController.PokemonWithNextForms secondStageForms = PMHR_NextFormController.getNextAvailableForms(pokemon.Id);
+        List<PMHR_EvolvePokemonController.PokemonNextForm> secondStageForms = PMHR_EvolvePokemonController.getNextAvailableForms(pokemon.Id);
         Test.stopTest();
 
         //then
-        System.assertEquals(0, secondStageForms.nextForms.size());
+        System.assertEquals(0, secondStageForms.size());
     }
 
     static testMethod void shouldNotGetNextAvailableForms_noPokemons() {
@@ -133,7 +132,7 @@ private class PMHR_NextFormController_Test {
         //when
         Test.startTest();
         try {
-            PMHR_NextFormController.PokemonWithNextForms nextStageForms = PMHR_NextFormController.getNextAvailableForms(pokemon.Id);
+            List<PMHR_EvolvePokemonController.PokemonNextForm> nextStageForms = PMHR_EvolvePokemonController.getNextAvailableForms(pokemon.Id);
         } catch (Exception ex) {
             errorOccurred = true;
         }
@@ -160,7 +159,7 @@ private class PMHR_NextFormController_Test {
 
         //when
         Test.startTest();
-        PMHR_NextFormController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c, secondStagePokemon.Region_Specific_Variant__c);
+        PMHR_EvolvePokemonController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c, secondStagePokemon.Region_Specific_Variant__c);
         Test.stopTest();
 
         //then
@@ -177,7 +176,7 @@ private class PMHR_NextFormController_Test {
         //when
         Test.startTest();
         try {
-            PMHR_NextFormController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c, secondStagePokemon.Region_Specific_Variant__c);
+            PMHR_EvolvePokemonController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c, secondStagePokemon.Region_Specific_Variant__c);
         } catch (Exception ex) {
             errorOccurred = true;
         }
@@ -206,7 +205,7 @@ private class PMHR_NextFormController_Test {
         //when
         Test.startTest();
         try {
-            PMHR_NextFormController.setPokemonForm(secondStagePokemon.Id, firstStagePokemon.Form__c, firstStagePokemon.Region_Specific_Variant__c);
+            PMHR_EvolvePokemonController.setPokemonForm(secondStagePokemon.Id, firstStagePokemon.Form__c, firstStagePokemon.Region_Specific_Variant__c);
         } catch (Exception ex) {
             errorOccurred = true;
         }
@@ -237,7 +236,7 @@ private class PMHR_NextFormController_Test {
         //when
         Test.startTest();
         try {
-            PMHR_NextFormController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c, secondStagePokemon.Region_Specific_Variant__c);
+            PMHR_EvolvePokemonController.setPokemonForm(firstStagePokemon.Id, secondStagePokemon.Form__c, secondStagePokemon.Region_Specific_Variant__c);
         } catch (Exception ex) {
             errorOccurred = true;
         }

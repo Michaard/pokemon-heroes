@@ -1,0 +1,26 @@
+<!-- Evolve Pokemon Action -->
+<template>
+    <lightning-quick-action-panel header={actionHeader} class="slds-is-relative">
+        <div if:true={displaySpinner}>
+            <lightning-spinner alternative-text={label.PMHR_Spinner_Alt_Text}></lightning-spinner>
+        </div>
+        <div class="slds-text-align_center">
+            <template if:true={isFinalForm}>
+                <p>{noNextFormLabel}</p>
+            </template>
+            <template if:false={isFinalForm}>
+                <p>{label.PMHR_Choose_Next_Form}</p>
+                <lightning-layout multiple-rows="true" horizontal-align="center">
+                    <template for:each={pokemonNextForms} for:item="nextForm">
+                        <lightning-layout-item key={nextForm.id} size="3">
+                            <c-pmhr-evolve-pokemon-item form-data={nextForm} onformclick={handleNextFormClick}></c-pmhr-evolve-pokemon-item>
+                        </lightning-layout-item>
+                    </template>
+                </lightning-layout>
+            </template>
+        </div>
+        <div slot="footer">
+            <lightning-button variant="brand" label="Cancel" onclick={closeAction}></lightning-button>
+        </div>
+    </lightning-quick-action-panel>
+</template>
