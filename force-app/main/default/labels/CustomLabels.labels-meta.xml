@@ -71,13 +71,6 @@
         <value>Review the errors on this page.</value>
     </labels>
     <labels>
-        <fullName>Label_Invalid_Data</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Label Invalid Data</shortDescription>
-        <value>Invalid data</value>
-    </labels>
-    <labels>
         <fullName>PMHR_Choose_Next_Form</fullName>
         <language>en_US</language>
         <protected>true</protected>
