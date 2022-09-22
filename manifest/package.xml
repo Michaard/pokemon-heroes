@@ -56,9 +56,6 @@
         <name>ApexTrigger</name>
     </types>
     <types>
-        <name>AuraDefinitionBundle</name>
-    </types>
-    <types>
         <members>pmhrPokemonLifeInformationCard</members>
         <members>pmhrPokemonPictureCard</members>
         <members>pmhrPokemonDataPicture</members>
