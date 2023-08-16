@@ -11,7 +11,7 @@
         <chartType>Donut</chartType>
         <enableHoverLabels>false</enableHoverLabels>
         <expandOthers>false</expandOthers>
-        <groupingColumn>Pokemon__c.Death__c</groupingColumn>
+        <groupingColumn>PMHR_Pokemon__c.IsDeceased__c</groupingColumn>
         <legendPosition>Right</legendPosition>
         <location>CHART_BOTTOM</location>
         <showAxisLabels>false</showAxisLabels>
@@ -36,7 +36,7 @@
     <format>Summary</format>
     <groupingsDown>
         <dateGranularity>Day</dateGranularity>
-        <field>Pokemon__c.Death__c</field>
+        <field>PMHR_Pokemon__c.IsDeceased__c</field>
         <sortOrder>Asc</sortOrder>
     </groupingsDown>
     <name>Pokemons Life/Death Ratio</name>
@@ -44,13 +44,13 @@
         <name>co</name>
         <value>1</value>
     </params>
-    <reportType>CustomEntityCustomEntity$Nuzlocke__c$Pokemon__c</reportType>
+    <reportType>CustomEntityCustomEntity$PMHR_Nuzlocke__c$PMHR_Pokemon__c</reportType>
     <scope>organization</scope>
     <showDetails>true</showDetails>
     <showGrandTotal>true</showGrandTotal>
     <showSubTotals>false</showSubTotals>
     <timeFrameFilter>
-        <dateColumn>Nuzlocke__c.End_Date__c</dateColumn>
+        <dateColumn>PMHR_Nuzlocke__c.EndDate__c</dateColumn>
         <interval>INTERVAL_CUSTOM</interval>
     </timeFrameFilter>
 </Report>

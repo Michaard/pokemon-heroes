@@ -1,5 +1,5 @@
 public without sharing class PMHR_TriggerHandlerNuzlocke implements ITrigger {
-    private Map<Id, Nuzlocke__c> oldNuzlockesWithFinalTeams;
+    private Map<Id, PMHR_Nuzlocke__c> oldNuzlockesWithFinalTeams;
 
     public void bulkBefore() {
         if (Trigger.isUpdate) {
@@ -14,8 +14,8 @@ public without sharing class PMHR_TriggerHandlerNuzlocke implements ITrigger {
     public void afterInsert(SObject so) {}
 
     public void beforeUpdate(SObject oldSo, SObject so) {
-        Nuzlocke__c oldNuzlocke = (Nuzlocke__c) oldSo;
-        Nuzlocke__c newNuzlocke = (Nuzlocke__c) so;
+        PMHR_Nuzlocke__c oldNuzlocke = (PMHR_Nuzlocke__c) oldSo;
+        PMHR_Nuzlocke__c newNuzlocke = (PMHR_Nuzlocke__c) so;
 
         if (oldNuzlockesWithFinalTeams != null && !oldNuzlockesWithFinalTeams.isEmpty()) {
             PMHR_TriggerHandlerNuzlocke_Helper.validateFinishingNuzlocke(oldNuzlockesWithFinalTeams.get(oldNuzlocke.Id), newNuzlocke);

@@ -1,9 +1,9 @@
 public class PMHR_PokemonPictureController {
     @AuraEnabled
     public static PokemonPicture getPokemonPicture(Id pokemonId) {
-        Pokemon__c pokemon = PMHR_PokemonQueryService.getPokemonWithFormById(pokemonId);
-        Pokemon_Data__c pokemonForm = PMHR_PokemonDataQueryService.getPokemonFormById(pokemon.Form__c);
-        return new PokemonPicture(pokemonForm, pokemon.Death__c, pokemon.Region_Specific_Variant__c);
+        PMHR_Pokemon__c pokemon = PMHR_PokemonQueryService.getPokemonWithFormById(pokemonId);
+        PMHR_PokemonData__c pokemonForm = PMHR_PokemonDataQueryService.getPokemonFormById(pokemon.Form__c);
+        return new PokemonPicture(pokemonForm, pokemon.IsDeceased__c, pokemon.RegionalVariant__c);
     }
 
     @TestVisible
@@ -12,20 +12,20 @@ public class PMHR_PokemonPictureController {
         @AuraEnabled public String pokemonType { get; private set; }
         @AuraEnabled public Boolean isDead { get; private set; }
 
-        public PokemonPicture (Pokemon_Data__c pokemonForm, Boolean isDead, String regionSpecificVariant) {
+        public PokemonPicture (PMHR_PokemonData__c pokemonForm, Boolean isDead, String regionSpecificVariant) {
             this.isDead = isDead;
             if (regionSpecificVariant == PMHR_Utilities.REGION_VARIANT_STANDARD) {
-                this.pictureUrl = pokemonForm.Picture_Url__c;
+                this.pictureUrl = pokemonForm.PictureUrl__c;
                 this.pokemonType = pokemonForm.Type__c;
             } else {
-                this.setFieldsFromAdditionalVariant(pokemonForm.Additional_Variants__r, regionSpecificVariant);
+                this.setFieldsFromAdditionalVariant(pokemonForm.Variants__r, regionSpecificVariant);
             }
         }
 
-        private void setFieldsFromAdditionalVariant(List<Pokemon_Data__c> additionalVariants, String regionSpecificVariant) {
-            for (Pokemon_Data__c additionalForm : additionalVariants) {
-                if (additionalForm.Region_Specific_Variant__c == regionSpecificVariant) {
-                    this.pictureUrl = additionalForm.Picture_Url__c;
+        private void setFieldsFromAdditionalVariant(List<PMHR_PokemonData__c> additionalVariants, String regionSpecificVariant) {
+            for (PMHR_PokemonData__c additionalForm : additionalVariants) {
+                if (additionalForm.RegionalVariant__c == regionSpecificVariant) {
+                    this.pictureUrl = additionalForm.PictureUrl__c;
                     this.pokemonType = additionalForm.Type__c;
                     return;
                 }

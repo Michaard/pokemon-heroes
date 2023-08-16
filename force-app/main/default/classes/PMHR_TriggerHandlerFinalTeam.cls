@@ -1,6 +1,6 @@
 public without sharing class PMHR_TriggerHandlerFinalTeam implements ITrigger {
-    private Map<Id, Nuzlocke__c> relatedNuzlockes;
-    private List<Final_Team__c> finalTeams;
+    private Map<Id, PMHR_Nuzlocke__c> relatedNuzlockes;
+    private List<PMHR_FinalTeam__c> finalTeams;
 
     public void bulkBefore() {}
 
@@ -19,7 +19,7 @@ public without sharing class PMHR_TriggerHandlerFinalTeam implements ITrigger {
     public void beforeInsert(SObject so) {}
 
     public void afterInsert(SObject so) {
-        Final_Team__c finalTeam = (Final_Team__c) so;
+        PMHR_FinalTeam__c finalTeam = (PMHR_FinalTeam__c) so;
 
         if (relatedNuzlockes != null && !relatedNuzlockes.isEmpty()) {
             PMHR_TriggerHandlerNuzlocke_Helper.markNuzlockeAsFinishedWithSuccess(relatedNuzlockes.get(finalTeam.Nuzlocke__c));
@@ -31,7 +31,7 @@ public without sharing class PMHR_TriggerHandlerFinalTeam implements ITrigger {
     public void afterUpdate(SObject oldSo, SObject so) {}
 
     public void afterDelete(SObject so) {
-        Final_Team__c finalTeam = (Final_Team__c) so;
+        PMHR_FinalTeam__c finalTeam = (PMHR_FinalTeam__c) so;
 
         if (relatedNuzlockes != null && !relatedNuzlockes.isEmpty()) {
             PMHR_TriggerHandlerNuzlocke_Helper.markNuzlockeAsNotFinished(relatedNuzlockes.get(finalTeam.Nuzlocke__c));

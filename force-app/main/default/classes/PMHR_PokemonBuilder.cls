@@ -1,14 +1,14 @@
 public with sharing class PMHR_PokemonBuilder {
     public static final String CATCH_METHOD_EVENT = 'Event';
 
-    private Pokemon__c record;
+    private PMHR_Pokemon__c record;
 
-    private Pokemon__c defaultData() {
-        return new Pokemon__c(
+    private PMHR_Pokemon__c defaultData() {
+        return new PMHR_Pokemon__c(
                 Name = 'Default Pokemon',
                 Gender__c = PMHR_Utilities.GENDER_MALE,
-                Catch_Method__c = 'Route 1',
-                Region_Specific_Variant__c = PMHR_Utilities.REGION_VARIANT_STANDARD
+                CatchMethod__c = 'Route 1',
+                RegionalVariant__c = PMHR_Utilities.REGION_VARIANT_STANDARD
         );
     }
 
@@ -16,7 +16,7 @@ public with sharing class PMHR_PokemonBuilder {
         this.record = this.defaultData();
     }
 
-    public PMHR_PokemonBuilder(Pokemon__c record) {
+    public PMHR_PokemonBuilder(PMHR_Pokemon__c record) {
         this.record = record;
     }
 
@@ -25,14 +25,14 @@ public with sharing class PMHR_PokemonBuilder {
         return this;
     }
 
-    public Pokemon__c build() {
-        Pokemon__c record = this.record;
+    public PMHR_Pokemon__c build() {
+        PMHR_Pokemon__c record = this.record;
         this.reset();
         return record;
     }
 
-    public Pokemon__c save() {
-        Pokemon__c record = this.build();
+    public PMHR_Pokemon__c save() {
+        PMHR_Pokemon__c record = this.build();
         upsert record;
         return record;
     }
@@ -48,7 +48,7 @@ public with sharing class PMHR_PokemonBuilder {
     }
 
     public PMHR_PokemonBuilder setCaughtForm(Id pokemonId) {
-        this.record.Caught_Form__c = pokemonId;
+        this.record.CaughtForm__c = pokemonId;
         return this;
     }
 
@@ -58,7 +58,7 @@ public with sharing class PMHR_PokemonBuilder {
     }
 
     public PMHR_PokemonBuilder setCatchMethod(String catchMethod) {
-        this.record.Catch_Method__c = catchMethod;
+        this.record.CatchMethod__c = catchMethod;
         return this;
     }
 
@@ -67,18 +67,18 @@ public with sharing class PMHR_PokemonBuilder {
         return this;
     }
 
-    public PMHR_PokemonBuilder setDeath(Boolean isDead) {
-        this.record.Death__c = isDead;
+    public PMHR_PokemonBuilder setDeath(Boolean isDeceased) {
+        this.record.IsDeceased__c = isDeceased;
         return this;
     }
 
     public PMHR_PokemonBuilder setDeathCause(String cause) {
-        this.record.Cause_of_Death__c = cause;
+        this.record.CauseOfDeath__c = cause;
         return this;
     }
 
     public PMHR_PokemonBuilder setDeathLevel(Integer deathLevel) {
-        this.record.Death_Level__c = Decimal.valueOf(deathLevel);
+        this.record.DeathLevel__c = Decimal.valueOf(deathLevel);
         return this;
     }
 
@@ -88,7 +88,7 @@ public with sharing class PMHR_PokemonBuilder {
     }
 
     public PMHR_PokemonBuilder setRegionSpecificVariant(String variant) {
-        this.record.Region_Specific_Variant__c = String.isBlank(variant) ? PMHR_Utilities.REGION_VARIANT_STANDARD : variant;
+        this.record.RegionalVariant__c = String.isBlank(variant) ? PMHR_Utilities.REGION_VARIANT_STANDARD : variant;
         return this;
     }
 }

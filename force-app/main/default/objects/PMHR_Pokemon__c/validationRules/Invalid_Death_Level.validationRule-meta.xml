@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Invalid_Death_Level</fullName>
+    <active>true</active>
+    <description>Death level must be in range 1-100.</description>
+    <errorConditionFormula>AND(
+ IsDeceased__c,
+ OR(
+  DeathLevel__c &lt; 1,
+  DeathLevel__c &gt; 100
+ )
+)</errorConditionFormula>
+    <errorDisplayField>DeathLevel__c</errorDisplayField>
+    <errorMessage>Death level must be in range 1-100.</errorMessage>
+</ValidationRule>

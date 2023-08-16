@@ -1,8 +1,8 @@
 public with sharing class PMHR_FinalTeamBuilder {
-    private Final_Team__c record;
+    private PMHR_FinalTeam__c record;
 
-    private Final_Team__c defaultData() {
-        return new Final_Team__c(
+    private PMHR_FinalTeam__c defaultData() {
+        return new PMHR_FinalTeam__c(
                 Name = 'Default Final Team'
         );
     }
@@ -16,14 +16,14 @@ public with sharing class PMHR_FinalTeamBuilder {
         return this;
     }
 
-    public Final_Team__c build() {
-        Final_Team__c record = this.record;
+    public PMHR_FinalTeam__c build() {
+        PMHR_FinalTeam__c record = this.record;
         this.reset();
         return record;
     }
 
-    public Final_Team__c save() {
-        Final_Team__c record = this.build();
+    public PMHR_FinalTeam__c save() {
+        PMHR_FinalTeam__c record = this.build();
         upsert record;
         return record;
     }

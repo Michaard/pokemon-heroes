@@ -5,15 +5,15 @@ public abstract class PMHR_PokemonDataBuilder {
     public static final String TYPE_NORMAL = 'Normal';
     public static final String TYPE_DARK = 'Dark';
 
-    protected Pokemon_Data__c record;
+    protected PMHR_PokemonData__c record;
 
-    protected abstract Pokemon_Data__c defaultData();
+    protected abstract PMHR_PokemonData__c defaultData();
 
     public PMHR_PokemonDataBuilder() {
         this.record = this.defaultData();
     }
 
-    public PMHR_PokemonDataBuilder(Pokemon_Data__c pokemonDataRecord) {
+    public PMHR_PokemonDataBuilder(PMHR_PokemonData__c pokemonDataRecord) {
         this.record = pokemonDataRecord;
     }
 
@@ -22,35 +22,35 @@ public abstract class PMHR_PokemonDataBuilder {
         return this;
     }
 
-    public Pokemon_Data__c build() {
-        Pokemon_Data__c record = this.record;
+    public PMHR_PokemonData__c build() {
+        PMHR_PokemonData__c record = this.record;
         this.reset();
         return record;
     }
 
-    public Pokemon_Data__c save() {
-        Pokemon_Data__c record = this.build();
+    public PMHR_PokemonData__c save() {
+        PMHR_PokemonData__c record = this.build();
         upsert record;
         return record;
     }
 
     public PMHR_PokemonDataBuilder setPrimaryType(String pokemonType) {
-        this.record.Primary_Type__c = pokemonType;
+        this.record.PrimaryType__c = pokemonType;
         return this;
     }
 
     public PMHR_PokemonDataBuilder setSecondaryType(String pokemonType) {
-        this.record.Secondary_Type__c = pokemonType;
+        this.record.SecondaryType__c = pokemonType;
         return this;
     }
 
     public PMHR_PokemonDataBuilder setPictureUrl(String pictureUrl) {
-        this.record.Picture_Url__c = pictureUrl;
+        this.record.PictureUrl__c = pictureUrl;
         return this;
     }
 
     public PMHR_PokemonDataBuilder setPokedexNumber(String pokedexNumber) {
-        this.record.Pokedex_Number__c = pokedexNumber;
+        this.record.PokedexNumber__c = pokedexNumber;
         return this;
     }
 
@@ -65,22 +65,22 @@ public abstract class PMHR_PokemonDataBuilder {
     }
 
     public PMHR_PokemonDataBuilder setFamilyStage(Integer familyStage) {
-        this.record.Family_Stage__c = Decimal.valueOf(familyStage);
+        this.record.FamilyStage__c = Decimal.valueOf(familyStage);
         return this;
     }
 
     public PMHR_PokemonDataBuilder setVariantOf(Id pokemonDataId) {
-        this.record.Variant_Of__c = pokemonDataId;
+        this.record.VariantOf__c = pokemonDataId;
         return this;
     }
 
     public PMHR_PokemonDataBuilder setRegionSpecificVariant(String variant) {
-        this.record.Region_Specific_Variant__c = variant;
+        this.record.RegionalVariant__c = variant;
         return this;
     }
 
     public PMHR_PokemonDataBuilder setEvolvesFromVariant(String variant) {
-        this.record.Evolves_from_Variant__c = variant;
+        this.record.EvolvesFromVariant__c = variant;
         return this;
     }
 }

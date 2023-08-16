@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Death_Info_While_Alive</fullName>
+    <active>true</active>
+    <description>You can&apos;t provide death information while Pokemon is alive.</description>
+    <errorConditionFormula>AND(
+ NOT(IsDeceased__c),
+ OR(
+  NOT(ISBLANK(DeathLevel__c)),
+  NOT(ISBLANK(CauseOfDeath__c))
+ )
+)</errorConditionFormula>
+    <errorMessage>You can&apos;t provide death information while Pokemon is alive.</errorMessage>
+</ValidationRule>

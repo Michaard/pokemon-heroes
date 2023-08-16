@@ -1,14 +1,14 @@
 @IsTest
 private class PMHR_TriggerHandlerPokemon_Test {
     @TestSetup static void setup() {
-        Hero__c hero = new PMHR_HeroBuilder()
+        PMHR_Hero__c hero = new PMHR_HeroBuilder()
                 .save();
 
-        Nuzlocke__c nuzlocke = new PMHR_NuzlockeBuilder()
+        PMHR_Nuzlocke__c nuzlocke = new PMHR_NuzlockeBuilder()
                 .setHero(hero.Id)
                 .save();
 
-        List<Pokemon_Data__c> pokemonData = new List<Pokemon_Data__c>();
+        List<PMHR_PokemonData__c> pokemonData = new List<PMHR_PokemonData__c>();
         for (Integer i = 1; i < 3; i++) {
             pokemonData.add(new PMHR_PokemonFormBuilder()
                     .setPokedexNumber('00' + i)
@@ -31,32 +31,32 @@ private class PMHR_TriggerHandlerPokemon_Test {
 
     static testMethod void shouldCopyCaughtFormToFormOnInsert() {
         //given
-        Pokemon_Data__c form = [SELECT Id FROM Pokemon_Data__c LIMIT 1];
-        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
+        PMHR_PokemonData__c form = [SELECT Id FROM PMHR_PokemonData__c LIMIT 1];
+        PMHR_Nuzlocke__c nuzlocke = [SELECT Id FROM PMHR_Nuzlocke__c LIMIT 1];
 
         //when
         Test.startTest();
-        Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+        PMHR_Pokemon__c newPokemon = new PMHR_PokemonBuilder()
                 .setCaughtForm(form.Id)
                 .setNuzlocke(nuzlocke.Id)
                 .save();
         Test.stopTest();
 
         //then
-        newPokemon = [SELECT Caught_Form__c, Form__c FROM Pokemon__c LIMIT 1];
-        System.assertEquals(newPokemon.Caught_Form__c, newPokemon.Form__c);
+        newPokemon = [SELECT CaughtForm__c, Form__c FROM PMHR_Pokemon__c LIMIT 1];
+        System.assertEquals(newPokemon.CaughtForm__c, newPokemon.Form__c);
     }
 
     static testMethod void shouldNotCopyCaughtFormToFormOnInsert_formProvided() {
         //given
-        List<Pokemon_Data__c> forms = [SELECT Id, Family_Stage__c FROM Pokemon_Data__c WHERE Family__c = 'Testor' LIMIT 2];
-        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
+        List<PMHR_PokemonData__c> forms = [SELECT Id, FamilyStage__c FROM PMHR_PokemonData__c WHERE Family__c = 'Testor' LIMIT 2];
+        PMHR_Nuzlocke__c nuzlocke = [SELECT Id FROM PMHR_Nuzlocke__c LIMIT 1];
 
-        Pokemon_Data__c firstStageForm;
-        Pokemon_Data__c secondStageForm;
+        PMHR_PokemonData__c firstStageForm;
+        PMHR_PokemonData__c secondStageForm;
 
-        for (Pokemon_Data__c form : forms) {
-            if (form.Family_Stage__c == 1) {
+        for (PMHR_PokemonData__c form : forms) {
+            if (form.FamilyStage__c == 1) {
                 firstStageForm = form;
             } else {
                 secondStageForm = form;
@@ -65,7 +65,7 @@ private class PMHR_TriggerHandlerPokemon_Test {
 
         //when
         Test.startTest();
-        Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+        PMHR_Pokemon__c newPokemon = new PMHR_PokemonBuilder()
                 .setCaughtForm(firstStageForm.Id)
                 .setForm(secondStageForm.Id)
                 .setNuzlocke(nuzlocke.Id)
@@ -73,16 +73,16 @@ private class PMHR_TriggerHandlerPokemon_Test {
         Test.stopTest();
 
         //then
-        newPokemon = [SELECT Caught_Form__c, Form__c FROM Pokemon__c LIMIT 1];
-        System.assertNotEquals(newPokemon.Caught_Form__c, newPokemon.Form__c);
-        System.assertEquals(newPokemon.Caught_Form__c, firstStageForm.Id);
+        newPokemon = [SELECT CaughtForm__c, Form__c FROM PMHR_Pokemon__c LIMIT 1];
+        System.assertNotEquals(newPokemon.CaughtForm__c, newPokemon.Form__c);
+        System.assertEquals(newPokemon.CaughtForm__c, firstStageForm.Id);
         System.assertEquals(newPokemon.Form__c, secondStageForm.Id);
     }
 
     static testMethod void shouldNotInsertPokemon_nuzlockeFinished() {
         //given
-        Pokemon_Data__c form = [SELECT Id FROM Pokemon_Data__c LIMIT 1];
-        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
+        PMHR_PokemonData__c form = [SELECT Id FROM PMHR_PokemonData__c LIMIT 1];
+        PMHR_Nuzlocke__c nuzlocke = [SELECT Id FROM PMHR_Nuzlocke__c LIMIT 1];
         nuzlocke = new PMHR_NuzlockeBuilder(nuzlocke)
                 .setEndDate(Date.today())
                 .setEndStatus(PMHR_NuzlockeBuilder.END_STATUS_FAILED)
@@ -93,7 +93,7 @@ private class PMHR_TriggerHandlerPokemon_Test {
         //when
         Test.startTest();
         try {
-            Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+            PMHR_Pokemon__c newPokemon = new PMHR_PokemonBuilder()
                     .setNuzlocke(nuzlocke.Id)
                     .setCaughtForm(form.Id)
                     .save();
@@ -104,21 +104,21 @@ private class PMHR_TriggerHandlerPokemon_Test {
 
         //then
         System.assert(errorOccurred);
-        System.assertEquals(0, [SELECT Count() FROM Pokemon__c]);
+        System.assertEquals(0, [SELECT Count() FROM PMHR_Pokemon__c]);
     }
 
     static testMethod void shouldInsertPokemon_allowedVariant() {
         //given
-        Pokemon_Data__c form = [SELECT Id FROM Pokemon_Data__c LIMIT 1];
-        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
-        Pokemon_Data__c additionalVariant = new PMHR_PokemonAdditionalVariantBuilder()
+        PMHR_PokemonData__c form = [SELECT Id FROM PMHR_PokemonData__c LIMIT 1];
+        PMHR_Nuzlocke__c nuzlocke = [SELECT Id FROM PMHR_Nuzlocke__c LIMIT 1];
+        PMHR_PokemonData__c additionalVariant = new PMHR_PokemonAdditionalVariantBuilder()
                 .setVariantOf(form.Id)
                 .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
                 .save();
 
         //when
         Test.startTest();
-        Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+        PMHR_Pokemon__c newPokemon = new PMHR_PokemonBuilder()
                 .setNuzlocke(nuzlocke.Id)
                 .setCaughtForm(form.Id)
                 .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
@@ -126,20 +126,20 @@ private class PMHR_TriggerHandlerPokemon_Test {
         Test.stopTest();
 
         //then
-        System.assertEquals(1, [SELECT Count() FROM Pokemon__c]);
+        System.assertEquals(1, [SELECT Count() FROM PMHR_Pokemon__c]);
     }
 
     static testMethod void shouldNotInsertPokemon_forbiddenVariant() {
         //given
-        Pokemon_Data__c form = [SELECT Id FROM Pokemon_Data__c LIMIT 1];
-        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
+        PMHR_PokemonData__c form = [SELECT Id FROM PMHR_PokemonData__c LIMIT 1];
+        PMHR_Nuzlocke__c nuzlocke = [SELECT Id FROM PMHR_Nuzlocke__c LIMIT 1];
 
         Boolean errorOccurred = false;
 
         //when
         Test.startTest();
         try {
-            Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+            PMHR_Pokemon__c newPokemon = new PMHR_PokemonBuilder()
                     .setNuzlocke(nuzlocke.Id)
                     .setCaughtForm(form.Id)
                     .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
@@ -151,18 +151,18 @@ private class PMHR_TriggerHandlerPokemon_Test {
 
         //then
         System.assert(errorOccurred);
-        System.assertEquals(0, [SELECT Count() FROM Pokemon__c]);
+        System.assertEquals(0, [SELECT Count() FROM PMHR_Pokemon__c]);
     }
 
     static testMethod void shouldUpdatePokemon_allowedVariant() {
         //given
-        Pokemon_Data__c form = [SELECT Id FROM Pokemon_Data__c LIMIT 1];
-        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
-        Pokemon_Data__c additionalVariant = new PMHR_PokemonAdditionalVariantBuilder()
+        PMHR_PokemonData__c form = [SELECT Id FROM PMHR_PokemonData__c LIMIT 1];
+        PMHR_Nuzlocke__c nuzlocke = [SELECT Id FROM PMHR_Nuzlocke__c LIMIT 1];
+        PMHR_PokemonData__c additionalVariant = new PMHR_PokemonAdditionalVariantBuilder()
                 .setVariantOf(form.Id)
                 .setRegionSpecificVariant(PMHR_Utilities.REGION_VARIANT_ALOLAN)
                 .save();
-        Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+        PMHR_Pokemon__c newPokemon = new PMHR_PokemonBuilder()
                 .setNuzlocke(nuzlocke.Id)
                 .setCaughtForm(form.Id)
                 .save();
@@ -176,14 +176,14 @@ private class PMHR_TriggerHandlerPokemon_Test {
 
         //then
         newPokemon = PMHR_PokemonQueryService.getPokemonById(newPokemon.Id);
-        System.assertEquals(PMHR_Utilities.REGION_VARIANT_ALOLAN, newPokemon.Region_Specific_Variant__c);
+        System.assertEquals(PMHR_Utilities.REGION_VARIANT_ALOLAN, newPokemon.RegionalVariant__c);
     }
 
     static testMethod void shouldNotUpdatePokemon_forbiddenVariant() {
         //given
-        Pokemon_Data__c form = [SELECT Id FROM Pokemon_Data__c LIMIT 1];
-        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
-        Pokemon__c newPokemon = new PMHR_PokemonBuilder()
+        PMHR_PokemonData__c form = [SELECT Id FROM PMHR_PokemonData__c LIMIT 1];
+        PMHR_Nuzlocke__c nuzlocke = [SELECT Id FROM PMHR_Nuzlocke__c LIMIT 1];
+        PMHR_Pokemon__c newPokemon = new PMHR_PokemonBuilder()
                 .setNuzlocke(nuzlocke.Id)
                 .setCaughtForm(form.Id)
                 .save();
@@ -203,6 +203,6 @@ private class PMHR_TriggerHandlerPokemon_Test {
 
         //then
         newPokemon = PMHR_PokemonQueryService.getPokemonById(newPokemon.Id);
-        System.assertNotEquals(PMHR_Utilities.REGION_VARIANT_ALOLAN, newPokemon.Region_Specific_Variant__c);
+        System.assertNotEquals(PMHR_Utilities.REGION_VARIANT_ALOLAN, newPokemon.RegionalVariant__c);
     }
 }

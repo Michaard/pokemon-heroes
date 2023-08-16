@@ -1,67 +1,67 @@
 public with sharing class PMHR_PokemonDataQueryService {
-    public static Pokemon_Data__c getPokemonFormById(Id pokemonDataId) {
+    public static PMHR_PokemonData__c getPokemonFormById(Id pokemonDataId) {
         return getPokemonFormsByIds(new Set<Id>{pokemonDataId}).get(0);
     }
 
-    public static List<Pokemon_Data__c> getPokemonFormsByIds(Set<Id> pokemonDataIds) {
+    public static List<PMHR_PokemonData__c> getPokemonFormsByIds(Set<Id> pokemonDataIds) {
         return [
-                SELECT Id, Name, Pokedex_Number__c, Family__c, Family_Stage__c, Type__c, Primary_Type__c, Secondary_Type__c, Picture_Url__c, Evolves_from_Variant__c, (
-                        SELECT Id, Variant_Name__c, Region_Specific_Variant__c, Type__c, Picture_Url__c, Evolves_from_Variant__c
-                        FROM Additional_Variants__r
+                SELECT Id, Name, PokedexNumber__c, Family__c, FamilyStage__c, Type__c, PrimaryType__c, SecondaryType__c, PictureUrl__c, EvolvesFromVariant__c, (
+                        SELECT Id, VariantName__c, RegionalVariant__c, Type__c, PictureUrl__c, EvolvesFromVariant__c
+                        FROM Variants__r
                 )
-                FROM Pokemon_Data__c
+                FROM PMHR_PokemonData__c
                 WHERE Id IN :pokemonDataIds
-                AND RecordTypeId = :PMHR_Utilities.getRecordTypeIdByName(SObjectType.Pokemon_Data__c, PMHR_PokemonDataBuilder.RT_FORM)
+                AND RecordTypeId = :PMHR_Utilities.getRecordTypeIdByName(SObjectType.PMHR_PokemonData__c, PMHR_PokemonDataBuilder.RT_FORM)
         ];
     }
 
-    public static List<Pokemon_Data__c> getAvailableNextPokemonForms(Pokemon__c pokemon) {
+    public static List<PMHR_PokemonData__c> getAvailableNextPokemonForms(PMHR_Pokemon__c pokemon) {
         return [
-                SELECT Id, Name, Pokedex_Number__c, Family_Stage__c, Evolves_from_Variant__c, Type__c, Picture_Url__c, (
-                        SELECT Id, Variant_Name__c, Region_Specific_Variant__c, Evolves_from_Variant__c, Type__c, Picture_Url__c
-                        FROM Additional_Variants__r
+                SELECT Id, Name, PokedexNumber__c, FamilyStage__c, EvolvesFromVariant__c, Type__c, PictureUrl__c,
+                (
+                        SELECT Id, VariantName__c, RegionalVariant__c, EvolvesFromVariant__c, Type__c, PictureUrl__c
+                        FROM Variants__r
                 )
-                FROM Pokemon_Data__c
+                FROM PMHR_PokemonData__c
                 WHERE Family__c = :pokemon.Form__r.Family__c
-                AND Family_Stage__c = :pokemon.Form__r.Family_Stage__c + 1
-                AND RecordTypeId = :PMHR_Utilities.getRecordTypeIdByName(SObjectType.Pokemon_Data__c, PMHR_PokemonDataBuilder.RT_FORM)
-                ORDER BY Pokedex_Number__c ASC
+                AND FamilyStage__c = :pokemon.Form__r.FamilyStage__c + 1
+                AND RecordTypeId = :PMHR_Utilities.getRecordTypeIdByName(SObjectType.PMHR_PokemonData__c, PMHR_PokemonDataBuilder.RT_FORM)
+                ORDER BY PokedexNumber__c ASC
                 LIMIT 20
         ];
     }
 
-    public static Pokemon_Data__c getAdditionalVariantById(Id additionalVariantId) {
+    public static PMHR_PokemonData__c getAdditionalVariantById(Id additionalVariantId) {
         return [
-                SELECT Id, Name, Variant_Name__c, Variant_Of__c, Primary_Type__c, Secondary_Type__c, Type__c,
-                        Picture_Url__c, Region_Specific_Variant__c
-                FROM Pokemon_Data__c
+                SELECT Id, Name, VariantName__c, VariantOf__c, PrimaryType__c, SecondaryType__c, Type__c,
+                        PictureUrl__c, RegionalVariant__c
+                FROM PMHR_PokemonData__c
                 WHERE Id = :additionalVariantId
-                AND RecordTypeId = :PMHR_Utilities.getRecordTypeIdByName(SObjectType.Pokemon_Data__c, PMHR_PokemonDataBuilder.RT_ADDITIONAL_VARIANT)
+                AND RecordTypeId = :PMHR_Utilities.getRecordTypeIdByName(SObjectType.PMHR_PokemonData__c, PMHR_PokemonDataBuilder.RT_ADDITIONAL_VARIANT)
                 LIMIT 1
         ];
     }
 
-    public static List<Pokemon_Data__c> getAdditionalVariantByFormIds(Set<Id> formIds) {
+    public static List<PMHR_PokemonData__c> getAdditionalVariantByFormIds(Set<Id> formIds) {
         return [
-                SELECT Id, Name, Variant_Name__c, Variant_Of__c, Primary_Type__c, Secondary_Type__c, Type__c,
-                        Picture_Url__c, Region_Specific_Variant__c
-                FROM Pokemon_Data__c
-                WHERE Variant_Of__c IN :formIds
-                AND RecordTypeId = :PMHR_Utilities.getRecordTypeIdByName(SObjectType.Pokemon_Data__c, PMHR_PokemonDataBuilder.RT_ADDITIONAL_VARIANT)
+                SELECT Id, Name, VariantName__c, VariantOf__c, PrimaryType__c, SecondaryType__c, Type__c,
+                        PictureUrl__c, RegionalVariant__c
+                FROM PMHR_PokemonData__c
+                WHERE VariantOf__c IN :formIds
+                AND RecordTypeId = :PMHR_Utilities.getRecordTypeIdByName(SObjectType.PMHR_PokemonData__c, PMHR_PokemonDataBuilder.RT_ADDITIONAL_VARIANT)
         ];
     }
 
-    public static List<Pokemon_Data__c> getPokemonFormByIdsOrPokedexNumbers(Set<Id> ids, Set<String> pokedexNumbers) {
+    public static List<PMHR_PokemonData__c> getPokemonFormByIdsOrPokedexNumbers(Set<Id> ids, Set<String> pokedexNumbers) {
         return [
-                SELECT Id, Name, Pokedex_Number__c, Family__c, Family_Stage__c, Type__c, Primary_Type__c, Secondary_Type__c, Picture_Url__c, (
-                        SELECT Id, Name, Variant_Name__c, Variant_Of__c, Primary_Type__c, Secondary_Type__c, Type__c,
-                                Picture_Url__c, Region_Specific_Variant__c
-                        FROM Additional_Variants__r
+                SELECT Id, Name, PokedexNumber__c, Family__c, FamilyStage__c, Type__c, PrimaryType__c, SecondaryType__c, PictureUrl__c, (
+                        SELECT Id, Name, VariantName__c, VariantOf__c, PrimaryType__c, SecondaryType__c, Type__c,
+                                PictureUrl__c, RegionalVariant__c
+                        FROM Variants__r
                 )
-                FROM Pokemon_Data__c
-                WHERE (Id IN :ids
-                OR Pokedex_Number__c IN :pokedexNumbers)
-                AND RecordTypeId = :PMHR_Utilities.getRecordTypeIdByName(SObjectType.Pokemon_Data__c, PMHR_PokemonDataBuilder.RT_FORM)
+                FROM PMHR_PokemonData__c
+                WHERE (Id IN :ids OR PokedexNumber__c IN :pokedexNumbers)
+                AND RecordTypeId = :PMHR_Utilities.getRecordTypeIdByName(SObjectType.PMHR_PokemonData__c, PMHR_PokemonDataBuilder.RT_FORM)
         ];
     }
 }

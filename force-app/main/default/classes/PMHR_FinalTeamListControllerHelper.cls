@@ -10,12 +10,12 @@ public with sharing class PMHR_FinalTeamListControllerHelper {
         return instance;
     }
 
-    public List<FinalTeam> parseFinalTeams(List<Final_Team__c> finalTeamsToParse) {
+    public List<FinalTeam> parseFinalTeams(List<PMHR_FinalTeam__c> finalTeamsToParse) {
         List<FinalTeam> result = new List<FinalTeam>();
 
-        for (Final_Team__c finalTeam : finalTeamsToParse) {
+        for (PMHR_FinalTeam__c finalTeam : finalTeamsToParse) {
             List<FinalTeamMember> finalTeamMembers = new List<FinalTeamMember>();
-            for (Final_Team_Member__c member : finalTeam.Final_Team_Members__r) {
+            for (PMHR_FinalTeamMember__c member : finalTeam.FinalTeamMembers__r) {
                 finalTeamMembers.add(new FinalTeamMember(member));
             }
 
@@ -30,7 +30,7 @@ public with sharing class PMHR_FinalTeamListControllerHelper {
         @AuraEnabled public String name { get; private set; }
         @AuraEnabled public List<FinalTeamMember> members { get; private set; }
 
-        public FinalTeam(Final_Team__c finalTeam, List<FinalTeamMember> members) {
+        public FinalTeam(PMHR_FinalTeam__c finalTeam, List<FinalTeamMember> members) {
             this.id = finalTeam.Id;
             this.name = finalTeam.Name;
             this.members = members;
@@ -46,7 +46,7 @@ public with sharing class PMHR_FinalTeamListControllerHelper {
         @AuraEnabled public String type { get; private set; }
         @AuraEnabled public Integer level { get; private set; }
 
-        public FinalTeamMember(Final_Team_Member__c member) {
+        public FinalTeamMember(PMHR_FinalTeamMember__c member) {
             this.id = member.Id;
             this.nr = member.Name;
             this.pokemonName = member.Pokemon__r.Name;

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>IsFinished__c</fullName>
+    <description>Indicate if Nuzlocke is finished</description>
+    <externalId>false</externalId>
+    <formula>AND(
+ NOT(ISBLANK(EndDate__c)),
+ NOT(ISPICKVAL(Status__c, &apos;InProgress&apos;))
+)</formula>
+    <label>Finished</label>
+    <trackTrending>false</trackTrending>
+    <type>Checkbox</type>
+</CustomField>

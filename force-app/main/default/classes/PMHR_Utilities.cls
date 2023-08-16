@@ -5,7 +5,7 @@ public class PMHR_Utilities {
 
     public static final String GENDER_MALE = 'Male';
 
-    public static final List<PicklistEntry> POKEMON_REGIONAL_VARIANT = Pokemon__c.Region_Specific_Variant__c.getDescribe().getPicklistValues();
+    public static final List<PicklistEntry> POKEMON_REGIONAL_VARIANT = PMHR_Pokemon__c.RegionalVariant__c.getDescribe().getPicklistValues();
 
     public static List<String> getPokemonRegionalVariantsValues() {
         List<String> regionSpecificVariants = new List<String>();

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Final_Team_Member_Info</fullName>
+    <fields>Pokemon__c</fields>
+    <fields>FinalTeam__c</fields>
+    <fields>Move1__c</fields>
+    <fields>Move2__c</fields>
+    <fields>Move3__c</fields>
+    <fields>Move4__c</fields>
+    <label>Final Team Member Info</label>
+</CompactLayout>

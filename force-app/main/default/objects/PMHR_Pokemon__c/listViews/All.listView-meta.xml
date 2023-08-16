@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All</fullName>
+    <columns>NAME</columns>
+    <columns>Form__c</columns>
+    <columns>Gender__c</columns>
+    <columns>Location__c</columns>
+    <columns>CatchMethod__c</columns>
+    <columns>IsDeceased__c</columns>
+    <columns>DeathLevel__c</columns>
+    <columns>CauseOfDeath__c</columns>
+    <columns>Nuzlocke__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Mine</filterScope>
+    <label>All</label>
+</ListView>

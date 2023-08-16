@@ -23,7 +23,7 @@ export default class PMHR_NuzlockeFinalTeams extends LightningElement {
 
     @wire(getRecord, {
         recordId: '$recordId',
-        fields: ["Nuzlocke__c.Id"]
+        fields: ["PMHR_Nuzlocke__c.Id"]
     }) record({error, data}) {
         if (data) {
             this.initialize();

@@ -7,7 +7,7 @@ private class PMHR_HeroBuilder_Test {
         String rivalName = 'Villain';
 
         //when
-        Hero__c hero = new PMHR_HeroBuilder()
+        PMHR_Hero__c hero = new PMHR_HeroBuilder()
                 .setName(name)
                 .setNickname(nickname)
                 .setRivalName(rivalName)
@@ -20,8 +20,8 @@ private class PMHR_HeroBuilder_Test {
         hero = PMHR_HeroQueryService.getHeroById(hero.Id);
         System.assertEquals(name, hero.Name);
         System.assertEquals(nickname, hero.Nickname__c);
-        System.assertEquals(rivalName, hero.Rival_Name__c);
-        System.assertEquals(PMHR_HeroBuilder.GAME_VERSION_RED, hero.Game_Version__c);
+        System.assertEquals(rivalName, hero.RivalName__c);
+        System.assertEquals(PMHR_HeroBuilder.GAME_VERSION_RED, hero.GameVersion__c);
         System.assertEquals(PMHR_Utilities.GENDER_MALE, hero.Gender__c);
         System.assertEquals(PMHR_HeroBuilder.REGION_KANTO, hero.Region__c);
     }

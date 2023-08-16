@@ -18,23 +18,23 @@ private class PMHR_FinalTeamMemberBuilder_Test {
                 4 => move4
         };
 
-        Hero__c hero = new PMHR_HeroBuilder()
+        PMHR_Hero__c hero = new PMHR_HeroBuilder()
                 .save();
-        Nuzlocke__c nuzlocke = new PMHR_NuzlockeBuilder()
+        PMHR_Nuzlocke__c nuzlocke = new PMHR_NuzlockeBuilder()
                 .setHero(hero.Id)
                 .save();
-        Pokemon_Data__c pokemonData = new PMHR_PokemonFormBuilder()
+        PMHR_PokemonData__c pokemonData = new PMHR_PokemonFormBuilder()
                 .save();
-        Pokemon__c pokemon = new PMHR_PokemonBuilder()
+        PMHR_Pokemon__c pokemon = new PMHR_PokemonBuilder()
                 .setNuzlocke(nuzlocke.Id)
                 .setCaughtForm(pokemonData.Id)
                 .save();
-        Final_Team__c finalTeam = new PMHR_FinalTeamBuilder()
+        PMHR_FinalTeam__c finalTeam = new PMHR_FinalTeamBuilder()
                 .setNuzlocke(nuzlocke.Id)
                 .save();
 
         //when
-        Final_Team_Member__c member = new PMHR_FinalTeamMemberBuilder()
+        PMHR_FinalTeamMember__c member = new PMHR_FinalTeamMemberBuilder()
                 .setPokemon(pokemon.Id)
                 .setFinalTeam(finalTeam.Id)
                 .setAbility(ability)
@@ -47,15 +47,15 @@ private class PMHR_FinalTeamMemberBuilder_Test {
         //then
         member = PMHR_FinalTeamMemberQueryService.getFinalTeamMemberById(member.Id);
         System.assertEquals(pokemon.Id, member.Pokemon__c);
-        System.assertEquals(finalTeam.Id, member.Final_Team__c);
+        System.assertEquals(finalTeam.Id, member.FinalTeam__c);
         System.assertEquals(ability, member.Ability__c);
         System.assertEquals(nature, member.Nature__c);
-        System.assertEquals(heldItem, member.Held_Item__c);
+        System.assertEquals(heldItem, member.HeldItem__c);
         System.assertEquals(level, Integer.valueOf(member.Level__c));
-        System.assertEquals(move1, member.Move_1__c);
-        System.assertEquals(move2, member.Move_2__c);
-        System.assertEquals(move3, member.Move_3__c);
-        System.assertEquals(move4, member.Move_4__c);
+        System.assertEquals(move1, member.Move1__c);
+        System.assertEquals(move2, member.Move2__c);
+        System.assertEquals(move3, member.Move3__c);
+        System.assertEquals(move4, member.Move4__c);
     }
 
     static testMethod void shouldThrowExceptionToManyMoves() {
@@ -71,7 +71,7 @@ private class PMHR_FinalTeamMemberBuilder_Test {
 
         //when
         try {
-            Final_Team_Member__c member = new PMHR_FinalTeamMemberBuilder()
+            PMHR_FinalTeamMember__c member = new PMHR_FinalTeamMemberBuilder()
                     .setMoves(moves)
                     .build();
         } catch (PMHR_FinalTeamMemberBuilder.InvalidNumberOfMovesException ex) {
@@ -88,7 +88,7 @@ private class PMHR_FinalTeamMemberBuilder_Test {
 
         //when
         try {
-            Final_Team_Member__c member = new PMHR_FinalTeamMemberBuilder()
+            PMHR_FinalTeamMember__c member = new PMHR_FinalTeamMemberBuilder()
                     .setMoves(null)
                     .build();
         } catch (PMHR_FinalTeamMemberBuilder.InvalidNumberOfMovesException ex) {
@@ -108,7 +108,7 @@ private class PMHR_FinalTeamMemberBuilder_Test {
 
         //when
         try {
-            Final_Team_Member__c member = new PMHR_FinalTeamMemberBuilder()
+            PMHR_FinalTeamMember__c member = new PMHR_FinalTeamMemberBuilder()
                     .setMoves(moves)
                     .build();
         } catch (PMHR_FinalTeamMemberBuilder.InvalidMoveNumberException ex) {

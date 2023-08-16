@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>VariantOf__c</fullName>
+    <deleteConstraint>SetNull</deleteConstraint>
+    <externalId>false</externalId>
+    <label>Variant of</label>
+    <lookupFilter>
+        <active>true</active>
+        <filterItems>
+            <field>PMHR_PokemonData__c.RecordTypeId</field>
+            <operation>equals</operation>
+            <value>Form</value>
+        </filterItems>
+        <isOptional>false</isOptional>
+    </lookupFilter>
+    <referenceTo>PMHR_PokemonData__c</referenceTo>
+    <relationshipLabel>Variants</relationshipLabel>
+    <relationshipName>Variants</relationshipName>
+    <required>false</required>
+    <trackTrending>false</trackTrending>
+    <type>Lookup</type>
+</CustomField>

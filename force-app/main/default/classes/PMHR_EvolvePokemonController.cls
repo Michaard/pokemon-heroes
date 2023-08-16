@@ -2,7 +2,7 @@ public with sharing class PMHR_EvolvePokemonController {
     @AuraEnabled
     public static List<PokemonNextForm> getNextAvailableForms(Id pokemonId) {
         try {
-            Pokemon__c pokemon = PMHR_PokemonQueryService.getPokemonWithFormById(pokemonId);
+            PMHR_Pokemon__c pokemon = PMHR_PokemonQueryService.getPokemonWithFormById(pokemonId);
             return getPokemonNextForms(pokemon);
         } catch (Exception ex) {
             throw new AuraHandledException(ex.getMessage());
@@ -12,7 +12,7 @@ public with sharing class PMHR_EvolvePokemonController {
     @AuraEnabled
     public static void setPokemonForm(Id pokemonId, Id nextFormId, String variant) {
         try {
-            new PMHR_PokemonBuilder(new Pokemon__c(Id = pokemonId))
+            new PMHR_PokemonBuilder(new PMHR_Pokemon__c(Id = pokemonId))
                     .setForm(nextFormId)
                     .setRegionSpecificVariant(variant)
                     .save();
@@ -21,24 +21,24 @@ public with sharing class PMHR_EvolvePokemonController {
         }
     }
 
-    private static List<PokemonNextForm> getPokemonNextForms(Pokemon__c pokemon) {
+    private static List<PokemonNextForm> getPokemonNextForms(PMHR_Pokemon__c pokemon) {
         List<PokemonNextForm> nextForms = new List<PokemonNextForm>();
-        List<Pokemon_Data__c> availableNextForms = PMHR_PokemonDataQueryService.getAvailableNextPokemonForms(pokemon);
+        List<PMHR_PokemonData__c> availableNextForms = PMHR_PokemonDataQueryService.getAvailableNextPokemonForms(pokemon);
         if (availableNextForms != null) {
-            for (Pokemon_Data__c nextForm : availableNextForms) {
-                nextForms.addAll(generatePokemonNextForms(pokemon.Region_Specific_Variant__c, nextForm));
+            for (PMHR_PokemonData__c nextForm : availableNextForms) {
+                nextForms.addAll(generatePokemonNextForms(pokemon.RegionalVariant__c, nextForm));
             }
         }
         return nextForms;
     }
 
-    private static List<PokemonNextForm> generatePokemonNextForms(String pokemonVariant, Pokemon_Data__c nextForm) {
+    private static List<PokemonNextForm> generatePokemonNextForms(String pokemonVariant, PMHR_PokemonData__c nextForm) {
         List<PokemonNextForm> validNextForms = new List<PokemonNextForm>();
-        if (nextForm.Evolves_from_Variant__c == pokemonVariant) {
+        if (nextForm.EvolvesFromVariant__c == pokemonVariant) {
             validNextForms.add(new PokemonNextForm(nextForm));
         }
-        for (Pokemon_Data__c additionalVariant : nextForm.Additional_Variants__r) {
-            if (additionalVariant.Evolves_from_Variant__c == pokemonVariant) {
+        for (PMHR_PokemonData__c additionalVariant : nextForm.Variants__r) {
+            if (additionalVariant.EvolvesFromVariant__c == pokemonVariant) {
                 validNextForms.add(new PokemonNextForm(nextForm, additionalVariant));
             }
         }
@@ -55,21 +55,21 @@ public with sharing class PMHR_EvolvePokemonController {
         @AuraEnabled public Decimal familyStage { get; private set; }
         @AuraEnabled public String pictureUrl { get; private set; }
 
-        public PokemonNextForm(Pokemon_Data__c pokemonForm) {
+        public PokemonNextForm(PMHR_PokemonData__c pokemonForm) {
             this.id = pokemonForm.Id;
             this.name = pokemonForm.Name;
-            this.pokedexNumber = pokemonForm.Pokedex_Number__c;
+            this.pokedexNumber = pokemonForm.PokedexNumber__c;
             this.type = pokemonForm.Type__c;
-            this.familyStage = pokemonForm.Family_Stage__c;
-            this.pictureUrl = pokemonForm.Picture_Url__c;
+            this.familyStage = pokemonForm.FamilyStage__c;
+            this.pictureUrl = pokemonForm.PictureUrl__c;
         }
 
-        public PokemonNextForm(Pokemon_Data__c pokemonForm, Pokemon_Data__c variant) {
+        public PokemonNextForm(PMHR_PokemonData__c pokemonForm, PMHR_PokemonData__c variant) {
             this(pokemonForm);
-            this.name = variant.Variant_Name__c;
-            this.variant = variant.Region_Specific_Variant__c;
+            this.name = variant.VariantName__c;
+            this.variant = variant.RegionalVariant__c;
             this.type = variant.Type__c;
-            this.pictureUrl = variant.Picture_Url__c;
+            this.pictureUrl = variant.PictureUrl__c;
         }
     }
 }

@@ -1,9 +1,9 @@
 public with sharing class PMHR_FinalTeamMemberBuilder {
-    private static final String MOVE_API_NAME_FORMAT = 'Move_{0}__c';
-    private Final_Team_Member__c record;
+    private static final String MOVE_API_NAME_FORMAT = 'Move{0}__c';
+    private PMHR_FinalTeamMember__c record;
 
-    private Final_Team_Member__c defaultData() {
-        return new Final_Team_Member__c();
+    private PMHR_FinalTeamMember__c defaultData() {
+        return new PMHR_FinalTeamMember__c();
     }
 
     public PMHR_FinalTeamMemberBuilder() {
@@ -15,20 +15,20 @@ public with sharing class PMHR_FinalTeamMemberBuilder {
         return this;
     }
 
-    public Final_Team_Member__c build() {
-        Final_Team_Member__c record = this.record;
+    public PMHR_FinalTeamMember__c build() {
+        PMHR_FinalTeamMember__c record = this.record;
         this.reset();
         return record;
     }
 
-    public Final_Team_Member__c save() {
-        Final_Team_Member__c record = this.build();
+    public PMHR_FinalTeamMember__c save() {
+        PMHR_FinalTeamMember__c record = this.build();
         upsert record;
         return record;
     }
 
     public PMHR_FinalTeamMemberBuilder setFinalTeam(Id finalTeam) {
-        this.record.Final_Team__c = finalTeam;
+        this.record.FinalTeam__c = finalTeam;
         return this;
     }
 
@@ -43,7 +43,7 @@ public with sharing class PMHR_FinalTeamMemberBuilder {
     }
 
     public PMHR_FinalTeamMemberBuilder setHeldItem(String heldItem) {
-        this.record.Held_Item__c = heldItem;
+        this.record.HeldItem__c = heldItem;
         return this;
     }
 

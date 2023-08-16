@@ -4,14 +4,14 @@ private class PMHR_FinalTeamListController_Test {
         Integer numberOfPokemons = 6;
         List<String> regionSpecificVariants = PMHR_Utilities.getPokemonRegionalVariantsValues();
 
-        Hero__c hero = new PMHR_HeroBuilder()
+        PMHR_Hero__c hero = new PMHR_HeroBuilder()
                 .save();
 
-        Nuzlocke__c nuzlocke = new PMHR_NuzlockeBuilder()
+        PMHR_Nuzlocke__c nuzlocke = new PMHR_NuzlockeBuilder()
                 .setHero(hero.Id)
                 .save();
 
-        List<Pokemon_Data__c> pokemonData = new List<Pokemon_Data__c>();
+        List<PMHR_PokemonData__c> pokemonData = new List<PMHR_PokemonData__c>();
         PMHR_PokemonFormBuilder pokemonFormBuilder = new PMHR_PokemonFormBuilder();
         for (Integer i = 0; i < numberOfPokemons; i++) {
             pokemonData.add(pokemonFormBuilder
@@ -25,7 +25,7 @@ private class PMHR_FinalTeamListController_Test {
         }
         insert pokemonData;
 
-        List<Pokemon__c> pokemons = new List<Pokemon__c>();
+        List<PMHR_Pokemon__c> pokemons = new List<PMHR_Pokemon__c>();
         PMHR_PokemonBuilder pokemonBuilder = new PMHR_PokemonBuilder();
         for (Integer i = 0; i < numberOfPokemons; i++) {
             pokemons.add(pokemonBuilder
@@ -38,11 +38,11 @@ private class PMHR_FinalTeamListController_Test {
         }
         insert pokemons;
 
-        Final_Team__c finalTeam = new PMHR_FinalTeamBuilder()
+        PMHR_FinalTeam__c finalTeam = new PMHR_FinalTeamBuilder()
                 .setNuzlocke(nuzlocke.Id)
                 .save();
 
-        List<Final_Team_Member__c> finalTeamMembers = new List<Final_Team_Member__c>();
+        List<PMHR_FinalTeamMember__c> finalTeamMembers = new List<PMHR_FinalTeamMember__c>();
         for (Integer i = 0; i < numberOfPokemons; i++) {
             finalTeamMembers.add(new PMHR_FinalTeamMemberBuilder()
                     .setFinalTeam(finalTeam.Id)
@@ -55,8 +55,8 @@ private class PMHR_FinalTeamListController_Test {
 
     static testMethod void shouldGetFinalTeamInfo() {
         //given
-        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
-        Final_Team__c finalTeam = [SELECT Id, Name FROM Final_Team__c LIMIT 1];
+        PMHR_Nuzlocke__c nuzlocke = [SELECT Id FROM PMHR_Nuzlocke__c LIMIT 1];
+        PMHR_FinalTeam__c finalTeam = [SELECT Id, Name FROM PMHR_FinalTeam__c LIMIT 1];
 
         //when
         Test.startTest();
@@ -73,8 +73,8 @@ private class PMHR_FinalTeamListController_Test {
 
     static testMethod void shouldNotGetFinalTeamInfo_noFinalTeams() {
         //given
-        Nuzlocke__c nuzlocke = [SELECT Id FROM Nuzlocke__c LIMIT 1];
-        delete [SELECT Id FROM Final_Team__c];
+        PMHR_Nuzlocke__c nuzlocke = [SELECT Id FROM PMHR_Nuzlocke__c LIMIT 1];
+        delete [SELECT Id FROM PMHR_FinalTeam__c];
 
         //when
         Test.startTest();

@@ -72,12 +72,12 @@
         <name>ContentAsset</name>
     </types>
     <types>
-        <members>Final_Team_Member__c</members>
-        <members>Final_Team__c</members>
-        <members>Hero__c</members>
-        <members>Nuzlocke__c</members>
-        <members>Pokemon_Data__c</members>
-        <members>Pokemon__c</members>
+        <members>PMHR_FinalTeamMember__c</members>
+        <members>PMHR_FinalTeam__c</members>
+        <members>PMHR_Hero__c</members>
+        <members>PMHR_Nuzlocke__c</members>
+        <members>PMHR_PokemonData__c</members>
+        <members>PMHR_Pokemon__c</members>
         <name>CustomObject</name>
     </types>
     <types>
@@ -85,60 +85,6 @@
         <name>CustomApplication</name>
     </types>
     <types>
-        <members>Final_Team_Member__c.Ability__c</members>
-        <members>Final_Team_Member__c.Final_Team__c</members>
-        <members>Final_Team_Member__c.Form__c</members>
-        <members>Final_Team_Member__c.Held_Item__c</members>
-        <members>Final_Team_Member__c.Level__c</members>
-        <members>Final_Team_Member__c.Move_1__c</members>
-        <members>Final_Team_Member__c.Move_2__c</members>
-        <members>Final_Team_Member__c.Move_3__c</members>
-        <members>Final_Team_Member__c.Move_4__c</members>
-        <members>Final_Team_Member__c.Nature__c</members>
-        <members>Final_Team_Member__c.Pokemon__c</members>
-        <members>Final_Team_Member__c.Type__c</members>
-        <members>Final_Team__c.Number_Of_Members__c</members>
-        <members>Final_Team__c.Nuzlocke__c</members>
-        <members>Hero__c.Game_Version__c</members>
-        <members>Hero__c.Gender__c</members>
-        <members>Hero__c.Nickname__c</members>
-        <members>Hero__c.Region__c</members>
-        <members>Hero__c.Rival_Name__c</members>
-        <members>Nuzlocke__c.Allowed_Catching_Methods_Per_Area__c</members>
-        <members>Nuzlocke__c.End_Date__c</members>
-        <members>Nuzlocke__c.End_Status__c</members>
-        <members>Nuzlocke__c.Game_Version__c</members>
-        <members>Nuzlocke__c.Hero__c</members>
-        <members>Nuzlocke__c.Is_Finished__c</members>
-        <members>Nuzlocke__c.Legendaries_Rule__c</members>
-        <members>Nuzlocke__c.Multiple_Elite_Four_Fights__c</members>
-        <members>Nuzlocke__c.Pokemons_Caught__c</members>
-        <members>Nuzlocke__c.Pokemons_Deceased__c</members>
-        <members>Nuzlocke__c.Rival_Name__c</members>
-        <members>Nuzlocke__c.Safari_Zone_Rule__c</members>
-        <members>Nuzlocke__c.Start_Date__c</members>
-        <members>Pokemon_Data__c.Evolves_from_Variant__c</members>
-        <members>Pokemon_Data__c.Family_Stage__c</members>
-        <members>Pokemon_Data__c.Family__c</members>
-        <members>Pokemon_Data__c.Picture_Url__c</members>
-        <members>Pokemon_Data__c.Pokedex_Number__c</members>
-        <members>Pokemon_Data__c.Primary_Type__c</members>
-        <members>Pokemon_Data__c.Region_Specific_Variant__c</members>
-        <members>Pokemon_Data__c.Secondary_Type__c</members>
-        <members>Pokemon_Data__c.Type__c</members>
-        <members>Pokemon_Data__c.Variant_Name__c</members>
-        <members>Pokemon_Data__c.Variant_Of__c</members>
-        <members>Pokemon__c.Catch_Method__c</members>
-        <members>Pokemon__c.Caught_Form__c</members>
-        <members>Pokemon__c.Cause_of_Death__c</members>
-        <members>Pokemon__c.Death_Level__c</members>
-        <members>Pokemon__c.Death__c</members>
-        <members>Pokemon__c.Form__c</members>
-        <members>Pokemon__c.Gender__c</members>
-        <members>Pokemon__c.Location__c</members>
-        <members>Pokemon__c.Nuzlocke__c</members>
-        <members>Pokemon__c.Region_Specific_Variant__c</members>
-        <members>Pokemon__c.Trainer__c</members>
         <name>CustomField</name>
     </types>
     <types>
@@ -202,62 +148,53 @@
         <name>CustomLabel</name>
     </types>
     <types>
-        <members>Final_Team_Member__c</members>
-        <members>Final_Team__c</members>
-        <members>Hero__c</members>
-        <members>Nuzlocke__c</members>
-        <members>Pokemon_Data__c</members>
-        <members>Pokemon__c</members>
+        <members>PMHR_FinalTeamMember__c</members>
+        <members>PMHR_FinalTeam__c</members>
+        <members>PMHR_Hero__c</members>
+        <members>PMHR_Nuzlocke__c</members>
+        <members>PMHR_PokemonData__c</members>
+        <members>PMHR_Pokemon__c</members>
         <name>CustomTab</name>
     </types>
     <types>
-        <members>Pokemon__c.Duplicate_Name</members>
+        <members>PMHR_Pokemon__c.Duplicate_Name</members>
         <name>DuplicateRule</name>
     </types>
     <types>
-        <members>Hero_Record_Page</members>
-        <members>Home_Page_Default</members>
-        <members>PKMN_Heroes_UtilityBar</members>
         <members>PMHR_Pokemon_Data_Record_Page</members>
-        <members>PMHR_Pokemon_Data_Additional_Variant_Record</members>
-        <members>PMHR_Pokemon_Data_Record</members>
-        <members>PMHR_Pokemon_Record</members>
-        <members>PMHR_Nuzlocke_Record</members>
-        <members>PMHR_Final_Team_Member_Record</members>
-        <members>PMHR_Final_Team_Record</members>
+        <members>PMHR_FinalTeamMemberRecordPage</members>
+        <members>PMHR_FinalTeamRecordPage</members>
+        <members>PMHR_HeroRecordPage</members>
+        <members>PMHR_HomePageDefault</members>
+        <members>PMHR_NuzlockeRecordPage</members>
+        <members>PMHR_PokemonDataFormRecordPage</members>
+        <members>PMHR_PokemonDataVariantRecordPage</members>
+        <members>PMHR_PokemonRecordPage</members>
+        <members>PKMN_Heroes_UtilityBar</members>
         <name>FlexiPage</name>
     </types>
     <types>
-        <members>Pokemon_Game_Versions</members>
-        <members>Pokemon_Type</members>
-        <members>Region_Specific_Pokemon_Variants</members>
+        <members>PMHR_PokemonGameVersion</members>
+        <members>PMHR_PokemonRegionalVariant</members>
+        <members>PMHR_PokemonType</members>
         <name>GlobalValueSet</name>
     </types>
     <types>
-        <members>Final_Team_Member__c-Final Team Member Layout</members>
-        <members>Final_Team__c-Final Team Layout</members>
-        <members>Hero__c-Hero Layout</members>
-        <members>Nuzlocke__c-Nuzlocke Layout</members>
-        <members>Pokemon_Data__c-Additional Variant Layout</members>
-        <members>Pokemon_Data__c-Form Layout</members>
-        <members>Pokemon__c-Pokemon Layout</members>
+        <members>PMHR_FinalTeamMember__c-Final Team Member Layout</members>
+        <members>PMHR_FinalTeam__c-Final Team Layout</members>
+        <members>PMHR_Hero__c-Hero Layout</members>
+        <members>PMHR_Nuzlocke__c-Nuzlocke Layout</members>
+        <members>PMHR_PokemonData__c-Additional Variant Layout</members>
+        <members>PMHR_PokemonData__c-Form Layout</members>
+        <members>PMHR_Pokemon__c-Pokemon Layout</members>
         <name>Layout</name>
     </types>
     <types>
-        <members>Final_Team_Member__c.All</members>
-        <members>Final_Team__c.All</members>
-        <members>Hero__c.All</members>
-        <members>Nuzlocke__c.All</members>
-        <members>Nuzlocke__c.Finished_Nuzlockes</members>
-        <members>Nuzlocke__c.Ongoing_Nuzlockes</members>
-        <members>Pokemon_Data__c.Additional_Variants</members>
-        <members>Pokemon_Data__c.All</members>
-        <members>Pokemon__c.All</members>
-        <members>Pokemon__c.All_Dead</members>
         <name>ListView</name>
     </types>
     <types>
         <members>Pokemon__c.Duplicate_Name_matching_rule</members>
+        <members>PMHR_Pokemon__c.Duplicate_Name_matching_rule</members>
         <name>MatchingRule</name>
     </types>
     <types>
@@ -268,8 +205,6 @@
         <name>QuickAction</name>
     </types>
     <types>
-        <members>Pokemon_Data__c.Additional_Variant</members>
-        <members>Pokemon_Data__c.Form</members>
         <name>RecordType</name>
     </types>
     <types>
@@ -284,21 +219,6 @@
         <name>ReportType</name>
     </types>
     <types>
-        <members>Final_Team_Member__c.Level_Invalid</members>
-        <members>Final_Team_Member__c.Nuzlocke_Mismatch</members>
-        <members>Final_Team_Member__c.Team_Members_Limit_Reached</members>
-        <members>Final_Team__c.Nuzlocke_Finished</members>
-        <members>Nuzlocke__c.End_Data_On_Insert</members>
-        <members>Nuzlocke__c.End_Date_Before_Start_Date</members>
-        <members>Nuzlocke__c.No_Full_End_Data_Provided</members>
-        <members>Nuzlocke__c.Nuzlocke_Finished</members>
-        <members>Pokemon_Data__c.Not_Changable_Pokedex_Number</members>
-        <members>Pokemon_Data__c.Standard_no_Allowed_for_Regional_Variant</members>
-        <members>Pokemon__c.Death_Info_While_Alive</members>
-        <members>Pokemon__c.Form_Wrong_Family</members>
-        <members>Pokemon__c.Form_Wrong_Stage</members>
-        <members>Pokemon__c.Invalid_Death_Level</members>
-        <members>Pokemon__c.Nuzlocke_Finished</members>
         <name>ValidationRule</name>
     </types>
     <types>
@@ -306,8 +226,10 @@
         <name>CustomLabels</name>
     </types>
     <types>
-        <members>Pokemon__c</members>
         <name>MatchingRules</name>
+    </types>
+    <types>
+        <name>CompactLayout</name>
     </types>
     <version>53.0</version>
 </Package>
