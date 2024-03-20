@@ -87,6 +87,11 @@ public with sharing class PMHR_NuzlockeBuilder {
         return this;
     }
 
+    public PMHR_NuzlockeBuilder setEndStatus(NuzlockeUnit.Status status) {
+        this.record.Status__c = status.name();
+        return this;
+    }
+
     public PMHR_NuzlockeBuilder setMultipleEliteFourFights(Boolean isMultipleEliteFourFight) {
         this.record.Multiple_Elite_Four_Fights__c = isMultipleEliteFourFight;
         return this;

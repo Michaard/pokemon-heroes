@@ -46,6 +46,7 @@
         <members>PMHR_EvolvePokemonController</members>
         <members>PicklistUtilities</members>
         <members>PMHR_EvolvePokemonControllerTest</members>
+        <members>NuzlockeUnit</members>
         <name>ApexClass</name>
     </types>
     <types>

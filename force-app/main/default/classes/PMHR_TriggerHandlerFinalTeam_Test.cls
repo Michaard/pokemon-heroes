@@ -32,10 +32,10 @@ private class PMHR_TriggerHandlerFinalTeam_Test {
 
         //then
         System.assertEquals(null, nuzlocke.EndDate__c);
-        System.assertEquals(null, nuzlocke.Status__c);
+        Assert.isTrue(NuzlockeUnit.isStatusEqual(nuzlocke.Status__c, NuzlockeUnit.Status.InProgress));
         PMHR_Nuzlocke__c updatedNuzlocke = [SELECT Id, EndDate__c, Status__c FROM PMHR_Nuzlocke__c LIMIT 1];
         System.assertNotEquals(null, updatedNuzlocke.EndDate__c);
-        System.assertEquals(PMHR_NuzlockeBuilder.END_STATUS_SUCCESS, updatedNuzlocke.Status__c);
+        Assert.isTrue(NuzlockeUnit.isStatusEqual(updatedNuzlocke.Status__c, NuzlockeUnit.Status.Success));
     }
 
     static testMethod void shouldNotMarkNuzlockeAsFinished_MultipleFinalTeams() {
@@ -52,7 +52,7 @@ private class PMHR_TriggerHandlerFinalTeam_Test {
         //then
         nuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
         System.assertEquals(null, nuzlocke.EndDate__c);
-        System.assertEquals(null, nuzlocke.Status__c);
+        Assert.isTrue(NuzlockeUnit.isStatusEqual(nuzlocke.Status__c, NuzlockeUnit.Status.InProgress));
     }
 
     static testMethod void shouldMarkNuzlockeAsNotFinished() {
@@ -68,7 +68,7 @@ private class PMHR_TriggerHandlerFinalTeam_Test {
         nuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
         System.assert(nuzlocke.IsFinished__c);
         System.assertNotEquals(null, nuzlocke.EndDate__c);
-        System.assertEquals(PMHR_NuzlockeBuilder.END_STATUS_SUCCESS, nuzlocke.Status__c);
+        Assert.isTrue(NuzlockeUnit.isStatusEqual(nuzlocke.Status__c, NuzlockeUnit.Status.Success));
 
         delete newFinalTeam;
         Test.stopTest();
@@ -77,7 +77,7 @@ private class PMHR_TriggerHandlerFinalTeam_Test {
         nuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
         System.assert(!nuzlocke.IsFinished__c);
         System.assertEquals(null, nuzlocke.EndDate__c);
-        System.assertEquals(null, nuzlocke.Status__c);
+        Assert.isTrue(NuzlockeUnit.isStatusEqual(nuzlocke.Status__c, NuzlockeUnit.Status.InProgress));
     }
 
     static testMethod void shouldNotMarkNuzlockeAsNotFinished_ManyFinalTeams() {
@@ -100,11 +100,11 @@ private class PMHR_TriggerHandlerFinalTeam_Test {
         nuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
         System.assertEquals(false, nuzlocke.IsFinished__c);
         System.assertEquals(null, nuzlocke.EndDate__c);
-        System.assertEquals(null, nuzlocke.Status__c);
+        Assert.isTrue(NuzlockeUnit.isStatusEqual(nuzlocke.Status__c, NuzlockeUnit.Status.InProgress));
 
         nuzlocke = new PMHR_NuzlockeBuilder(nuzlocke)
                 .setEndDate(Date.today())
-                .setEndStatus(PMHR_NuzlockeBuilder.END_STATUS_SUCCESS)
+                .setEndStatus(NuzlockeUnit.Status.Success)
                 .save();
 
         delete newFinalTeamOne;
@@ -114,7 +114,7 @@ private class PMHR_TriggerHandlerFinalTeam_Test {
         PMHR_Nuzlocke__c updatedNuzlocke = PMHR_NuzlockeQueryService.getNuzlockeById(nuzlocke.Id);
         System.assertEquals(true, updatedNuzlocke.IsFinished__c);
         System.assertNotEquals(null, updatedNuzlocke.EndDate__c);
-        System.assertEquals(PMHR_NuzlockeBuilder.END_STATUS_SUCCESS, updatedNuzlocke.Status__c);
+        Assert.isTrue(NuzlockeUnit.isStatusEqual(updatedNuzlocke.Status__c, NuzlockeUnit.Status.Success));
     }
 
     static testMethod void shouldNotInsertFinalTeam_nuzlockeFinished() {
@@ -122,7 +122,7 @@ private class PMHR_TriggerHandlerFinalTeam_Test {
         PMHR_Nuzlocke__c nuzlocke = [SELECT Id, EndDate__c, Status__c FROM PMHR_Nuzlocke__c LIMIT 1];
         nuzlocke = new PMHR_NuzlockeBuilder(nuzlocke)
                 .setEndDate(Date.today())
-                .setEndStatus(PMHR_NuzlockeBuilder.END_STATUS_FAILED)
+                .setEndStatus(NuzlockeUnit.Status.Failed)
                 .save();
 
         Boolean errorOccurred = false;
