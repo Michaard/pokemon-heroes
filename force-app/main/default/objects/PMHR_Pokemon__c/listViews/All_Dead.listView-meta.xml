@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>All_Dead</fullName>
+    <columns>NAME</columns>
+    <columns>Form__c</columns>
+    <columns>Gender__c</columns>
+    <columns>Trainer__c</columns>
+    <columns>IsDeceased__c</columns>
+    <columns>DeathLevel__c</columns>
+    <columns>CauseOfDeath__c</columns>
+    <columns>Nuzlocke__c</columns>
+    <columns>CREATED_DATE</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>IsDeceased__c</field>
+        <operation>equals</operation>
+        <value>1</value>
+    </filters>
+    <label>All Dead</label>
+</ListView>

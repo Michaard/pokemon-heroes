@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Team_Members_Limit_Reached</fullName>
-    <active>true</active>
-    <description>The final team already has 6 members</description>
-    <errorConditionFormula>Final_Team__r.Number_Of_Members__c = 6</errorConditionFormula>
-    <errorMessage>The final team already has 6 members</errorMessage>
-</ValidationRule>

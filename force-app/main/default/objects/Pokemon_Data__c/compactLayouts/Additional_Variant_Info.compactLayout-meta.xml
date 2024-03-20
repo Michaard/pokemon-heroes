@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
-    <fullName>Additional_Variant_Info</fullName>
-    <fields>Variant_Name__c</fields>
-    <fields>Variant_Of__c</fields>
-    <fields>Type__c</fields>
-    <label>Additional Variant Info</label>
-</CompactLayout>

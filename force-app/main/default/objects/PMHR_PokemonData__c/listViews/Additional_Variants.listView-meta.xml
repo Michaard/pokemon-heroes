@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Additional_Variants</fullName>
+    <columns>NAME</columns>
+    <columns>VariantOf__c</columns>
+    <columns>Type__c</columns>
+    <filterScope>Everything</filterScope>
+    <filters>
+        <field>RECORDTYPE</field>
+        <operation>equals</operation>
+        <value>PMHR_PokemonData__c.Variant</value>
+    </filters>
+    <label>Additional Variants</label>
+</ListView>

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>AllowedCatchingMethodsPerArea__c</fullName>
+    <externalId>false</externalId>
+    <label>Allowed Catching Methods / Area</label>
+    <required>true</required>
+    <trackTrending>false</trackTrending>
+    <type>MultiselectPicklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>BreedingOnlyOnce</fullName>
+                <default>false</default>
+                <label>Breeding (Only Once)</label>
+            </value>
+            <value>
+                <fullName>BreedingAny</fullName>
+                <default>false</default>
+                <label>Breeding (Any)</label>
+            </value>
+            <value>
+                <fullName>BreedingOnePerParent</fullName>
+                <default>false</default>
+                <label>Breeding (One/Parent)</label>
+            </value>
+            <value>
+                <fullName>BreedingOnePerType</fullName>
+                <default>false</default>
+                <label>Breeding (One/Type)</label>
+            </value>
+            <value>
+                <fullName>Event</fullName>
+                <default>false</default>
+                <label>Event</label>
+            </value>
+            <value>
+                <fullName>FossilOnlyOne</fullName>
+                <default>false</default>
+                <label>Fossil (Only One)</label>
+            </value>
+            <value>
+                <fullName>FossilAny</fullName>
+                <default>false</default>
+                <label>Fossil (Any)</label>
+            </value>
+            <value>
+                <fullName>GameCornerMax1</fullName>
+                <default>false</default>
+                <label>Game Corner (Max 1)</label>
+            </value>
+            <value>
+                <fullName>GameCornerMax2</fullName>
+                <default>false</default>
+                <label>Game Corner (Max 2)</label>
+            </value>
+            <value>
+                <fullName>GameCornerMax3</fullName>
+                <default>false</default>
+                <label>Game Corner (Max 3)</label>
+            </value>
+            <value>
+                <fullName>GameCornerMax4</fullName>
+                <default>false</default>
+                <label>Game Corner (Max 4)</label>
+            </value>
+            <value>
+                <fullName>GameCornerAny</fullName>
+                <default>false</default>
+                <label>Game Corner (Any)</label>
+            </value>
+            <value>
+                <fullName>Grass</fullName>
+                <default>false</default>
+                <label>Grass</label>
+            </value>
+            <value>
+                <fullName>GrassOrOverworld</fullName>
+                <default>false</default>
+                <label>Grass/Overworld</label>
+            </value>
+            <value>
+                <fullName>GrassOrWater</fullName>
+                <default>false</default>
+                <label>Grass/Water</label>
+            </value>
+            <value>
+                <fullName>Overworld</fullName>
+                <default>false</default>
+                <label>Overworld</label>
+            </value>
+            <value>
+                <fullName>Trade</fullName>
+                <default>false</default>
+                <label>Trade</label>
+            </value>
+            <value>
+                <fullName>Tree</fullName>
+                <default>false</default>
+                <label>Tree</label>
+            </value>
+            <value>
+                <fullName>Water</fullName>
+                <default>false</default>
+                <label>Water</label>
+            </value>
+            <value>
+                <fullName>WaterOrTree</fullName>
+                <default>false</default>
+                <label>Water/Tree</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+    <visibleLines>4</visibleLines>
+</CustomField>

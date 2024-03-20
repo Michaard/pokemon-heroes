@@ -30,7 +30,7 @@ export default class PMHR_PokemonDataPicture extends LightningElement {
 
     @wire(getRecord, {
         recordId: '$recordId',
-        fields: ['Pokemon_Data__c.Name', 'Pokemon_Data__c.Picture_Url__c', 'Pokemon_Data__c.Type__c']
+        fields: ['PMHR_PokemonData__c.Name', 'PMHR_PokemonData__c.PictureUrl__c', 'PMHR_PokemonData__c.Type__c']
     }) record({error, data}) {
         if (data) {
             this._initialize(data);
@@ -43,7 +43,7 @@ export default class PMHR_PokemonDataPicture extends LightningElement {
 
     _initialize(data) {
         this.displaySpinner = true;
-        this.pokemonData = new PokemonData(data.fields.Name.value, data.fields.Picture_Url__c.value, data.fields.Type__c.value);
+        this.pokemonData = new PokemonData(data.fields.Name.value, data.fields.PictureUrl__c.value, data.fields.Type__c.value);
         this.displaySpinner = false;
     }
 }

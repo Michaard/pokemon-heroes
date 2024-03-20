@@ -53,7 +53,7 @@ export default class PmhrEvolvePokemon extends LightningElement {
 
     @wire(getRecord, {
         recordId: "$recordId",
-        fields: ["Pokemon__c.Name"]
+        fields: ["PMHR_Pokemon__c.Name"]
     }) record({error, data}) {
         if (data) {
             this._initialize(data);
