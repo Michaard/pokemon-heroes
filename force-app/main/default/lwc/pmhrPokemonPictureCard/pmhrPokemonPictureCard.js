@@ -3,7 +3,7 @@ import { getRecord } from 'lightning/uiRecordApi';
 import getPokemonPicture from '@salesforce/apex/PMHR_PokemonPictureController.getPokemonPicture';
 import PMHR_Spinner_Alt_Text from '@salesforce/label/c.PMHR_Spinner_Alt_Text';
 
-const POKEMON_FIELDS = ['Pokemon__c.Id'];
+const POKEMON_FIELDS = ['PMHR_Pokemon__c.Id'];
 const CSS_CLASS_PICTURE_DEAD = 'picture-dead';
 
 export default class PMHR_PokemonPictureCard extends LightningElement {

@@ -1,17 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionOverrides>
-        <actionName>View</actionName>
-        <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>PMHR_Nuzlocke_Record</content>
-        <formFactor>Large</formFactor>
-        <skipRecordTypeSelect>false</skipRecordTypeSelect>
-        <type>Flexipage</type>
-        <pageOrSobjectType>Nuzlocke__c</pageOrSobjectType>
-    </actionOverrides>
-    <actionOverrides>
         <actionName>Tab</actionName>
-        <content>Home_Page_Default</content>
+        <content>PMHR_HomePageDefault</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
@@ -20,29 +11,47 @@
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>PMHR_Final_Team_Member_Record</content>
+        <content>PMHR_HeroRecordPage</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
-        <pageOrSobjectType>Final_Team_Member__c</pageOrSobjectType>
+        <pageOrSobjectType>PMHR_Hero__c</pageOrSobjectType>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>PMHR_Final_Team_Record</content>
+        <content>PMHR_FinalTeamMemberRecordPage</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
-        <pageOrSobjectType>Final_Team__c</pageOrSobjectType>
+        <pageOrSobjectType>PMHR_FinalTeamMember__c</pageOrSobjectType>
     </actionOverrides>
     <actionOverrides>
         <actionName>View</actionName>
         <comment>Action override created by Lightning App Builder during activation.</comment>
-        <content>PMHR_Pokemon_Record</content>
+        <content>PMHR_FinalTeamRecordPage</content>
         <formFactor>Large</formFactor>
         <skipRecordTypeSelect>false</skipRecordTypeSelect>
         <type>Flexipage</type>
-        <pageOrSobjectType>Pokemon__c</pageOrSobjectType>
+        <pageOrSobjectType>PMHR_FinalTeam__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>PMHR_NuzlockeRecordPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>PMHR_Nuzlocke__c</pageOrSobjectType>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <comment>Action override created by Lightning App Builder during activation.</comment>
+        <content>PMHR_PokemonRecordPage</content>
+        <formFactor>Large</formFactor>
+        <skipRecordTypeSelect>false</skipRecordTypeSelect>
+        <type>Flexipage</type>
+        <pageOrSobjectType>PMHR_Pokemon__c</pageOrSobjectType>
     </actionOverrides>
     <brand>
         <headerColor>#BA0003</headerColor>
@@ -56,66 +65,12 @@
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
     <label>PKMN Heroes</label>
     <navType>Standard</navType>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PMHR_Pokemon_Data_Additional_Variant_Record</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
-        <recordType>Pokemon_Data__c.Additional_Variant</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PMHR_Pokemon_Data_Additional_Variant_Record</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
-        <recordType>Pokemon_Data__c.Additional_Variant</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PMHR_Pokemon_Data_Additional_Variant_Record</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
-        <recordType>Pokemon_Data__c.Additional_Variant</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PMHR_Pokemon_Data_Record</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
-        <recordType>Pokemon_Data__c.Form</recordType>
-        <type>Flexipage</type>
-        <profile>Admin</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PMHR_Pokemon_Data_Record</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
-        <recordType>Pokemon_Data__c.Form</recordType>
-        <type>Flexipage</type>
-        <profile>Standard</profile>
-    </profileActionOverrides>
-    <profileActionOverrides>
-        <actionName>View</actionName>
-        <content>PMHR_Pokemon_Data_Record</content>
-        <formFactor>Large</formFactor>
-        <pageOrSobjectType>Pokemon_Data__c</pageOrSobjectType>
-        <recordType>Pokemon_Data__c.Form</recordType>
-        <type>Flexipage</type>
-        <profile>StandardAul</profile>
-    </profileActionOverrides>
     <tabs>standard-home</tabs>
-    <tabs>Nuzlocke__c</tabs>
-    <tabs>Pokemon__c</tabs>
-    <tabs>Final_Team__c</tabs>
-    <tabs>Hero__c</tabs>
-    <tabs>Pokemon_Data__c</tabs>
+    <tabs>PMHR_Nuzlocke__c</tabs>
+    <tabs>PMHR_Pokemon__c</tabs>
+    <tabs>PMHR_FinalTeam__c</tabs>
+    <tabs>PMHR_Hero__c</tabs>
+    <tabs>PMHR_PokemonData__c</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>PKMN_Heroes_UtilityBar</utilityBar>
 </CustomApplication>

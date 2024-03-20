@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
-    <apiVersion>54.0</apiVersion>
+    <apiVersion>58.0</apiVersion>
     <description>Simplifies evolving the Pokemon into the correct form.</description>
     <isExposed>true</isExposed>
     <masterLabel>Evolve Pokemon Action</masterLabel>
@@ -11,7 +11,7 @@
         <targetConfig targets="lightning__RecordAction">
             <actionType>ScreenAction</actionType>
             <objects>
-                <object>Pokemon__c</object>
+                <object>PMHR_Pokemon__c</object>
             </objects>
         </targetConfig>
     </targetConfigs>

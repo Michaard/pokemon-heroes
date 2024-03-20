@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CompactLayout xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Nuzlocke_Info</fullName>
+    <fields>Name</fields>
+    <fields>GameVersion__c</fields>
+    <fields>Hero__c</fields>
+    <fields>StartDate__c</fields>
+    <fields>EndDate__c</fields>
+    <fields>PokemonsCaught__c</fields>
+    <fields>PokemonsDeceased__c</fields>
+    <label>Nuzlocke Info</label>
+</CompactLayout>
