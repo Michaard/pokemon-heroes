@@ -1,23 +1,24 @@
 <!-- Nuzlocke Final Team Member -->
 <template>
-    <div>
-        <hr class="slds-m-top_none slds-m-bottom_small"/>
-        <lightning-record-view-form object-api-name="Final_Team_Member__c" record-id={teamMember.id} density="comfy">
-            <div class="slds-p-left_x-small">
-                <a href={recordUrl}>
-                    {teamMember.nr}
-                </a>
-                <div class="slds-grid">
-                    <div class="slds-col slds-size_1-of-2">
-                        <lightning-output-field field-name="Pokemon__c"></lightning-output-field>
-                        <lightning-output-field field-name="Form__c"></lightning-output-field>
-                    </div>
-                    <div class="slds-col slds-size_1-of-2">
-                        <lightning-output-field field-name="Type__c"></lightning-output-field>
-                        <lightning-output-field field-name="Level__c"></lightning-output-field>
-                    </div>
+    <hr class="slds-m-top_none slds-m-bottom_small"/>
+    <lightning-record-view-form
+            object-api-name="PMHR_FinalTeamMember__c"
+            record-id={teamMember.id}
+            density="comfy">
+        <div class="slds-p-left_x-small">
+            <a href={recordUrl}>
+                {teamMember.nr}
+            </a>
+            <div class="slds-grid">
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name="Pokemon__c"></lightning-output-field>
+                    <lightning-output-field field-name="Form__c"></lightning-output-field>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <lightning-output-field field-name="Type__c"></lightning-output-field>
+                    <lightning-output-field field-name="Level__c"></lightning-output-field>
                 </div>
             </div>
-        </lightning-record-view-form>
-    </div>
+        </div>
+    </lightning-record-view-form>
 </template>
