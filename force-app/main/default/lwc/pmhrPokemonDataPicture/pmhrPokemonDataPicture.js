@@ -1,8 +1,13 @@
 import { LightningElement, api, wire } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi'
-import PMHR_Spinner_Alt_Text from '@salesforce/label/c.PMHR_Spinner_Alt_Text';
-import PMHR_Section_Title_Pokemon_Picture from '@salesforce/label/c.PMHR_Section_Title_Pokemon_Picture'
-import { PMHR_Utils } from 'c/pmhrUtils'
+import { getRecord, getFieldValue } from 'lightning/uiRecordApi'
+import { PMHR_Utils, stringFormat } from 'c/pmhrUtils';
+/* SObject fields */
+import FIELD_POKEMON_DATA_NAME from '@salesforce/schema/PMHR_PokemonData__c.Name';
+import FIELD_POKEMON_DATA_PICTURE_URL from '@salesforce/schema/PMHR_PokemonData__c.PictureUrl__c';
+import FIELD_POKEMON_DATA_TYPE from '@salesforce/schema/PMHR_PokemonData__c.Type__c';
+/* Labels */
+import PMHR_SpinnerAltText from '@salesforce/label/c.PMHR_SpinnerAltText';
+import PMHR_Section_Title_Pokemon_Picture from '@salesforce/label/c.PMHR_Section_Title_Pokemon_Picture';
 
 class PokemonData {
     constructor(name, pictureUrl, type) {
@@ -12,38 +17,41 @@ class PokemonData {
     }
 }
 
-export default class PMHR_PokemonDataPicture extends LightningElement {
+export default class pmhrPokemonDataPicture extends LightningElement {
     @api recordId;
+
     displaySpinner;
-    labels;
+    label;
     pokemonData;
 
     constructor() {
         super();
-        this.labels = {
-            PMHR_Spinner_Alt_Text,
-            PMHR_Section_Title_Pokemon_Picture
+        this.label = {
+            PMHR_SpinnerAltText
         };
-        this.displaySpinner = false;
-        this.pokemonData = {};
+        this.displaySpinner = true;
+        this.pokemonData = new PokemonData();
     }
 
     @wire(getRecord, {
         recordId: '$recordId',
-        fields: ['PMHR_PokemonData__c.Name', 'PMHR_PokemonData__c.PictureUrl__c', 'PMHR_PokemonData__c.Type__c']
+        fields: [FIELD_POKEMON_DATA_NAME, FIELD_POKEMON_DATA_PICTURE_URL, FIELD_POKEMON_DATA_TYPE]
     }) record({error, data}) {
         if (data) {
             this._initialize(data);
+            this.displaySpinner = false;
         }
     }
 
     get mainCardTitle() {
-        return PMHR_Utils.stringFormat(this.labels.PMHR_Section_Title_Pokemon_Picture, this.pokemonData.name);
+        return stringFormat(PMHR_Section_Title_Pokemon_Picture, this.pokemonData.name);
     }
 
     _initialize(data) {
-        this.displaySpinner = true;
-        this.pokemonData = new PokemonData(data.fields.Name.value, data.fields.PictureUrl__c.value, data.fields.Type__c.value);
-        this.displaySpinner = false;
+        this.pokemonData = new PokemonData(
+            getFieldValue(data, FIELD_POKEMON_DATA_NAME),
+            getFieldValue(data, FIELD_POKEMON_DATA_PICTURE_URL),
+            getFieldValue(data, FIELD_POKEMON_DATA_TYPE)
+        );
     }
 }

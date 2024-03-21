@@ -8,13 +8,6 @@
         <value>Back</value>
     </labels>
     <labels>
-        <fullName>Button_Cancel</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>Button Cancel</shortDescription>
-        <value>Cancel</value>
-    </labels>
-    <labels>
         <fullName>Button_Close</fullName>
         <language>en_US</language>
         <protected>true</protected>
@@ -71,24 +64,24 @@
         <value>Review the errors on this page.</value>
     </labels>
     <labels>
-        <fullName>PMHR_Choose_Next_Form</fullName>
+        <fullName>PMHR_EvolveActionNextFormChoiceMessage</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>PMHR Choose Next Form</shortDescription>
+        <shortDescription>PMHR_EvolveActionNextFormChoiceMessage</shortDescription>
         <value>Choose the next form:</value>
     </labels>
     <labels>
-        <fullName>PMHR_Death_Status_Alive</fullName>
+        <fullName>PMHR_LifeInfoLabelLifeStatusAlive</fullName>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>PMHR Death Status Alive</shortDescription>
         <value>Alive</value>
     </labels>
     <labels>
-        <fullName>PMHR_Death_Status_Dead</fullName>
+        <fullName>PMHR_LifeInfoLabelLifeStatusDead</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>PMHR Death Status Dead</shortDescription>
+        <shortDescription>PMHR_LifeInfoLabelLifeStatusDead</shortDescription>
         <value>Dead</value>
     </labels>
     <labels>
@@ -183,10 +176,10 @@
         <value>Level:</value>
     </labels>
     <labels>
-        <fullName>PMHR_Field_Life_Status</fullName>
+        <fullName>PMHR_LifeInfoLabelLifeStatus</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>PMHR Field Life Status</shortDescription>
+        <shortDescription>PMHR_LifeInfoLabelLifeStatus</shortDescription>
         <value>Life Status</value>
     </labels>
     <labels>
@@ -225,10 +218,24 @@
         <value>Type:</value>
     </labels>
     <labels>
-        <fullName>PMHR_Label_Error</fullName>
+        <fullName>PMHR_LabelCancel</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Label Error</shortDescription>
+        <shortDescription>PMHR_LabelCancel</shortDescription>
+        <value>Cancel</value>
+    </labels>
+    <labels>
+        <fullName>PMHR_LabelSuccess</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PMHR_LabelSuccess</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>PMHR_LabelError</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>PMHR_LabelError</shortDescription>
         <value>Error</value>
     </labels>
     <labels>
@@ -253,31 +260,31 @@
         <value>Edit picture for {0}</value>
     </labels>
     <labels>
-        <fullName>PMHR_Next_Available_Form_Header</fullName>
+        <fullName>PMHR_EvolveActionHeader</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>PMHR Next Available Form Header</shortDescription>
+        <shortDescription>PMHR_EvolveActionHeader</shortDescription>
         <value>Evolve {0}</value>
     </labels>
     <labels>
-        <fullName>PMHR_No_Next_Available_Form</fullName>
+        <fullName>PMHR_EvolveActionNextFormUnavailableMessage</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>PMHR No Next Available Form</shortDescription>
-        <value>{0} is in it&apos;s final form.</value>
+        <shortDescription>PMHR_EvolveActionNextFormUnavailableMessage</shortDescription>
+        <value>{0} is in its final form.</value>
     </labels>
     <labels>
-        <fullName>PMHR_Placeholder_Empty_Final_Team_Members_List</fullName>
+        <fullName>PMHR_FinalTeamListNoMembersMessage</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>PMHR Placeholder Empty Final Team Members List</shortDescription>
+        <shortDescription>PMHR_FinalTeamListNoMembersMessage</shortDescription>
         <value>The Final Team has no members.</value>
     </labels>
     <labels>
-        <fullName>PMHR_Placeholder_Final_Team_Members_List</fullName>
+        <fullName>PMHR_FinalTeamListNoTeamsMessage</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>PMHR Placeholder Final Team Members List</shortDescription>
+        <shortDescription>PMHR_FinalTeamListNoTeamsMessage</shortDescription>
         <value>The Final Team for this Nuzlocke is not assembled.</value>
     </labels>
     <labels>
@@ -288,17 +295,17 @@
         <value>{0}. {1}</value>
     </labels>
     <labels>
-        <fullName>PMHR_Section_Title_Death_Info</fullName>
+        <fullName>PMHR_LifeInfoSectionTitle</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>PMHR Section Title Death Info</shortDescription>
+        <shortDescription>PMHR_LifeInfoSectionTitle</shortDescription>
         <value>Life Information</value>
     </labels>
     <labels>
-        <fullName>PMHR_Section_Title_Final_Team_Members</fullName>
+        <fullName>PMHR_FinalTeamListSectionTitle</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>PMHR Section Title Final Team Members</shortDescription>
+        <shortDescription>PMHR_FinalTeamListSectionTitle</shortDescription>
         <value>Final Team Members</value>
     </labels>
     <labels>
@@ -309,17 +316,17 @@
         <value>{0} Picture(s)</value>
     </labels>
     <labels>
-        <fullName>PMHR_Spinner_Alt_Text</fullName>
+        <fullName>PMHR_SpinnerAltText</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Spinner Alt Text</shortDescription>
+        <shortDescription>PMHR_SpinnerAltText</shortDescription>
         <value>Loading...</value>
     </labels>
     <labels>
-        <fullName>PMHR_Toast_Success_Next_Form_Assigned</fullName>
+        <fullName>PMHR_EvolveActionNextFormAssignedMessage</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Toast Success Next Form Assigned</shortDescription>
+        <shortDescription>PMHR_EvolveActionNextFormAssignedMessage</shortDescription>
         <value>Congratulations! Your {0} evolved into {1}!</value>
     </labels>
     <labels>

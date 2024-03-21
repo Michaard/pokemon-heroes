@@ -1,13 +1,18 @@
 import { LightningElement, api, wire } from 'lwc';
-import { getRecord } from 'lightning/uiRecordApi';
-import PMHR_Section_Title_Death_Info from '@salesforce/label/c.PMHR_Section_Title_Death_Info';
-import PMHR_Field_Life_Status from '@salesforce/label/c.PMHR_Field_Life_Status';
-import PMHR_Field_Death_Level from '@salesforce/label/c.PMHR_Field_Death_Level';
-import PMHR_Field_Death_Reason from '@salesforce/label/c.PMHR_Field_Death_Reason';
-import PMHR_Death_Status_Dead from '@salesforce/label/c.PMHR_Death_Status_Dead';
-import PMHR_Death_Status_Alive from '@salesforce/label/c.PMHR_Death_Status_Alive';
-
-const POKEMON_FIELDS = ['PMHR_Pokemon__c.IsDeceased__c', 'PMHR_Pokemon__c.DeathLevel__c', 'PMHR_Pokemon__c.CauseOfDeath__c'];
+import { getRecord, getFieldValue } from 'lightning/uiRecordApi';
+import { getObjectInfo } from 'lightning/uiObjectInfoApi';
+/* SObject */
+import SOBJECT_POKEMON from '@salesforce/schema/PMHR_Pokemon__c';
+/* SObject fields */
+import FIELD_POKEMON_IS_DECEASED from '@salesforce/schema/PMHR_Pokemon__c.IsDeceased__c';
+import FIELD_POKEMON_DEATH_LEVEL from '@salesforce/schema/PMHR_Pokemon__c.DeathLevel__c';
+import FIELD_POKEMON_CAUSE_OF_DEATH from '@salesforce/schema/PMHR_Pokemon__c.CauseOfDeath__c';
+/* Labels */
+import PMHR_LifeInfoSectionTitle from '@salesforce/label/c.PMHR_LifeInfoSectionTitle';
+import PMHR_LifeInfoLabelLifeStatus from '@salesforce/label/c.PMHR_LifeInfoLabelLifeStatus';
+import PMHR_LifeInfoLabelLifeStatusDead from '@salesforce/label/c.PMHR_LifeInfoLabelLifeStatusDead';
+import PMHR_LifeInfoLabelLifeStatusAlive from '@salesforce/label/c.PMHR_LifeInfoLabelLifeStatusAlive';
+/* Constants */
 const CSS_CLASS_SLDS_SIZE_1_OF_2 = 'slds-size_1-of-2';
 
 class PokemonData {
@@ -18,50 +23,68 @@ class PokemonData {
     }
 }
 
-export default class PMHR_PokemonLifeInformationCard extends LightningElement {
+export default class pmhrPokemonLifeInformationCard extends LightningElement {
     @api recordId;
+
     displaySpinner;
-    labels;
+    label;
     pokemonData;
 
     constructor() {
         super();
-        this.labels = {
-            PMHR_Section_Title_Death_Info,
-            PMHR_Field_Life_Status,
-            PMHR_Field_Death_Level,
-            PMHR_Field_Death_Reason,
-            PMHR_Death_Status_Dead,
-            PMHR_Death_Status_Alive
+        this.label = {
+            PMHR_LifeInfoSectionTitle,
+            PMHR_LifeInfoLabelLifeStatus,
+            PMHR_LifeInfoLabelLifeStatusDead,
+            PMHR_LifeInfoLabelLifeStatusAlive
         };
         this.pokemonData = new PokemonData();
+        this.displaySpinner = true;
     }
 
-    @wire(getRecord, {recordId: '$recordId', fields: POKEMON_FIELDS}) record({error, data}){
+    @wire(getRecord, {
+        recordId: '$recordId',
+        fields: [FIELD_POKEMON_IS_DECEASED, FIELD_POKEMON_DEATH_LEVEL, FIELD_POKEMON_CAUSE_OF_DEATH]
+    }) record({error, data}) {
         if (data) {
-            this.initialize(data);
+            this._initializePokemonData(data);
+        }
+    }
+
+    @wire(getObjectInfo, {
+        objectApiName: SOBJECT_POKEMON
+    }) oppInfo({ data, error }) {
+        if (data) {
+            this._initializeFieldLabels(data);
         }
     }
 
     get lifeStatus() {
         if (this.pokemonData) {
-            if (this.pokemonData.isDead) {
-                return this.labels.PMHR_Death_Status_Dead;
-            } else {
-                return this.labels.PMHR_Death_Status_Alive;
-            }
+            return this.pokemonData.isDead ? PMHR_LifeInfoLabelLifeStatusDead : PMHR_LifeInfoLabelLifeStatusAlive;
         }
     }
 
-    initialize(data) {
-        this.displaySpinner = true;
-        this.pokemonData = new PokemonData(data.fields.IsDeceased__c.value, data.fields.DeathLevel__c.value, data.fields.CauseOfDeath__c.value);
+    _initializePokemonData(data) {
+        this.pokemonData = new PokemonData(
+            getFieldValue(data, FIELD_POKEMON_IS_DECEASED),
+            getFieldValue(data, FIELD_POKEMON_DEATH_LEVEL),
+            getFieldValue(data, FIELD_POKEMON_CAUSE_OF_DEATH)
+        );
+
         let lifeStatusDiv = this.template.querySelector('[data-id="lifeStatusDiv"]');
+
         if (this.pokemonData.isDead) {
             lifeStatusDiv.classList.add(CSS_CLASS_SLDS_SIZE_1_OF_2);
         } else {
             lifeStatusDiv.classList.remove(CSS_CLASS_SLDS_SIZE_1_OF_2);
         }
+
         this.displaySpinner = false;
+    }
+
+    _initializeFieldLabels(data) {
+        this.label.PMHR_FieldDeathLevel = data.fields[FIELD_POKEMON_DEATH_LEVEL.fieldApiName].label;
+        this.label.PMHR_FieldDeathReason = data.fields[FIELD_POKEMON_CAUSE_OF_DEATH.fieldApiName].label;
     }
 }

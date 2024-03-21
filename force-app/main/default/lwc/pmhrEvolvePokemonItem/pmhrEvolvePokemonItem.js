@@ -1,10 +1,10 @@
 import { LightningElement, api } from 'lwc';
 
-export default class PmhrEvolvePokemonItem extends LightningElement {
+export default class pmhrEvolvePokemonItem extends LightningElement {
     @api formData;
 
-    handleFormClick() {
-        let event = new CustomEvent('formclick', {
+    handleItemClick() {
+        let event = new CustomEvent('itemclick', {
             detail: this.formData
         });
         this.dispatchEvent(event);

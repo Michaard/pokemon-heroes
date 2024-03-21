@@ -1,9 +1,7 @@
 <!-- Pokemon Picture Card -->
 <template>
     <lightning-card class="slds-is-relative">
-        <template if:true={displaySpinner}>
-            <lightning-spinner alternative-text={labels.PMHR_Spinner_Alt_Text}></lightning-spinner>
-        </template>
+        <lightning-spinner lwc:if={displaySpinner} alternative-text={label.PMHR_SpinnerAltText}></lightning-spinner>
         <div class="slds-text-align_center">
             <div class="picture-container">
                 <img data-id="pokemonDataPicture" class="picture" src={pokemonData.pictureUrl}/>

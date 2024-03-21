@@ -99,9 +99,9 @@
         <members>Button_Save</members>
         <members>Button_Select</members>
         <members>Error_Message_Review_Errors</members>
-        <members>PMHR_Label_Error</members>
-        <members>PMHR_Death_Status_Alive</members>
-        <members>PMHR_Death_Status_Dead</members>
+        <members>PMHR_LabelError</members>
+        <members>PMHR_LifeInfoLabelLifeStatusAlive</members>
+        <members>PMHR_LifeInfoLabelLifeStatusDead</members>
         <members>PMHR_Duplicate_Value_Error</members>
         <members>PMHR_Error_Forbidden_Form_Variant</members>
         <members>PMHR_Error_Retrieving_Picture</members>
@@ -115,7 +115,7 @@
         <members>PMHR_Field_Has_Alolan_Form</members>
         <members>PMHR_Field_Level</members>
         <members>PMHR_Field_Level_Colon</members>
-        <members>PMHR_Field_Life_Status</members>
+        <members>PMHR_LifeInfoLabelLifeStatus</members>
         <members>PMHR_Field_Name</members>
         <members>PMHR_Field_Name_Colon</members>
         <members>PMHR_Field_Picture_Url</members>
@@ -124,15 +124,15 @@
         <members>PMHR_Modal_Title_Add_New_Final_Team</members>
         <members>PMHR_Modal_Title_Edit_Death_Info</members>
         <members>PMHR_Modal_Title_Edit_Picture</members>
-        <members>PMHR_Next_Available_Form_Header</members>
-        <members>PMHR_No_Next_Available_Form</members>
-        <members>PMHR_Placeholder_Empty_Final_Team_Members_List</members>
-        <members>PMHR_Placeholder_Final_Team_Members_List</members>
+        <members>PMHR_EvolveActionHeader</members>
+        <members>PMHR_EvolveActionNextFormUnavailableMessage</members>
+        <members>PMHR_FinalTeamListNoMembersMessage</members>
+        <members>PMHR_FinalTeamListNoTeamsMessage</members>
         <members>PMHR_PokedexNr_PokemonName</members>
-        <members>PMHR_Section_Title_Death_Info</members>
-        <members>PMHR_Section_Title_Final_Team_Members</members>
+        <members>PMHR_LifeInfoSectionTitle</members>
+        <members>PMHR_FinalTeamListSectionTitle</members>
         <members>PMHR_Section_Title_Pokemon_Picture</members>
-        <members>PMHR_Spinner_Alt_Text</members>
+        <members>PMHR_SpinnerAltText</members>
         <members>Toast_Error_Add_New_Final_Team</members>
         <members>Toast_Error_Death_Level</members>
         <members>Toast_Error_Final_Team_Info</members>
@@ -142,10 +142,10 @@
         <members>Toast_Error_Record_Update</members>
         <members>Toast_Success_Add_New_Final_Team</members>
         <members>Toast_Success_Death_Info_Update</members>
-        <members>PMHR_Toast_Success_Next_Form_Assigned</members>
+        <members>PMHR_EvolveActionNextFormAssignedMessage</members>
         <members>Toast_Success_Picture_Update</members>
         <members>Value_All</members>
-        <members>PMHR_Choose_Next_Form</members>
+        <members>PMHR_EvolveActionNextFormChoiceMessage</members>
         <name>CustomLabel</name>
     </types>
     <types>

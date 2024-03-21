@@ -1,47 +1,47 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
-/* Apex methods */
-import getFinalTeams from '@salesforce/apex/PMHR_FinalTeamListController.getFinalTeamInfo';
+import { showToast } from 'c/pmhrUtils';
+/* Apex actions */
+import getFinalTeamInfo from '@salesforce/apex/PMHR_FinalTeamListController.getFinalTeamInfo';
+/* SObject fields */
+import FIELD_NUZLOCKE_ID from '@salesforce/schema/PMHR_Nuzlocke__c.Id';
 /* Labels */
-import PMHR_Spinner_Alt_Text from '@salesforce/label/c.PMHR_Spinner_Alt_Text'
+import PMHR_SpinnerAltText from '@salesforce/label/c.PMHR_SpinnerAltText';
+import PMHR_LabelError from '@salesforce/label/c.PMHR_LabelError';
 
-export default class PMHR_NuzlockeFinalTeams extends LightningElement {
+export default class pmhrNuzlockeFinalTeams extends LightningElement {
     @api recordId;
+
+    label;
     displaySpinner;
     finalTeams;
-    isFinalTeamsListEmpty;
-    labels;
 
     constructor() {
         super();
-        this.displaySpinner = false;
-        this.isFinalTeamsListEmpty = true;
-        this.labels = {
-            PMHR_Spinner_Alt_Text
+        this.label = {
+            PMHR_SpinnerAltText
         };
+        this.displaySpinner = true;
     }
 
     @wire(getRecord, {
         recordId: '$recordId',
-        fields: ["PMHR_Nuzlocke__c.Id"]
+        fields: [FIELD_NUZLOCKE_ID]
     }) record({error, data}) {
         if (data) {
-            this.initialize();
+            this._initialize();
         }
     }
 
-    initialize() {
-        this.displaySpinner = true;
-        getFinalTeams({nuzlockeId: this.recordId})
-        .then(result => {
+    _initialize() {
+        getFinalTeamInfo({
+            nuzlockeId: this.recordId
+        }).then(result => {
             this.finalTeams = result;
-            if (this.finalTeams.length != 0) {
-                this.isFinalTeamsListEmpty = false;
-            }
-            this.displaySpinner = false;
         }).catch(error => {
-            console.log(error);
+            showToast(PMHR_LabelError, error.message, 'error');
+        }).finally(() => {
             this.displaySpinner = false;
-        })
+        });
     }
 }

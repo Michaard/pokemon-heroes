@@ -1,39 +1,35 @@
 import { LightningElement, api } from 'lwc';
-/** labels **/
-import PMHR_Section_Title_Final_Team_Members from '@salesforce/label/c.PMHR_Section_Title_Final_Team_Members'
-import PMHR_Placeholder_Final_Team_Members_List from '@salesforce/label/c.PMHR_Placeholder_Final_Team_Members_List'
-import PMHR_Placeholder_Empty_Final_Team_Members_List from '@salesforce/label/c.PMHR_Placeholder_Empty_Final_Team_Members_List'
+/* Labels */
+import PMHR_FinalTeamListSectionTitle from '@salesforce/label/c.PMHR_FinalTeamListSectionTitle';
+import PMHR_FinalTeamListNoTeamsMessage from '@salesforce/label/c.PMHR_FinalTeamListNoTeamsMessage';
+import PMHR_FinalTeamListNoMembersMessage from '@salesforce/label/c.PMHR_FinalTeamListNoMembersMessage';
 
-export default class PMHR_NuzlockeFinalTeamItem extends LightningElement {
+export default class pmhrNuzlockeFinalTeamItem extends LightningElement {
     @api finalTeam;
-    labels;
+
+    label;
 
     constructor() {
         super();
-        this.labels = {
-            PMHR_Section_Title_Final_Team_Members,
-            PMHR_Placeholder_Final_Team_Members_List,
-            PMHR_Placeholder_Empty_Final_Team_Members_List
+        this.label = {
+            PMHR_FinalTeamListNoTeamsMessage,
+            PMHR_FinalTeamListNoMembersMessage
         };
     }
 
     get finalTeamCardTitle() {
-        return this._checkIsFinalTeamNull() ? this.labels.PMHR_Section_Title_Final_Team_Members : this.finalTeam.name;
+        return (this.finalTeam == null) ? PMHR_FinalTeamListSectionTitle : this.finalTeam.name;
     }
 
     get isFinalTeamNull() {
-        return this._checkIsFinalTeamNull();
+        return this.finalTeam == null;
     }
 
     get isFinalTeamEmpty() {
-        return this._checkIsFinalTeamNull() == false && (this.finalTeam.members == null || this.finalTeam.members.length == 0);
+        return this.finalTeam?.members == null || this.finalTeam.members.length == 0;
     }
 
     get finalTeamUrl() {
-        return this._checkIsFinalTeamNull() ? '' : '/' + this.finalTeam.id;
-    }
-
-    _checkIsFinalTeamNull() {
-        return this.finalTeam == null;
+        return (this.finalTeam == null) ? '' : '/' + this.finalTeam.id;
     }
 }

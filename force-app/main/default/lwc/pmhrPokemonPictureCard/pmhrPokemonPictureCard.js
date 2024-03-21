@@ -1,12 +1,17 @@
 import { LightningElement, api, wire } from 'lwc';
 import { getRecord } from 'lightning/uiRecordApi';
+import { showToast } from 'c/pmhrUtils';
+/* Apex actions */
 import getPokemonPicture from '@salesforce/apex/PMHR_PokemonPictureController.getPokemonPicture';
-import PMHR_Spinner_Alt_Text from '@salesforce/label/c.PMHR_Spinner_Alt_Text';
-
-const POKEMON_FIELDS = ['PMHR_Pokemon__c.Id'];
+/* SObject fields */
+import FIELD_POKEMON_Id from '@salesforce/schema/PMHR_Pokemon__c.Id';
+/* Labels */
+import PMHR_SpinnerAltText from '@salesforce/label/c.PMHR_SpinnerAltText';
+import PMHR_LabelError from '@salesforce/label/c.PMHR_LabelError';
+/* Constants */
 const CSS_CLASS_PICTURE_DEAD = 'picture-dead';
 
-export default class PMHR_PokemonPictureCard extends LightningElement {
+export default class pmhrPokemonPictureCard extends LightningElement {
     @api recordId;
     labels;
     displaySpinner;
@@ -14,23 +19,26 @@ export default class PMHR_PokemonPictureCard extends LightningElement {
 
     constructor() {
         super();
-        this.labels = {
-            PMHR_Spinner_Alt_Text
+        this.label = {
+            PMHR_SpinnerAltText
         };
-        this.displaySpinner = false;
+        this.displaySpinner = true;
         this.pokemonData = {};
     }
 
-    @wire(getRecord, {recordId: '$recordId', fields: POKEMON_FIELDS}) record({error, data}){
+    @wire(getRecord, {
+        recordId: '$recordId',
+        fields: [FIELD_POKEMON_Id]
+    }) record({error, data}) {
         if (data) {
-            this.initialize();
+            this._initialize();
         }
     }
 
-    initialize() {
-        this.displaySpinner = true;
-        getPokemonPicture({pokemonId: this.recordId})
-        .then(result => {
+    _initialize() {
+        getPokemonPicture({
+            pokemonId: this.recordId
+        }).then(result => {
             this.pokemonData = result;
             let pokemonDataPicture = this.template.querySelector('[data-id="pokemonDataPicture"]');
             if (result.isDead) {
@@ -38,10 +46,10 @@ export default class PMHR_PokemonPictureCard extends LightningElement {
             } else {
                 pokemonDataPicture.classList.remove(CSS_CLASS_PICTURE_DEAD);
             }
-            this.displaySpinner = false;
         }).catch(error => {
-            console.log(error);
+            showToast(PMHR_LabelError, error.message, 'error');
+        }).finally(() => {
             this.displaySpinner = false;
-        })
+        });
     }
 }

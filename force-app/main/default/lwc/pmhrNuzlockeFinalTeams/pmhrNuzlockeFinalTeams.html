@@ -1,15 +1,13 @@
 <!-- Final Teams -->
 <template>
     <div class="slds-is-relative">
-        <div if:true={displaySpinner}>
-            <lightning-spinner alternative-text={labels.PMHR_Spinner_Alt_Text}></lightning-spinner>
-        </div>
-        <template if:true={finalTeams}>
+        <lightning-spinner lwc:if={displaySpinner}> alternative-text={label.PMHR_SpinnerAltText}></lightning-spinner>
+        <template lwc:if={finalTeams}>
             <template for:each={finalTeams} for:item="finalTeam">
                 <c-pmhr-nuzlocke-final-team-item final-team={finalTeam} key={finalTeam.id}></c-pmhr-nuzlocke-final-team-item>
             </template>
         </template>
-        <template if:true={isFinalTeamsListEmpty}>
+        <template lwc:else>
             <c-pmhr-nuzlocke-final-team-item></c-pmhr-nuzlocke-final-team-item>
         </template>
     </div>

@@ -1,41 +1,56 @@
 import { LightningElement, api, wire } from 'lwc';
-import { getRecord, getRecordNotifyChange } from 'lightning/uiRecordApi';
+import { getRecord, getFieldValue, getRecordNotifyChange } from 'lightning/uiRecordApi';
 import { CloseActionScreenEvent } from 'lightning/actions';
-import { ShowToastEvent } from 'lightning/platformShowToastEvent';
-import { PMHR_Utils } from 'c/pmhrUtils'
-/* Labels */
-import PMHR_Next_Available_Form_Header from '@salesforce/label/c.PMHR_Next_Available_Form_Header'
-import PMHR_No_Next_Available_Form from '@salesforce/label/c.PMHR_No_Next_Available_Form'
-import PMHR_Toast_Success_Next_Form_Assigned from '@salesforce/label/c.PMHR_Toast_Success_Next_Form_Assigned'
-import PMHR_Label_Error from '@salesforce/label/c.PMHR_Label_Error'
-import PMHR_Spinner_Alt_Text from '@salesforce/label/c.PMHR_Spinner_Alt_Text'
-import PMHR_Choose_Next_Form from '@salesforce/label/c.PMHR_Choose_Next_Form'
+import { stringFormat, showToast } from 'c/pmhrUtils';
 /* Apex actions */
-import getNextAvailableForms from '@salesforce/apex/PMHR_EvolvePokemonController.getNextAvailableForms'
-import setPokemonForm from '@salesforce/apex/PMHR_EvolvePokemonController.setPokemonForm'
+import getNextAvailableForms from '@salesforce/apex/PMHR_EvolvePokemonController.getNextAvailableForms';
+import setPokemonForm from '@salesforce/apex/PMHR_EvolvePokemonController.setPokemonForm';
+/* SObject fields */
+import FIELD_POKEMON_NAME from '@salesforce/schema/PMHR_Pokemon__c.Name';
+/* Labels */
+import PMHR_LabelSuccess from '@salesforce/label/c.PMHR_LabelSuccess';
+import PMHR_LabelCancel from '@salesforce/label/c.PMHR_LabelCancel';
+import PMHR_LabelError from '@salesforce/label/c.PMHR_LabelError';
+import PMHR_SpinnerAltText from '@salesforce/label/c.PMHR_SpinnerAltText';
+import PMHR_EvolveActionHeader from '@salesforce/label/c.PMHR_EvolveActionHeader';
+import PMHR_EvolveActionNextFormUnavailableMessage from '@salesforce/label/c.PMHR_EvolveActionNextFormUnavailableMessage';
+import PMHR_EvolveActionNextFormAssignedMessage from '@salesforce/label/c.PMHR_EvolveActionNextFormAssignedMessage';
+import PMHR_EvolveActionNextFormChoiceMessage from '@salesforce/label/c.PMHR_EvolveActionNextFormChoiceMessage';
 
-export default class PmhrEvolvePokemon extends LightningElement {
+export default class pmhrEvolvePokemon extends LightningElement {
     @api recordId;
+
     displaySpinner;
     pokemonNextForms;
     label;
+
     _pokemonName;
 
     constructor() {
         super();
         this.displaySpinner = false;
         this.label = {
-            PMHR_Spinner_Alt_Text,
-            PMHR_Choose_Next_Form
+            PMHR_LabelCancel,
+            PMHR_SpinnerAltText,
+            PMHR_EvolveActionNextFormChoiceMessage
         };
     }
 
+    @wire(getRecord, {
+        recordId: "$recordId",
+        fields: [FIELD_POKEMON_NAME]
+    }) record({error, data}) {
+        if (data) {
+            this._initialize(data);
+        }
+    }
+
     get actionHeader() {
-        return PMHR_Utils.stringFormat(PMHR_Next_Available_Form_Header, this._pokemonName);
+        return stringFormat(PMHR_EvolveActionHeader, this._pokemonName);
     }
 
     get noNextFormLabel() {
-        return PMHR_Utils.stringFormat(PMHR_No_Next_Available_Form, this._pokemonName);
+        return stringFormat(PMHR_EvolveActionNextFormUnavailableMessage, this._pokemonName);
     }
 
     get isFinalForm() {
@@ -51,17 +66,8 @@ export default class PmhrEvolvePokemon extends LightningElement {
         this.dispatchEvent(new CloseActionScreenEvent());
     }
 
-    @wire(getRecord, {
-        recordId: "$recordId",
-        fields: ["PMHR_Pokemon__c.Name"]
-    }) record({error, data}) {
-        if (data) {
-            this._initialize(data);
-        }
-    }
-
     _initialize(pokemonData) {
-        this._pokemonName = pokemonData.fields.Name.value;
+        this._pokemonName = getFieldValue(pokemonData, FIELD_POKEMON_NAME);
         this._getNextAvailableForms();
     }
 
@@ -72,7 +78,7 @@ export default class PmhrEvolvePokemon extends LightningElement {
         }).then(result => {
             this.pokemonNextForms = result;
         }).catch(error => {
-            this._showToast(PMHR_Label_Error, JSON.stringify(error), 'error');
+            showToast(PMHR_LabelError, JSON.stringify(error), 'error');
         }).finally(() => {
             this.displaySpinner = false;
         });
@@ -86,20 +92,11 @@ export default class PmhrEvolvePokemon extends LightningElement {
             variant: nextForm.variant
         }).then(() => {
             getRecordNotifyChange([{recordId: this.recordId}]);
-            this._showToast(null, PMHR_Utils.stringFormat(PMHR_Toast_Success_Next_Form_Assigned, this._pokemonName, nextForm.name), 'success');
+            showToast(PMHR_LabelSuccess, stringFormat(PMHR_EvolveActionNextFormAssignedMessage, this._pokemonName, nextForm.name), 'success');
         }).catch(error => {
-            this._showToast(PMHR_Label_Error, JSON.stringify(error), 'error');
+            showToast(PMHR_LabelError, JSON.stringify(error), 'error');
         }).finally(() => {
             this.closeAction();
         });
-    }
-
-    _showToast(title, message, variant) {
-        const toast = new ShowToastEvent({
-            title: title,
-            message: message,
-            variant: variant
-        });
-        this.dispatchEvent(toast);
     }
 }

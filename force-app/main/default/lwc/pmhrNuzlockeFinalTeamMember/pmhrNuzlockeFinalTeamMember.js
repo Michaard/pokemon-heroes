@@ -1,6 +1,6 @@
 import { LightningElement, api } from 'lwc';
 
-export default class PMHR_NuzlockeFinalTeamMember extends LightningElement {
+export default class pmhrNuzlockeFinalTeamMember extends LightningElement {
     @api teamMember;
 
     get recordUrl() {

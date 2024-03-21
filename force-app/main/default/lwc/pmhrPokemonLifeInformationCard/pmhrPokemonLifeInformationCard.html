@@ -1,25 +1,23 @@
 <!-- Pokemon Life Information Card -->
 <template>
-    <lightning-card class="slds-is-relative" title={labels.PMHR_Section_Title_Death_Info} variant="narrow">
-        <template if:true={displaySpinner}>
-            <lightning-spinner alternative-text={labels.PMHR_Spinner_Alt_Text}></lightning-spinner>
-        </template>
+    <lightning-card class="slds-is-relative" title={label.PMHR_LifeInfoSectionTitle} variant="narrow">
+        <lightning-spinner lwc:if={displaySpinner} alternative-text={label.PMHR_SpinnerAltText}></lightning-spinner>
         <div class="slds-grid slds-var-p-horizontal_small">
             <div data-id="lifeStatusDiv" class="slds-col slds-var-p-horizontal_small">
                 <div class="slds-form-element slds-form-element_readonly">
                     <div class="slds-form-element__label">
-                        <span>{labels.PMHR_Field_Life_Status}</span>
+                        <span>{label.PMHR_LifeInfoLabelLifeStatus}</span>
                     </div>
                     <div class="slds-form-element__control slds-form-element__static">
                         <span>{lifeStatus}</span>
                     </div>
                 </div>
             </div>
-            <template if:true={pokemonData.isDead}>
+            <template lwc:if={pokemonData.isDead}>
                 <div class="slds-col slds-size_1-of-2 slds-var-p-horizontal_small">
                     <div class="slds-form-element slds-form-element_readonly">
                         <div class="slds-form-element__label">
-                            <span>{labels.PMHR_Field_Death_Level}</span>
+                            <span>{label.PMHR_FieldDeathLevel}</span>
                         </div>
                         <div class="slds-form-element__control slds-form-element__static">
                             <span>{pokemonData.deathLevel}</span>
@@ -28,12 +26,12 @@
                 </div>
             </template>
         </div>
-        <template if:true={pokemonData.isDead}>
+        <template lwc:if={pokemonData.isDead}>
             <div class="slds-var-p-horizontal_small">
                 <div class="slds-var-p-horizontal_small">
                     <div class="slds-form-element slds-form-element_readonly">
                         <div class="slds-form-element__label">
-                            <span>{labels.PMHR_Field_Death_Reason}</span>
+                            <span>{label.PMHR_FieldDeathReason}</span>
                         </div>
                         <div class="slds-form-element__control slds-form-element__static">
                             <span>{pokemonData.causeOfDeath}</span>
